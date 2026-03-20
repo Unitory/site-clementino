@@ -325,9 +325,10 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		);
 
-		lwH5Tl.from(".bs-hero-5-overlay", { opacity: 0, duration: 1.2, delay: 0.6 });
-		lwH5Tl.from(".bs-hero-5-video", { scale: 1.12, duration: 1.8 }, "<=");
-		lwH5Tl.from(".bs-hero-5-content", { y: 60, opacity: 0, duration: 1.1 }, "<");
+		lwH5Tl.from(".bs-hero-5-img", { rotateY: -70, x: -100, scaleY: .5 , delay: 1 });
+		lwH5Tl.from(".bs-hero-5-disc", { x: 50 , opacity: 0, },"<=");
+		lwH5Tl.from(".bs-hero-5-bg-img img", { y: 100 , opacity: 0, },"<=");
+		lwH5Tl.from(".bs-hero-5-bg-circle", { y: -100 , x: 100,  opacity: 0, },"<=");
 
 		/* 
 			hero-5-scroll-animation
@@ -342,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			},
 		})
 		
-		lwH5scroll.to(".bs-hero-5-video", { scale: 1.08, yPercent: 6});
+		lwH5scroll.to(".bs-hero-5-bg-img img", { yPercent: 40});
 		
 		/* 
 			wa-split-text
