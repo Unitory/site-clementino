@@ -2608,3 +2608,558 @@ const cursor = new Cursor();
 
 
 })(jQuery);
+
+window.addEventListener("scroll", function(){
+
+    let header = document.getElementById("header");
+
+    if(window.scrollY > 40){
+        header.classList.add("scrolled");
+    }else{
+        header.classList.remove("scrolled");
+    }
+
+});
+
+(function () {
+    'use strict';
+
+    /* ── 1. Rotator de frases ──────────────────────────────── */
+    function initPhraseRotator() {
+        var phrases  = document.querySelectorAll('.cca-phrase');
+        if (phrases.length < 2) return;
+
+        var INTERVAL    = 3800;
+        var TRANSITION  = 650;
+        var current     = 0;
+        var isAnimating = false;
+
+        function next() {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            var outEl = phrases[current];
+            current   = (current + 1) % phrases.length;
+            var inEl  = phrases[current];
+
+            inEl.style.transition = 'none';
+            inEl.classList.remove('cca-phrase-exit');
+            inEl.style.opacity   = '0';
+            inEl.style.transform = 'translateY(100%)';
+
+            void inEl.offsetWidth; /* força reflow */
+            inEl.style.transition = '';
+
+            outEl.classList.remove('cca-phrase-active');
+            outEl.classList.add('cca-phrase-exit');
+
+            inEl.classList.add('cca-phrase-active');
+            inEl.style.opacity   = '';
+            inEl.style.transform = '';
+
+            setTimeout(function () {
+                outEl.classList.remove('cca-phrase-exit');
+                outEl.style.opacity   = '';
+                outEl.style.transform = '';
+                isAnimating = false;
+            }, TRANSITION + 50);
+        }
+
+        setInterval(next, INTERVAL);
+    }
+
+    /* ── 2. Scroll Reveal dos cards ───────────────────────── */
+    function initCardReveal() {
+        var cards = document.querySelectorAll('.cca-team-card');
+        if (!cards.length) return;
+
+        if (!('IntersectionObserver' in window)) {
+            cards.forEach(function (c) { c.classList.add('cca-visible'); });
+            return;
+        }
+
+        var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('cca-visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        cards.forEach(function (c) { obs.observe(c); });
+    }
+
+    /* ── 3. Parallax + zoom lento nas fotos ────────────────── */
+    function initParallax() {
+        var photos = document.querySelectorAll('.cca-team-photo');
+        if (!photos.length) return;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        var PARALLAX_SPEED = 0.18;
+        var ZOOM_RANGE     = 0.06;
+        var ticking        = false;
+
+        function update() {
+            var winH = window.innerHeight;
+
+            photos.forEach(function (photo) {
+                var wrap = photo.closest('.cca-img-wrap');
+                if (!wrap) return;
+
+                var rect     = wrap.getBoundingClientRect();
+                var wrapCY   = rect.top + rect.height / 2;
+                var progress = (wrapCY - winH / 2) / (winH / 2);
+                progress     = Math.max(-1, Math.min(1, progress));
+
+                var translateY = progress * PARALLAX_SPEED * rect.height;
+                var scale      = 1.08 + (1 - Math.abs(progress)) * ZOOM_RANGE;
+
+                photo.style.transform =
+                    'translateY(' + translateY.toFixed(2) + 'px) scale(' + scale.toFixed(4) + ')';
+            });
+
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+            if (!ticking) {
+                window.requestAnimationFrame(update);
+                ticking = true;
+            }
+        }, { passive: true });
+
+        update();
+    }
+
+    /* ── Init ──────────────────────────────────────────────── */
+    function init() {
+        initPhraseRotator();
+        initCardReveal();
+        initParallax();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})();
+/* ── Hero: parallax no vídeo de fundo ───────────────────── */
+(function () {
+    'use strict';
+
+    var video   = document.querySelector('.bs-hero-5-video-bg');
+    var hero    = document.querySelector('.bs-hero-5-area');
+    var ticking = false;
+
+    if (!video || !hero) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var SPEED = 0.35; /* 0 = sem parallax · 0.5 = intenso */
+
+    function update() {
+        var scrollY    = window.scrollY || window.pageYOffset;
+        var heroBottom = hero.offsetTop + hero.offsetHeight;
+
+        /* só calcula enquanto a hero estiver visível */
+        if (scrollY > heroBottom) { ticking = false; return; }
+
+        video.style.transform = 'translateY(' + (scrollY * SPEED).toFixed(2) + 'px)';
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            window.requestAnimationFrame(update);
+            ticking = true;
+        }
+    }, { passive: true });
+
+})();
+
+/* ── Hero: zoom out sticky no scroll ────────────────────── */
+(function () {
+    'use strict';
+
+    var wrap    = document.querySelector('.bs-hero-5-sticky-wrap');
+    var video   = document.querySelector('.bs-hero-5-video-bg');
+    var overlay = document.querySelector('.bs-hero-5-video-overlay');
+    var ticking = false;
+
+    if (!wrap || !video) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var SCALE_START = 1.0;   /* escala inicial do vídeo          */
+    var SCALE_END   = 0.88;  /* escala final (zoom out)          */
+    var FADE_END    = 0.75;  /* opacidade mínima do overlay      */
+
+    function update() {
+        var scrollY   = window.scrollY || window.pageYOffset;
+        var wrapTop   = wrap.offsetTop;
+        var wrapH     = wrap.offsetHeight;
+        var heroH     = window.innerHeight;
+
+        /* progresso: 0 quando a hero está no topo, 1 quando saiu */
+        var progress  = (scrollY - wrapTop) / (wrapH - heroH);
+        progress      = Math.max(0, Math.min(1, progress));
+
+        /* zoom out no vídeo */
+        var scale = SCALE_START - (SCALE_START - SCALE_END) * progress;
+        video.style.transform = 'scale(' + scale.toFixed(4) + ')';
+
+        /* overlay escurece levemente conforme sai */
+        if (overlay) {
+            var opacity = 0.45 + (FADE_END - 0.45) * progress;
+            overlay.style.background =
+                'rgba(0,0,0,' + opacity.toFixed(3) + ')';
+        }
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            window.requestAnimationFrame(update);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    update();
+
+})();
+
+/* ── Services: rotator do título ────────────────────────── */
+(function () {
+    'use strict';
+
+    var phrases     = document.querySelectorAll('.cca-services-phrase');
+    if (phrases.length < 2) return;
+
+    var INTERVAL    = 4000;
+    var TRANSITION  = 650;
+    var current     = 0;
+    var isAnimating = false;
+
+    function next() {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        var outEl = phrases[current];
+        current   = (current + 1) % phrases.length;
+        var inEl  = phrases[current];
+
+        inEl.style.transition = 'none';
+        inEl.classList.remove('cca-services-phrase-exit');
+        inEl.style.opacity   = '0';
+        inEl.style.transform = 'translateY(100%)';
+
+        void inEl.offsetWidth;
+        inEl.style.transition = '';
+
+        outEl.classList.remove('cca-services-phrase-active');
+        outEl.classList.add('cca-services-phrase-exit');
+
+        inEl.classList.add('cca-services-phrase-active');
+        inEl.style.opacity   = '';
+        inEl.style.transform = '';
+
+        setTimeout(function () {
+            outEl.classList.remove('cca-services-phrase-exit');
+            outEl.style.opacity   = '';
+            outEl.style.transform = '';
+            isAnimating = false;
+        }, TRANSITION + 50);
+    }
+
+    setInterval(next, INTERVAL);
+
+})();
+
+/* ── Testimonial: slider de depoimentos ─────────────────── */
+(function () {
+    'use strict';
+
+    function initTestimonialSlider() {
+        if (typeof Swiper === 'undefined') return;
+
+        var el = document.querySelector('.bs-t5-content-active');
+        if (!el) return;
+
+        /* destrói instância do template se existir */
+        if (el.swiper) {
+            el.swiper.destroy(true, true);
+        }
+
+        new Swiper('.bs-t5-content-active', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false
+            },
+            speed: 700,
+            pagination: {
+                el: '.bs-t1-pagi',
+                clickable: true
+            }
+        });
+    }
+
+    /* aguarda o template init antes de destruir e recriar */
+    window.addEventListener('load', function () {
+        setTimeout(initTestimonialSlider, 500);
+    });
+
+})();
+
+/* ── Comunicação e Media: rotator do título ──────────────── */
+(function () {
+    'use strict';
+
+    var phrases     = document.querySelectorAll('.cca-work-phrase');
+    if (phrases.length < 2) return;
+
+    var INTERVAL    = 4000;
+    var TRANSITION  = 650;
+    var current     = 0;
+    var isAnimating = false;
+
+    function next() {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        var outEl = phrases[current];
+        current   = (current + 1) % phrases.length;
+        var inEl  = phrases[current];
+
+        inEl.style.transition = 'none';
+        inEl.classList.remove('cca-work-phrase-exit');
+        inEl.style.opacity   = '0';
+        inEl.style.transform = 'translateY(100%)';
+
+        void inEl.offsetWidth;
+        inEl.style.transition = '';
+
+        outEl.classList.remove('cca-work-phrase-active');
+        outEl.classList.add('cca-work-phrase-exit');
+
+        inEl.classList.add('cca-work-phrase-active');
+        inEl.style.opacity   = '';
+        inEl.style.transform = '';
+
+        setTimeout(function () {
+            outEl.classList.remove('cca-work-phrase-exit');
+            outEl.style.opacity   = '';
+            outEl.style.transform = '';
+            isAnimating = false;
+        }, TRANSITION + 50);
+    }
+
+    setInterval(next, INTERVAL);
+})();
+
+/* ── Contact: slider de fundo ───────────────────────────── */
+(function () {
+    'use strict';
+
+    if (typeof Swiper === 'undefined') return;
+
+    var el = document.querySelector('.cca-bg-swiper');
+    if (!el) return;
+
+    new Swiper('.cca-bg-swiper', {
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false
+        },
+        speed: 1200,
+        effect: 'fade',
+        fadeEffect: { crossFade: true }
+    });
+
+})();
+
+/* ============================================================
+   CCA — Efeitos globais
+   1. Parallax em imagens
+   2. Clip-path reveal em títulos
+   5. Scroll horizontal nos cards de comunicação
+   6. Contadores animados
+   ============================================================ */
+
+(function () {
+    'use strict';
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ── 1. PARALLAX EM IMAGENS ──────────────────────────── */
+    function initParallaxImages() {
+        if (reduceMotion) return;
+
+        var items = document.querySelectorAll('.cca-parallax-img');
+        if (!items.length) return;
+
+        var ticking = false;
+
+        function update() {
+            var winH = window.innerHeight;
+            items.forEach(function (img) {
+                var wrap = img.parentElement;
+                var rect = wrap.getBoundingClientRect();
+                var cy   = rect.top + rect.height / 2;
+                var prog = (cy - winH / 2) / (winH / 2);
+                prog     = Math.max(-1, Math.min(1, prog));
+                var ty   = prog * 0.20 * rect.height;
+                var sc   = 1.08 + (1 - Math.abs(prog)) * 0.06;
+                img.style.transform = 'translateY(' + ty.toFixed(2) + 'px) scale(' + sc.toFixed(4) + ')';
+            });
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+            if (!ticking) { requestAnimationFrame(update); ticking = true; }
+        }, { passive: true });
+
+        update();
+    }
+
+    /* ── 2. CLIP-PATH REVEAL EM TÍTULOS ──────────────────── */
+    function initClipReveal() {
+        if (reduceMotion) return;
+
+        var titles = document.querySelectorAll('.cca-clip-reveal');
+        if (!titles.length) return;
+
+        /* divide cada título em spans por palavra */
+        titles.forEach(function (el) {
+            if (el.dataset.clipDone) return;
+            el.dataset.clipDone = '1';
+
+            var words = el.innerText.trim().split(/\s+/);
+            el.innerHTML = words.map(function (w, i) {
+                return '<span class="cca-clip-word" style="transition-delay:' + (i * 0.08) + 's">' + w + '</span>';
+            }).join(' ');
+        });
+
+        if (!('IntersectionObserver' in window)) {
+            document.querySelectorAll('.cca-clip-word').forEach(function (w) {
+                w.classList.add('cca-clip-word--visible');
+            });
+            return;
+        }
+
+        var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.cca-clip-word').forEach(function (w) {
+                        w.classList.add('cca-clip-word--visible');
+                    });
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        titles.forEach(function (el) { obs.observe(el); });
+    }
+
+    /* ── 5. SCROLL HORIZONTAL NOS CARDS DE COMUNICAÇÃO ───── */
+    function initHorizontalScroll() {
+        if (reduceMotion) return;
+
+        var section = document.querySelector('.cca-horizontal-scroll-section');
+        var track   = document.querySelector('.cca-horizontal-track');
+        if (!section || !track) return;
+
+        function update() {
+            var rect    = section.getBoundingClientRect();
+            var total   = section.offsetHeight - window.innerHeight;
+            var scrolled = -rect.top;
+            var prog    = Math.max(0, Math.min(1, scrolled / total));
+            var maxX    = track.scrollWidth - track.offsetWidth;
+            track.style.transform = 'translateX(-' + (prog * maxX).toFixed(2) + 'px)';
+        }
+
+        window.addEventListener('scroll', function () {
+            requestAnimationFrame(update);
+        }, { passive: true });
+
+        update();
+    }
+
+    /* ── 6. CONTADORES ANIMADOS ──────────────────────────── */
+    function initCounters() {
+        var counters = document.querySelectorAll('.cca-counter-number');
+        if (!counters.length) return;
+
+        if (!('IntersectionObserver' in window)) {
+            counters.forEach(function (el) {
+                el.textContent = el.dataset.target;
+            });
+            return;
+        }
+
+        function animateCounter(el) {
+            var target   = parseInt(el.dataset.target, 10);
+            var duration = 1800;
+            var start    = null;
+
+            function step(ts) {
+                if (!start) start = ts;
+                var prog = Math.min((ts - start) / duration, 1);
+                /* easeOutExpo */
+                var ease = prog === 1 ? 1 : 1 - Math.pow(2, -10 * prog);
+                el.textContent = Math.floor(ease * target);
+                if (prog < 1) requestAnimationFrame(step);
+                else el.textContent = target;
+            }
+
+            requestAnimationFrame(step);
+        }
+
+        var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(function (el) { obs.observe(el); });
+    }
+
+    /* ── INIT ────────────────────────────────────────────── */
+    function init() {
+        initParallaxImages();
+        initClipReveal();
+        initHorizontalScroll();
+        initCounters();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})();
+
+/* ── Header: scroll para branca ──────────────────────────── */
+(function () {
+    var header = document.querySelector('.bs-header-5-area');
+    if (!header) return;
+
+    function onScroll() {
+        if (window.scrollY > 40) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); /* estado inicial */
+})();

@@ -70,15 +70,19 @@ CSS INDEX
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Allura&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@300..700&display=swap");
+
 :root {
   scroll-behavior: inherit;
-  --bs-font-1: "Albert Sans", serif;
-  --bs-font-2: "Space Grotesk", serif;
-  --bs-font-3: "DM Sans", serif;
+  --bs-font-1:  "Inter", system-ui, sans-serif;   /* corpo — substitui Albert Sans */
+  --bs-font-2:  "Space Grotesk", serif;
+  --bs-font-3:  "DM Sans", serif;
+  --font-title: "Lora", Georgia, serif;            /* títulos grandes               */
+  --font-body:  "Inter", system-ui, sans-serif;    /* textos menores e detalhes     */
   --allura: "Allura", serif;
-  --bs-clr-pr-1: #f16319;
-  --lw-clr-sd-1: #C4EF17;
-  --bs-clr-h-4: #060606;
+  --bs-clr-pr-1: #9A3122;
+  --lw-clr-sd-1: #9A3122;
+  --bs-clr-h-4: #292D29;
   --bs-clr-white-1: #ffffff;
   --bs-clr-black-1: #000000;
   --bs-clr-black-2: #363636;
@@ -87,7 +91,7 @@ CSS INDEX
 }
 
 body {
-  font-family: var(--bs-font-1);
+  font-family: var(--font-body);
   font-size: 18px;
   font-weight: 400;
   -moz-osx-font-smoothing: grayscale;
@@ -96,6 +100,21 @@ body {
   color: var(--bs-clr-p-1);
   overflow-x: hidden;
   font-optical-sizing: auto;
+}
+
+/* ── Títulos grandes → Lora ──────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+}
+
+/* ── Textos menores e detalhes → Inter ───────────────────── */
+p, li, a, nav, label,
+input, textarea, button,
+.bs-p-4, .bs-subtitle-5,
+.bio, .cca-hero-disc,
+.cca-card-content,
+.bs-pr-btn-3, .cca-hero-btn {
+  font-family: var(--font-body);
 }
 
 .img, img {
@@ -2577,7 +2596,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   line-height: 1.5;
   position: relative;
   z-index: 1;
-  border-radius: 4px;
+  border-radius: 30px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2596,7 +2615,7 @@ input:focus::placeholder, textarea:focus::placeholder {
 .bs-pr-btn-3 .text:nth-child(2) {
   position: absolute;
   transform: translateY(-150%);
-  color: var(--bs-clr-black-1);
+  color: var(--bs-clr-white-1);
 }
 .bs-pr-btn-3::after {
   content: "";
@@ -18706,9 +18725,1917 @@ Primary style
   opacity: 24%;
   z-index: -1;
 }
+/* HEADER BASE */
 
+.header-clementino{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:999;
+    padding:22px 0;
+    transition: all .4s ease;
+    background: transparent;
+}
+
+/* ESTADO SCROLL */
+
+.header-clementino.scrolled{
+    background:#ffffff;
+    padding:14px 0;
+    box-shadow:0 8px 30px rgba(0,0,0,.06);
+}
+
+
+/* MENU */
+
+.menu-clementino{
+    display:flex;
+    gap:38px;
+    list-style:none;
+}
+
+.menu-clementino a{
+    font-size:15px;
+    font-weight:500;
+    color:#ffffff;
+    text-decoration:none;
+    position:relative;
+    transition:.3s;
+}
+
+/* TEXTO MUDA AO SCROLL */
+
+.header-clementino.scrolled .menu-clementino a{
+    color:#1a1a1a;
+}
+
+/* HOVER LINHA SOFISTICADA */
+
+.menu-clementino a::after{
+    content:"";
+    position:absolute;
+    bottom:-6px;
+    left:0;
+    width:0%;
+    height:1px;
+    background:#c7a27c;
+    transition:.35s;
+}
+
+.menu-clementino a:hover::after{
+    width:100%;
+}
+
+
+/* BOTÃO PILL */
+
+.btn-pill{
+    padding:12px 26px;
+    border-radius:100px;
+    background:#c7a27c;
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:.3px;
+    text-decoration:none;
+    transition:.35s;
+    display:inline-block;
+}
+
+/* HOVER PREMIUM */
+.btn-pill{
+
+font-family:"Inter", sans-serif;
+font-size:13px;
+letter-spacing:.06em;
+text-transform:uppercase;
+
+padding:13px 26px;
+
+border-radius:100px;
+
+background:#9A3122;
+border:1px solid #9A3122;
+
+color:#fff;
+text-decoration:none;
+
+transition:all .35s ease;
+
+}
+
+
+/* hover institucional */
+
+.btn-pill:hover{
+
+background:#6B1F14;
+border:1px solid #6B1F14;
+
+transform:translateY(-1px);
+
+}
+
+
+/* estado quando header está transparente */
+
+.header-clementino:not(.scrolled) .btn-pill{
+
+background:#9A3122;
+border:1px solid rgba(255,255,255,.35);
+
+}
+
+
+/* estado quando header está branca */
+
+.header-clementino.scrolled .btn-pill{
+
+background:#9A3122;
+border:1px solid #9A3122;
+color:#fff;
+
+}
+
+/* HERO VIDEO */
+
+.hero-clementino{
+height:100vh;
+display:flex;
+align-items:center;
+overflow:hidden;
+background:#000;
+}
+
+.hero-video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:0;
+}
+
+/* overlay institucional */
+
+.hero-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+rgba(41,45,41,.75) 0%,
+rgba(41,45,41,.55) 40%,
+rgba(41,45,41,.25) 70%,
+rgba(41,45,41,.05) 100%
+);
+z-index:1;
+}
+
+/* conteúdo acima */
+
+.hero-clementino .container{
+position:relative;
+z-index:3;
+}
+
+/* textos hero */
+
+.hero-clementino h1{
+font-family:"Lora", serif;
+font-size:clamp(64px,7vw,120px);
+color:#F5F0EA;
+line-height:.95;
+letter-spacing:-.03em;
+}
+
+.hero-clementino h2{
+font-family:"Lora", serif;
+font-size:clamp(60px,6vw,110px);
+color:#F5F0EA;
+line-height:.95;
+letter-spacing:-.03em;
+margin-top:20px;
+}
+
+/* círculo suave institucional */
+
+.hero-clementino .bs-hero-5-bg-circle{
+width:520px;
+height:520px;
+background:#6B1F14;
+opacity:.18;
+filter:blur(80px);
+position:absolute;
+right:-120px;
+bottom:-120px;
+z-index:1;
+}
+.hero-clementino{
+height:140vh;
+position:relative;
+overflow:hidden;
+background:#292D29;
+}
+
+.hero-video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:0;
+}
+
+/* overlay identidade */
+
+.hero-overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:
+linear-gradient(
+110deg,
+rgba(41,45,41,.85) 10%,
+rgba(41,45,41,.55) 40%,
+rgba(41,45,41,.2) 70%
+);
+z-index:1;
+}
+
+/* círculo identidade */
+
+.hero-circle{
+position:absolute;
+width:700px;
+height:700px;
+background:#6B1F14;
+opacity:.18;
+filter:blur(90px);
+right:-200px;
+top:10%;
+z-index:1;
+}
+
+/* textos */
+
+.hero-text{
+font-family:"Lora", serif;
+color:#F5F0EA;
+font-size:clamp(70px,9vw,160px);
+line-height:.9;
+letter-spacing:-.03em;
+position:absolute;
+z-index:3;
+}
+
+/* espalhamento */
+
+.hero-text-1{
+top:18%;
+left:6%;
+}
+
+.hero-text-2{
+top:35%;
+left:28%;
+}
+
+.hero-text-3{
+top:52%;
+right:8%;
+}
+
+.hero-text-4{
+bottom:10%;
+left:18%;
+}
 /* 
     footer-5-end
 */
 
 /*# sourceMappingURL=main.css.map */
+
+.centralizar-slider {
+  display: flex;
+  justify-content: center;
+}
+/* ============================================================
+   CCA TEAM SECTION — adicionar ao main.css
+   ============================================================ */
+
+/* ── Zera o fundo quadriculado do template ───────────────── */
+
+.bs-team-5-bg-shape {
+    display: none !important;
+}
+
+/* ── Fundo bicolor: vermelho em cima, branco embaixo ─────── */
+
+.bs-team-5-area {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff !important;
+    background-image: none !important;
+}
+
+/* Bloco vermelho que cobre a metade superior */
+.bs-team-5-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 58%;          /* ajuste essa % se precisar subir/descer o corte */
+    background: linear-gradient(135deg, #6B1F14 0%, #9A3324 100%);
+    z-index: 0;
+}
+
+/* ── Círculos decorativos — canto inferior direito do bloco vermelho ── */
+
+.bs-team-5-area::after {
+    content: '';
+    position: absolute;
+    top: 8%;
+    right: -100px;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    background: #6B1F14;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* segundo círculo menor, deslocado para baixo-esquerda do primeiro */
+.bs-team-5-area .bs-container-2::before {
+    content: '';
+    position: absolute;
+    top: 18%;
+    right: -30px;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: #6B1F14;
+    opacity: 0.28;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bs-container-2 {
+    position: relative;
+}
+
+/* garante que todo o conteúdo fique acima dos círculos e do bg */
+.bs-team-5-sec-title,
+.bs-team-5-slider {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Phrase Rotator ──────────────────────────────────────── */
+
+.cca-phrase-rotator {
+    position: relative;
+    overflow: visible;
+    height: auto;
+    min-height: 1.3em;
+    margin-top: 16px;
+}
+
+.cca-phrase-track {
+    position: relative;
+    width: 100%;
+    min-height: 1.3em;
+}
+
+.cca-phrase {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+    color: #ffffff;
+    white-space: normal;
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition:
+        opacity   0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+}
+
+.cca-phrase.cca-phrase-active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    position: relative;
+}
+
+.cca-phrase.cca-phrase-exit {
+    opacity: 0;
+    transform: translateY(-100%);
+    position: absolute;
+}
+
+/* subtítulo branco */
+.bs-team-5-area .bs-subtitle-5,
+.bs-team-5-area .bs-subtitle-5 span {
+    color: rgba(255, 255, 255, 0.60) !important;
+}
+
+/* ── Cards: sem fundo, transparentes ────────────────────── */
+
+.cca-team-card {
+    position: relative;
+    border-radius: 4px;
+    background: transparent !important;
+    box-shadow: none !important;
+    opacity: 0;
+    transform: translateX(-60px);
+    transition:
+        opacity   0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cca-team-card.cca-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.swiper-slide:nth-child(1) .cca-team-card { transition-delay: 0.05s; }
+.swiper-slide:nth-child(2) .cca-team-card { transition-delay: 0.20s; }
+.swiper-slide:nth-child(3) .cca-team-card { transition-delay: 0.35s; }
+
+.cca-card-bg-deco {
+    display: none;
+}
+/* ── Wrapper da imagem ───────────────────────────────────── */
+
+.cca-img-wrap {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    height: 420px;
+}
+
+/* ── Foto com parallax ───────────────────────────────────── */
+
+.cca-team-photo {
+    width: 100%;
+    height: 130%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    will-change: transform;
+    transform: translateY(0px) scale(1.08);
+    filter: grayscale(100%);
+    transition: filter 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cca-team-card:hover .cca-team-photo {
+    filter: grayscale(0%);
+}
+
+/* ── Texto do card ───────────────────────────────────────── */
+
+.cca-card-content {
+    position: relative;
+    z-index: 3;
+    padding: 20px 24px 24px;
+}
+
+/* nome e cargo ficam sobre o branco — cor escura */
+.cca-card-content .name a,
+.cca-card-content .bio {
+    color: #2a1008;
+    transition: color 0.3s ease;
+}
+
+.cca-card-content .name a:hover {
+    color: #9A3324;
+}
+
+/* ── Acessibilidade ──────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    .cca-phrase,
+    .cca-team-card,
+    .cca-team-photo {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        filter: none !important;
+    }
+}
+/* ── Hero ────────────────────────────────────────────────── */
+
+.bs-hero-5-area {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    max-height: 860px;
+}
+
+/* vídeo: inset: 0 garante que preenche tudo sem espaço preto */
+.bs-hero-5-video-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 130%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+    will-change: transform;
+    transform: translateY(0px);
+}
+
+.bs-hero-5-video-overlay {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bs-hero-5-area .container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+}
+
+.bs-hero-5-bg-circle {
+    display: none !important;
+}
+
+/* ── Wrap: centraliza verticalmente ─────────────────────── */
+
+.bs-hero-5-wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* padding lateral maior para afastar o texto das bordas */
+.bs-hero-5-right {
+    position: relative;
+    width: 100%;
+    padding: 0 120px;
+}
+
+/* ── Textos ──────────────────────────────────────────────── */
+
+.bs-hero-5-title-1 {
+    font-family: var(--font-title) !important;
+    font-size: clamp(2rem, 4vw, 4rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.05 !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.inner-div-1 {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 4px;
+}
+
+.bs-hero-5-disc {
+    font-family: var(--font-body) !important;
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.65) !important;
+    max-width: 200px;
+    flex-shrink: 0;
+    margin: 10px 0 0 0 !important;
+}
+
+.bs-hero-5-title-2 {
+    font-family: var(--font-title) !important;
+    font-size: clamp(2rem, 4vw, 4rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.05 !important;
+    color: #9A3324 !important;
+    margin: 0 !important;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    flex: 1;
+}
+
+.bs-hero-5-title-2 .cd-words-wrapper b {
+    color: #9A3324 !important;
+}
+
+.inner-div-2 {
+    margin-top: 4px;
+}
+
+.bs-hero-5-title-3 {
+    font-family: var(--font-title) !important;
+    font-size: clamp(2rem, 4vw, 4rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.05 !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+/* ── Responsivo ──────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .bs-hero-5-right {
+        padding: 0 24px;
+    }
+
+    .inner-div-1 {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .bs-hero-5-disc {
+        max-width: 100%;
+    }
+}
+/* ── Hero sticky + zoom out ──────────────────────────────── */
+
+/* wrapper que mantém o espaço enquanto a hero fica sticky */
+.bs-hero-5-sticky-wrap {
+    position: relative;
+    height: 200vh; /* altura dupla — dá espaço para o efeito acontecer */
+}
+
+.bs-hero-5-area {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    max-height: none; /* remove o limite anterior quando sticky */
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* o vídeo escala para fora conforme o scroll */
+.bs-hero-5-video-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+    will-change: transform;
+    transform: scale(1);         /* começa normal */
+    transform-origin: center center;
+    transition: none;            /* JS controla, sem transition CSS */
+}
+
+/* a próxima secção desliza por cima com z-index maior */
+.bs-hero-5-sticky-wrap + * {
+    position: relative;
+    z-index: 2;
+}
+.bs-hero-5-video-bg {
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ── Services: fundo vermelho ────────────────────────────── */
+
+.bs-services-5-left .bg-color {
+    background: #9A3324 !important;
+    top: 320px !important;   /* empurra o fundo para cima — ajusta conforme necessário */
+}
+
+/* subtítulo 03 — preto */
+.bs-services-5-left .bs-subtitle-5,
+.bs-services-5-left .bs-subtitle-5 span {
+    color: #292D29 !important;
+}
+
+/* ícone da estrela — preto */
+.bs-services-5-left-icon i {
+    color: #292D29 !important;
+}
+
+/* ── Rotator do título ───────────────────────────────────── */
+
+.cca-services-rotator {
+    position: relative;
+    overflow: visible;
+    height: auto;
+    min-height: 1.2em;
+    margin-top: 12px;
+}
+
+.cca-services-track {
+    position: relative;
+    min-height: 1.2em;
+}
+
+.cca-services-phrase {
+    position: absolute;
+    inset: 0;
+    font-family: var(--font-title) !important;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem) !important;  /* maior */
+    font-weight: 700;
+    line-height: 1.2;
+    color: #292D29 !important;
+    opacity: 0;
+    transform: translateY(100%);
+    transition:
+        opacity   0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+}
+
+.cca-services-phrase.cca-services-phrase-active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    pointer-events: auto;
+}
+
+.cca-services-phrase.cca-services-phrase-exit {
+    opacity: 0;
+    transform: translateY(-100%);
+    position: absolute;
+}
+
+/* ── Lista de serviços ───────────────────────────────────── */
+
+.bs-services-5-item-single,
+.bs-services-5-item-single .title,
+.bs-services-5-item-single .icon i {
+    color: #ffffff !important;
+}
+
+.bs-services-5-item-single .number {
+    color: rgba(255, 255, 255, 0.50) !important;
+    transition: color 0.3s ease;
+}
+
+.bs-services-5-item-single:hover .number {
+    color: #E8A0A0 !important;
+}
+
+.bs-services-5-item-single {
+    border-color: rgba(255, 255, 255, 0.20) !important;
+    transition: border-color 0.3s ease;
+}
+
+.bs-services-5-item-single:hover {
+    border-color: rgba(255, 255, 255, 0.50) !important;
+}
+
+/* ── Testimonial: fundo degradê ──────────────────────────── */
+
+.cca-testimonial {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #6B1F14 0%, #9A3324 100%) !important;
+}
+
+/* ── Círculos decorativos ────────────────────────────────── */
+
+.cca-testimonial-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: #6B1F14;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cca-testimonial-circle-1 {
+    width: 500px;
+    height: 500px;
+    bottom: -140px;
+    right: -140px;
+    opacity: 0.35;
+}
+
+.cca-testimonial-circle-2 {
+    width: 360px;
+    height: 360px;
+    bottom: -60px;
+    right: -30px;
+    opacity: 0.25;
+}
+
+.cca-testimonial .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Textos brancos ──────────────────────────────────────── */
+
+.cca-testimonial .bs-subtitle-5,
+.cca-testimonial .bs-subtitle-5 span {
+    color: rgba(255, 255, 255, 0.60) !important;
+}
+
+.cca-testimonial .bs-sec-title-4 {
+    color: #ffffff !important;
+    font-family: var(--font-title) !important;
+}
+
+.cca-testimonial .comment {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-style: italic;
+}
+
+.cca-testimonial .name {
+    color: #ffffff !important;
+}
+
+.cca-testimonial .disc {
+    color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.cca-testimonial .bs-star-1 i {
+    color: #E8A0A0 !important;
+}
+
+.cca-testimonial .bottom-line {
+    border-color: rgba(255, 255, 255, 0.20) !important;
+}
+
+/* ── Author: imagem circular + nome ─────────────────────── */
+
+.cca-testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.cca-testimonial-author-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.cca-testimonial-author-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+/* fallback Controlar — inicial em círculo */
+.cca-testimonial-author-img--text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cca-testimonial-author-img--text span {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Testimonial: fundo — vermelho em cima, brasa em baixo ── */
+
+.cca-testimonial {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        to bottom,
+        #9A3324 0%,
+        #9A3324 55%,
+        #6B1F14 100%
+    ) !important;
+}
+
+/* ── Círculos decorativos ────────────────────────────────── */
+
+.cca-testimonial-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: #6B1F14;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cca-testimonial-circle-1 {
+    width: 500px;
+    height: 500px;
+    bottom: -140px;
+    right: -140px;
+    opacity: 0.35;
+}
+
+.cca-testimonial-circle-2 {
+    width: 360px;
+    height: 360px;
+    bottom: -60px;
+    right: -30px;
+    opacity: 0.25;
+}
+
+.cca-testimonial .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Textos brancos ──────────────────────────────────────── */
+
+.cca-testimonial .bs-subtitle-5,
+.cca-testimonial .bs-subtitle-5 span {
+    color: rgba(255, 255, 255, 0.60) !important;
+}
+
+.cca-testimonial .bs-sec-title-4 {
+    color: #ffffff !important;
+    font-family: var(--font-title) !important;
+}
+
+.cca-testimonial .comment {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-style: italic;
+}
+
+.cca-testimonial .name {
+    color: #ffffff !important;
+}
+
+.cca-testimonial .disc {
+    color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.cca-testimonial .bs-star-1 i {
+    color: #E8A0A0 !important;
+}
+
+.cca-testimonial .bottom-line {
+    border-color: rgba(255, 255, 255, 0.20) !important;
+}
+
+/* ── Author: imagem circular + nome ─────────────────────── */
+
+.cca-testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.cca-testimonial-author-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.cca-testimonial-author-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+.cca-testimonial-author-img--text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cca-testimonial-author-img--text span {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* oculta o slider de fotos mas mantém no DOM */
+.cca-hidden {
+    display: none !important;
+}
+
+/* depoimentos ocupam largura total */
+.cca-testimonial-full {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* avatar + estrelas em linha */
+.cca-testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+/* círculo pequeno com logo */
+.cca-testimonial-author-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.30);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cca-testimonial-author-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 5px;
+    filter: brightness(0) invert(1);
+    opacity: 0.90;
+}
+
+.cca-testimonial-author-img--text span {
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* estrelas sem margin extra */
+.cca-testimonial-header .bs-star-1 {
+    margin: 0;
+}
+
+/* ── Slider próprio — não depende do template ────────────── */
+
+.cca-testimonial-slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.cca-testimonial-slider .swiper-wrapper {
+    display: flex;
+}
+
+.cca-testimonial-slider .swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+/* paginação */
+.cca-testimonial-pagi {
+    margin-top: 24px;
+}
+
+.cca-testimonial-pagi .swiper-pagination-bullet {
+    background: rgba(255,255,255,0.40);
+    opacity: 1;
+}
+
+.cca-testimonial-pagi .swiper-pagination-bullet-active {
+    background: #ffffff;
+}
+
+/* ── Avatar + estrelas em linha ──────────────────────────── */
+
+.cca-testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+/* círculo com fundo branco para os logos aparecerem bem */
+.cca-testimonial-author-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #ffffff;
+    border: 2px solid rgba(255,255,255,0.40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cca-testimonial-author-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+    /* sem invert — fundo branco já garante contraste */
+}
+
+.cca-testimonial-author-img--text span {
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #9A3324;
+}
+
+.cca-testimonial-header .bs-star-1 {
+    margin: 0;
+}
+
+/* ── Testimonial: layout ─────────────────────────────────── */
+
+.cca-testimonial .bs-testimonial-5-wrap {
+    display: flex !important;
+    align-items: center !important;
+    gap: 60px !important;
+}
+
+.cca-testimonial .bs-testimonial-5-content {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    width: 50% !important;
+}
+
+.cca-testimonial .bs-testimonial-5-img {
+    flex: 0 0 calc(50% - 60px) !important;
+    max-width: calc(50% - 60px) !important;
+    max-height: 600px !important;
+    margin-top: 40px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.cca-testimonial .bs-testimonial-5-img img {
+    border-radius: 10px !important;
+}
+
+.cca-testimonial .bs-testimonial-5-wrap-2 {
+    width: 100% !important;
+    display: block !important;
+    margin-top: 40px;
+}
+
+.cca-testimonial .bs-testimonial-5-content-slider {
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    position: relative !important;
+}
+
+.cca-testimonial .bs-testimonial-5-img-slider {
+    display: none !important;
+}
+
+/* ── Paginação: logo abaixo do texto ────────────────────── */
+
+.cca-testimonial .bs-t1-pagi {
+    position: relative !important;
+    margin-top: 16px !important;
+    text-align: left !important;
+}
+
+.cca-testimonial {
+    padding-bottom: 60px !important;
+}
+
+/* ── Comunicação e Media: rotator do título ──────────────── */
+
+.cca-work-rotator {
+    position: relative;
+    overflow: visible;
+    height: auto;
+    min-height: 1.2em;
+    margin-top: 12px;
+}
+
+.cca-work-track {
+    position: relative;
+    min-height: 1.2em;
+}
+
+.cca-work-phrase {
+    position: absolute;
+    inset: 0;
+    font-family: var(--font-title) !important;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: inherit;
+    opacity: 0;
+    transform: translateY(100%);
+    transition:
+        opacity   0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+}
+
+.cca-work-phrase.cca-work-phrase-active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    pointer-events: auto;
+}
+
+.cca-work-phrase.cca-work-phrase-exit {
+    opacity: 0;
+    transform: translateY(-100%);
+    position: absolute;
+}
+
+/* ── Cards: hover vermelho ───────────────────────────────── */
+
+.cca-media-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.4s ease;
+}
+
+.cca-media-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #9A3324;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.cca-media-card:hover::before {
+    opacity: 0.88;
+}
+
+/* conteúdo acima do overlay */
+.cca-media-card .cca-media-card-body,
+.cca-media-card .number {
+    position: relative;
+    z-index: 2;
+}
+
+/* data */
+.cca-media-date {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.60);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+/* título do artigo */
+.cca-media-card .title {
+    font-family: var(--font-title) !important;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.cca-media-card:hover .title,
+.cca-media-card:hover .cca-media-date {
+    color: #ffffff !important;
+}
+
+/* ── Contact: seção ─────────────────────────────────────── */
+
+.cca-contact {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-bottom: 135px;
+}
+
+/* slider de fundo */
+.cca-contact-bg-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.cca-bg-swiper,
+.cca-bg-swiper .swiper-wrapper,
+.cca-bg-swiper .swiper-slide {
+    width: 100%;
+    height: 100%;
+}
+
+.cca-contact-bg-slide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* overlay preto de baixa opacidade */
+.cca-contact-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+/* container acima do slider */
+.cca-contact .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* ── Layout: esquerda + direita ──────────────────────────── */
+
+.cca-contact-wrap {
+    display: flex !important;
+    align-items: center !important;
+    gap: 80px !important;
+    width: 100%;
+}
+
+.cca-contact-left {
+    flex: 0 0 45%;
+    max-width: 45%;
+}
+
+/* ── Textos esquerda ─────────────────────────────────────── */
+
+.cca-contact .bs-subtitle-5,
+.cca-contact .bs-subtitle-5 span {
+    color: rgba(255, 255, 255, 0.60) !important;
+}
+
+.cca-contact-title {
+    font-family: var(--font-title) !important;
+    color: #ffffff !important;
+}
+
+.cca-contact-desc {
+    color: rgba(255, 255, 255, 0.75) !important;
+    margin-top: 24px;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* ── Formulário ──────────────────────────────────────────── */
+
+.cca-contact-form-wrap {
+    flex: 1;
+}
+
+.cca-contact-form-inner {
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 40px;
+}
+
+.cca-form-title {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.35;
+    margin-bottom: 8px;
+}
+
+.cca-form-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 28px;
+}
+
+.cca-form-group {
+    margin-bottom: 16px;
+}
+
+.cca-form-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    box-sizing: border-box;
+}
+
+.cca-form-input::placeholder {
+    color: rgba(255, 255, 255, 0.40);
+}
+
+.cca-form-input:focus {
+    border-color: rgba(154, 51, 36, 0.70);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.cca-form-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.cca-form-btn {
+    display: inline-block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 16px 32px;
+    background: #9A3324;
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.35s ease, transform 0.2s ease;
+}
+
+.cca-form-btn:hover {
+    background: #6B1F14;
+    transform: translateY(-2px);
+}
+
+/* ── Responsivo ──────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .cca-contact-wrap {
+        flex-direction: column !important;
+        gap: 40px !important;
+    }
+
+    .cca-contact-left {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* imagens preenchem tudo */
+.cca-contact-bg-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.cca-bg-swiper,
+.cca-bg-swiper .swiper-wrapper,
+.cca-bg-swiper .swiper-slide,
+.cca-contact-bg-slide {
+    width: 100% !important;
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+/* overlay um pouco mais forte */
+.cca-contact-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.62);
+    z-index: 1;
+}
+
+/* remove o parágrafo descritivo */
+.cca-contact-desc {
+    display: none !important;
+}
+
+/* remove as bordas brancas laterais da seção */
+.cca-contact {
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    max-width: 100vw !important;
+}
+
+/* título e subtítulo mais para cima */
+.cca-contact .bs-award-5-sec-title {
+    margin-top: -80px !important;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+
+.cca-footer {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, #9A3324 0%, #6B1F14 100%);
+    padding: 80px 0 0;
+}
+
+/* ── Círculos decorativos ────────────────────────────────── */
+
+.cca-footer-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: #6B1F14;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cca-footer-circle-1 {
+    width: 520px;
+    height: 520px;
+    top: -160px;
+    right: -160px;
+    opacity: 0.35;
+}
+
+.cca-footer-circle-2 {
+    width: 360px;
+    height: 360px;
+    top: -80px;
+    right: -50px;
+    opacity: 0.25;
+}
+
+.cca-footer .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Wrap geral ──────────────────────────────────────────── */
+
+.cca-footer-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ── Topo: logo + social ─────────────────────────────────── */
+
+.cca-footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 56px;
+}
+
+.cca-footer-logo img {
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+}
+
+.cca-footer-social {
+    display: flex;
+    gap: 12px;
+}
+
+.cca-footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.cca-footer-social a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.60);
+}
+
+/* ── Escritórios: grid de 4 colunas ─────────────────────── */
+
+.cca-footer-offices {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 56px;
+}
+
+.cca-footer-office-name {
+    font-family: var(--font-title);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.cca-footer-office-tag {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.70rem;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.50);
+    margin-bottom: 14px;
+}
+
+.cca-footer-office-address {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.70);
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.cca-footer-office-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cca-footer-office-contacts a {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.cca-footer-office-contacts a:hover {
+    color: #ffffff;
+}
+
+.cca-footer-office-contacts i {
+    font-size: 0.75rem;
+    opacity: 0.70;
+}
+
+/* ── Linha divisória ─────────────────────────────────────── */
+
+.cca-footer-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    margin-bottom: 24px;
+}
+
+/* ── Copyright ───────────────────────────────────────────── */
+
+.cca-footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 32px;
+}
+
+.cca-footer-bottom p,
+.cca-footer-bottom-links a {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.50);
+    text-decoration: none;
+}
+
+.cca-footer-bottom-links {
+    display: flex;
+    gap: 24px;
+}
+
+.cca-footer-bottom-links a:hover {
+    color: #ffffff;
+}
+
+/* ── Responsivo ──────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+    .cca-footer-offices {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .cca-footer-offices {
+        grid-template-columns: 1fr;
+    }
+
+    .cca-footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+}
+
+#scrollTop,
+.bs-back-to-top,
+[class*="back-to-top"],
+[class*="scroll-top"],
+.wa-scroll-top {
+    border-radius: 50% !important;
+}
+
+
+/* ── Header: transparente → branca no scroll ─────────────── */
+
+.bs-header-5-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: transparent;
+    border-top: none;
+    border-bottom: none;
+    transition:
+        background 0.4s ease,
+        box-shadow 0.4s ease,
+        padding    0.4s ease;
+    padding: 24px 0;
+}
+
+.bs-header-5-area.scrolled {
+    background: #ffffff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    padding: 14px 0;
+}
+
+/* Links do menu — brancos em cima, escuros no scroll */
+.bs-header-5-area .bs-main-navigation .navbar-nav li a {
+    color: rgba(255,255,255,0.80);
+    transition: color 0.3s ease;
+}
+
+.bs-header-5-area.scrolled .bs-main-navigation .navbar-nav li a {
+    color: #292D29;
+}
+
+.bs-header-5-area .bs-main-navigation .navbar-nav li a:hover,
+.bs-header-5-area.scrolled .bs-main-navigation .navbar-nav li a:hover {
+    color: #9A3324;
+}
+
+/* Linhas do botão hamburger — brancas em cima, escuras no scroll */
+.bs-header-5-area .bs-offcanvas-btn-1 .line {
+    background: rgba(255,255,255,0.80);
+    transition: background 0.3s ease;
+}
+
+.bs-header-5-area.scrolled .bs-offcanvas-btn-1 .line {
+    background: #292D29;
+}
+
+/* Botão "Fale connosco" */
+.bs-header-5-area .bs-pr-btn-3 {
+    background: #9A3324;
+    color: #ffffff;
+    border-radius: 100px;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.35s ease;
+}
+
+.bs-header-5-area .bs-pr-btn-3::after {
+    background: #6B1F14; /* Brasa no hover */
+}
+
+.bs-header-5-area .bs-pr-btn-3:hover {
+    background: #6B1F14;
+    color: #ffffff;
+}
+
+.bs-header-5-area .bs-pr-btn-3 .text {
+    color: #ffffff !important;
+}
+
+/* ── Hero: overlay mais escuro + blur ────────────────────── */
+
+.bs-hero-5-video-overlay {
+    background: linear-gradient(
+        110deg,
+        rgba(10, 6, 4, 0.85) 0%,
+        rgba(10, 6, 4, 0.72) 45%,
+        rgba(10, 6, 4, 0.38) 100%
+    ) !important;
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+}
+
+/* Padding-top para não ficar atrás da header fixa */
+.bs-hero-5-area .container {
+    padding-top: 80px;
+}
+
+/* ── Títulos hero: maiores e alinhados à esquerda ─────────── */
+
+.bs-hero-5-right {
+    padding: 0 0 0 40px !important;
+    max-width: 780px;
+}
+
+.bs-hero-5-title-1 {
+    font-family: "Lora", Georgia, serif !important;
+    font-size: clamp(2.8rem, 5.5vw, 5rem) !important;
+    font-weight: 700 !important;
+    line-height: 0.95 !important;
+    color: #ffffff !important;
+    text-transform: uppercase !important;
+    letter-spacing: -0.025em !important;
+    margin-bottom: 8px !important;
+}
+
+.bs-hero-5-title-2 {
+    font-family: "Lora", Georgia, serif !important;
+    font-size: clamp(2.8rem, 5.5vw, 5rem) !important;
+    font-weight: 700 !important;
+    font-style: italic !important;
+    line-height: 0.95 !important;
+    color: #9A3324 !important;
+    letter-spacing: -0.025em !important;
+    margin: 0 !important;
+    flex: 1;
+}
+
+.bs-hero-5-title-2 .cd-words-wrapper b {
+    color: #9A3324 !important;
+}
+
+.bs-hero-5-title-3 {
+    font-family: "Lora", Georgia, serif !important;
+    font-size: clamp(2.8rem, 5.5vw, 5rem) !important;
+    font-weight: 700 !important;
+    line-height: 0.95 !important;
+    color: rgba(255,255,255,0.88) !important;
+    text-transform: uppercase !important;
+    letter-spacing: -0.025em !important;
+    margin-top: 8px !important;
+}
+
+/* Parágrafo descritivo */
+.bs-hero-5-disc {
+    font-size: 0.82rem !important;
+    line-height: 1.75 !important;
+    color: rgba(255,255,255,0.42) !important;
+    max-width: 200px !important;
+    border-left: 1px solid rgba(255,255,255,0.15) !important;
+    padding-left: 14px !important;
+    margin-top: 8px !important;
+}
+
+/* Label topo — linha vermelha + texto */
+.bs-hero-5-right::before {
+    content: '— Advocacia · Fafe · Est. 1994';
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 22px;
+}
+
+/* Palavra fantasma em baixo */
+.bs-hero-5-area::after {
+    content: 'ADVOCACIA';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Lora", Georgia, serif;
+    font-size: clamp(80px, 14vw, 160px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: rgba(255,255,255,0.035);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
+    line-height: 1;
+    text-transform: uppercase;
+}
