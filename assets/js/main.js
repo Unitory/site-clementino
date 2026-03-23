@@ -563,7 +563,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	})
 });
 
-
 /* 
 	gsap-common-animation
 */	
@@ -3162,4 +3161,32 @@ window.addEventListener("scroll", function(){
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll(); /* estado inicial */
+})();
+
+/* TROCA AUTOMATICA DO LOGO QUANDO FAZ O SCROLL */
+
+(function () {
+	const logo1 = document.querySelector('#logo-1');
+	const logo2 = document.querySelector('#logo-2');
+
+	if (!logo1 && !logo2) return;
+
+	mostrarLogoBranco();
+
+	function onScroll() {
+		if (window.scrollY > 60) mostrarLogoPreto();
+		else mostrarLogoBranco();
+	}
+
+	function mostrarLogoBranco() {
+		logo1.style.display = "block";
+		logo2.style.display = "none";
+	}
+
+	function mostrarLogoPreto() {
+		logo1.style.display = "none";
+		logo2.style.display = "block";
+	}
+
+	window.addEventListener('scroll', onScroll, { passive: true });
 })();

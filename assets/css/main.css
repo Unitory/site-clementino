@@ -5838,32 +5838,15 @@ Primary style
   z-index: 3;
 }
 .bs-header-5-logo {
-  max-width: 110px;
+  max-width: 210px;
 }
-.bs-header-5-row {
-  gap: 52px;
-}
-@media only screen and (min-width: 1200px) and (max-width: 1399px) {
-  .bs-header-5-row {
-    gap: 30px;
-  }
-}
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .bs-header-5-row {
-    gap: 20px;
-  }
-}
+
 @media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
   .bs-header-5-row {
     padding: 10px 0;
   }
 }
-.bs-header-5-row .bs-main-navigation {
-  border-left: 1px solid rgba(247, 246, 241, 0.32);
-  border-right: 1px solid rgba(247, 246, 241, 0.32);
-  margin-left: auto;
-  padding: 0 110px;
-}
+
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .bs-header-5-row .bs-main-navigation {
     padding: 0 30px;
@@ -13532,7 +13515,7 @@ Primary style
 .bs-team-5-member .content {
   margin-top: -71px;
   text-align: center;
-  background: var(--bs-clr-h-4);
+  background: var(--bs-clr-pr-1);
   max-width: 224px;
   padding: 42px 10px;
   margin-left: auto;
@@ -13556,7 +13539,7 @@ Primary style
   transition: 0.4s var(--bs-cube-2);
 }
 .bs-team-5-member .name a:hover {
-  color: var(--bs-clr-pr-1);
+  color: var(--bs-clr-white-1);
 }
 .bs-team-5-member .bio {
   text-transform: capitalize;
@@ -19059,7 +19042,7 @@ left:18%;
 .bs-team-5-area::after {
     content: '';
     position: absolute;
-    top: 8%;
+    top: -250px;
     right: -100px;
     width: 480px;
     height: 480px;
@@ -19074,10 +19057,10 @@ left:18%;
 .bs-team-5-area .bs-container-2::before {
     content: '';
     position: absolute;
-    top: 18%;
-    right: -30px;
-    width: 340px;
-    height: 340px;
+    top: -80px;
+    right: -200px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     background: #6B1F14;
     opacity: 0.28;
@@ -19217,12 +19200,7 @@ left:18%;
 /* nome e cargo ficam sobre o branco — cor escura */
 .cca-card-content .name a,
 .cca-card-content .bio {
-    color: #2a1008;
     transition: color 0.3s ease;
-}
-
-.cca-card-content .name a:hover {
-    color: #9A3324;
 }
 
 /* ── Acessibilidade ──────────────────────────────────────── */
@@ -20605,37 +20583,4 @@ left:18%;
     border-left: 1px solid rgba(255,255,255,0.15) !important;
     padding-left: 14px !important;
     margin-top: 8px !important;
-}
-
-/* Label topo — linha vermelha + texto */
-.bs-hero-5-right::before {
-    content: '— Advocacia · Fafe · Est. 1994';
-    display: block;
-    font-family: "Inter", sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 22px;
-}
-
-/* Palavra fantasma em baixo */
-.bs-hero-5-area::after {
-    content: 'ADVOCACIA';
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: "Lora", Georgia, serif;
-    font-size: clamp(80px, 14vw, 160px);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    color: rgba(255,255,255,0.035);
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 0;
-    user-select: none;
-    line-height: 1;
-    text-transform: uppercase;
 }
