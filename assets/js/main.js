@@ -2746,89 +2746,6 @@ window.addEventListener("scroll", function(){
     }
 
 })();
-/* ── Hero: parallax no vídeo de fundo ───────────────────── */
-(function () {
-    'use strict';
-
-    var video   = document.querySelector('.bs-hero-5-video-bg');
-    var hero    = document.querySelector('.bs-hero-5-area');
-    var ticking = false;
-
-    if (!video || !hero) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var SPEED = 0.35; /* 0 = sem parallax · 0.5 = intenso */
-
-    function update() {
-        var scrollY    = window.scrollY || window.pageYOffset;
-        var heroBottom = hero.offsetTop + hero.offsetHeight;
-
-        /* só calcula enquanto a hero estiver visível */
-        if (scrollY > heroBottom) { ticking = false; return; }
-
-        video.style.transform = 'translateY(' + (scrollY * SPEED).toFixed(2) + 'px)';
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', function () {
-        if (!ticking) {
-            window.requestAnimationFrame(update);
-            ticking = true;
-        }
-    }, { passive: true });
-
-})();
-
-/* ── Hero: zoom out sticky no scroll ────────────────────── */
-(function () {
-    'use strict';
-
-    var wrap    = document.querySelector('.bs-hero-5-sticky-wrap');
-    var video   = document.querySelector('.bs-hero-5-video-bg');
-    var overlay = document.querySelector('.bs-hero-5-video-overlay');
-    var ticking = false;
-
-    if (!wrap || !video) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var SCALE_START = 1.0;   /* escala inicial do vídeo          */
-    var SCALE_END   = 0.88;  /* escala final (zoom out)          */
-    var FADE_END    = 0.75;  /* opacidade mínima do overlay      */
-
-    function update() {
-        var scrollY   = window.scrollY || window.pageYOffset;
-        var wrapTop   = wrap.offsetTop;
-        var wrapH     = wrap.offsetHeight;
-        var heroH     = window.innerHeight;
-
-        /* progresso: 0 quando a hero está no topo, 1 quando saiu */
-        var progress  = (scrollY - wrapTop) / (wrapH - heroH);
-        progress      = Math.max(0, Math.min(1, progress));
-
-        /* zoom out no vídeo */
-        var scale = SCALE_START - (SCALE_START - SCALE_END) * progress;
-        video.style.transform = 'scale(' + scale.toFixed(4) + ')';
-
-        /* overlay escurece levemente conforme sai */
-        if (overlay) {
-            var opacity = 0.45 + (FADE_END - 0.45) * progress;
-            overlay.style.background =
-                'rgba(0,0,0,' + opacity.toFixed(3) + ')';
-        }
-
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', function () {
-        if (!ticking) {
-            window.requestAnimationFrame(update);
-            ticking = true;
-        }
-    }, { passive: true });
-
-    update();
-
-})();
 
 /* ── Services: rotator do título ────────────────────────── */
 (function () {
@@ -3148,14 +3065,17 @@ window.addEventListener("scroll", function(){
 
 /* ── Header: scroll para branca ──────────────────────────── */
 (function () {
+	var home = document.getElementById('#home');
     var header = document.querySelector('.bs-header-5-area');
     if (!header) return;
 
     function onScroll() {
-        if (window.scrollY > 40) {
+        if (window.scrollY > window.outerHeight) {
             header.classList.add('scrolled');
+			header.style.display = "block";
         } else {
             header.classList.remove('scrolled');
+			header.style.display = "none";
         }
     }
 
@@ -3163,30 +3083,27 @@ window.addEventListener("scroll", function(){
     onScroll(); /* estado inicial */
 })();
 
-/* TROCA AUTOMATICA DO LOGO QUANDO FAZ O SCROLL */
-
 (function () {
-	const logo1 = document.querySelector('#logo-1');
-	const logo2 = document.querySelector('#logo-2');
-
-	if (!logo1 && !logo2) return;
-
-	mostrarLogoBranco();
+	const wrapper = document.querySelector(".horizontal-wrapper");
+	const content = document.querySelector(".horizontal-content");
 
 	function onScroll() {
-		if (window.scrollY > 60) mostrarLogoPreto();
-		else mostrarLogoBranco();
+		const rect = wrapper.getBoundingClientRect();
+
+		const scrollStart = wrapper.offsetTop;
+		const scrollEnd = scrollStart + wrapper.offsetHeight - window.innerHeight;
+
+		const scrollY = window.scrollY;
+
+		const progress = (scrollY - scrollStart) / (scrollEnd - scrollStart);
+
+		const maxTranslate =
+			content.scrollWidth - window.innerWidth;
+
+		const x = Math.max(0, Math.min(progress * maxTranslate, maxTranslate));
+
+		content.style.transform = `translateX(-${x}px)`;
 	}
 
-	function mostrarLogoBranco() {
-		logo1.style.display = "block";
-		logo2.style.display = "none";
-	}
-
-	function mostrarLogoPreto() {
-		logo1.style.display = "none";
-		logo2.style.display = "block";
-	}
-
-	window.addEventListener('scroll', onScroll, { passive: true });
+	window.addEventListener("scroll", onScroll, { passive: true});
 })();
