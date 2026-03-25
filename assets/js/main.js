@@ -3065,45 +3065,201 @@ window.addEventListener("scroll", function(){
 
 /* ── Header: scroll para branca ──────────────────────────── */
 (function () {
-	var home = document.getElementById('#home');
     var header = document.querySelector('.bs-header-5-area');
     if (!header) return;
 
     function onScroll() {
-        if (window.scrollY > window.outerHeight) {
-            header.classList.add('scrolled');
-			header.style.display = "block";
-        } else {
-            header.classList.remove('scrolled');
-			header.style.display = "none";
-        }
+        header.classList.toggle('scrolled', window.scrollY > 40);
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); /* estado inicial */
+    onScroll();
 })();
 
+/* ============================================================
+   HERO CCA — Split Screen + Scroll Reveal
+   ============================================================ */
+
 (function () {
-	const wrapper = document.querySelector(".horizontal-wrapper");
-	const content = document.querySelector(".horizontal-content");
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-	function onScroll() {
-		const rect = wrapper.getBoundingClientRect();
+    var whiteHalf    = document.getElementById('ccaWhiteHalf');
+    var divider      = document.getElementById('ccaDivider');
+    var videoBg      = document.querySelector('.bs-hero-5-video-bg');
+    var titleWrap    = document.getElementById('ccaTitleWrap');
+    var splitContent = document.getElementById('ccaSplitContent');
+    var scrollPhrase = document.getElementById('ccaScrollPhrase');
+    var scrollText   = document.querySelector('.cca-scroll-text');
 
-		const scrollStart = wrapper.offsetTop;
-		const scrollEnd = scrollStart + wrapper.offsetHeight - window.innerHeight;
+    if (!whiteHalf || !videoBg) return;
 
-		const scrollY = window.scrollY;
+    var tl = gsap.timeline({
+        scrollTrigger: {
+            trigger : '.cca-hero-sticky-wrap',
+            start   : 'top top',
+            end     : 'bottom bottom',
+            scrub   : 1.2,
+        }
+    });
 
-		const progress = (scrollY - scrollStart) / (scrollEnd - scrollStart);
+    tl
+    /* FASE 1 (0 → 50%): vermelho fecha, vídeo expande,
+       título permanece fixo e faz fade junto com o vermelho */
+    .to(whiteHalf,    { width: '0%',                   ease: 'power2.inOut' }, 0)
+    .to(videoBg,      { clipPath: 'inset(0 0 0 0%)',    ease: 'power2.inOut' }, 0)
 
-		const maxTranslate =
-			content.scrollWidth - window.innerWidth;
+    .to(divider,      { opacity: 0, duration: 0.2,      ease: 'power1.in'   }, 0)
+    .to(splitContent, { opacity: 0,                     ease: 'power1.in'   }, 0)
+    .to(titleWrap,    { opacity: 0,                     ease: 'power1.in'   }, 0)
 
-		const x = Math.max(0, Math.min(progress * maxTranslate, maxTranslate));
+    /* FASE 2 (50% → 100%): "Inovação constante." entra */
+    .to(scrollPhrase, { opacity: 1,                     ease: 'power2.out'  }, 0.62)
+    .to(scrollText,   { x: '0%',                        ease: 'power1.out'  }, 0.62)
+    .to('.bs-hero-5-area', {
+        scale: 0.92,
+        borderRadius: '12px',
+        ease: 'power2.inOut'
+    }, 0.75);
 
-		content.style.transform = `translateX(-${x}px)`;
-	}
 
-	window.addEventListener("scroll", onScroll, { passive: true});
+    /* ── Entrada sem scroll ──────────────────────────────── */
+    var entry = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
+
+    /* estado inicial garantido */
+    gsap.set(titleWrap,    { opacity: 1, x: 0, y: 0, clearProps: 'all' });
+    gsap.set(splitContent, { opacity: 1, y: 0, clearProps: 'all' });
+    gsap.set(scrollPhrase, { opacity: 0, x: '6%' });
+
+    entry.from(videoBg,      { opacity: 0, duration: 1.8 });
+    entry.from(titleWrap,    { y: 28, opacity: 0, duration: 1.0, immediateRender: false }, '-=1.2');
+    entry.from(whiteHalf,    { x: '-100%', duration: 1.1 }, '-=1.3');
+    entry.from(splitContent, { y: 18, opacity: 0, duration: 0.7, immediateRender: false }, '-=0.6');
+
+}());
+
+
+/* ── Sobre Nós: zoom-out + parallax horizontal na imagem ─── */
+(function () {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    if (!document.querySelector('.bs-about-5-img-2')) return;
+
+    /* Zoom out na imagem do Sobre Nós */
+    gsap.fromTo('.bs-about-5-img-2 img',
+        { scale: 1.15 },
+        {
+            scale: 1.0,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.bs-about-5-area',
+                start: 'top bottom',
+                end: 'center center',
+                scrub: 1.2
+            }
+        }
+    );
+
+    /* Zoom out nos textos do Sobre Nós */
+    gsap.fromTo('.bs-about-5-sec-title, .bs-about-5-left, .bs-about-5-right',
+        { scale: 1.04, y: 24, opacity: 0 },
+        {
+            scale: 1.0,
+            y: 0,
+            opacity: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.bs-about-5-area',
+                start: 'top 70%',
+                end: 'top 20%',
+                scrub: 1.0
+            }
+        }
+    );
+
+    /* Equipa sobe por cima do Sobre Nós */
+    gsap.fromTo('.bs-team-5-area',
+        { scale: 0.94, borderRadius: '16px' },
+        {
+            scale: 1,
+            borderRadius: '0px',
+            ease: 'power2.inOut',
+            scrollTrigger: {
+                trigger: '.bs-team-5-area',
+                start: 'top 80%',
+                end: 'top top',
+                scrub: 1.0
+            }
+        }
+    );
+}());
+
+/* ── Contacto: parallax na entrada ──────────────────────── */
+(function () {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    if (!document.querySelector('.cca-contact')) return;
+
+    /* Fundo move mais lento que o scroll — parallax clássico */
+    gsap.fromTo('.cca-contact-bg-slider',
+        { yPercent: -12 },
+        {
+            yPercent: 12,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.cca-contact',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+            }
+        }
+    );
+
+    /* Título e descrição entram de baixo */
+    gsap.fromTo('.cca-contact-left',
+        { y: 60, opacity: 0 },
+        {
+            y: 0,
+            opacity: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.cca-contact',
+                start: 'top 80%',
+                end: 'top 30%',
+                scrub: 1.0
+            }
+        }
+    );
+
+    /* Formulário entra de baixo ligeiramente mais tarde */
+    gsap.fromTo('.cca-contact-form-wrap',
+        { y: 90, opacity: 0 },
+        {
+            y: 0,
+            opacity: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.cca-contact',
+                start: 'top 70%',
+                end: 'top 20%',
+                scrub: 1.0
+            }
+        }
+    );
+}());
+
+/* ── Header: scroll para branca + troca de logo ─────────── */
+(function () {
+    var header = document.querySelector('.bs-header-5-area');
+    var logo   = document.querySelector('.bs-header-5-logo img');
+    if (!header || !logo) return;
+
+    var logoWhite = 'assets/img/Logo-branco.png';
+    var logoColor = 'assets/img/Logo-preto-vermelho@2x.png';
+
+    function onScroll() {
+        var scrolled = window.scrollY > 40;
+        header.classList.toggle('scrolled', scrolled);
+        logo.src = scrolled ? logoColor : logoWhite;
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 })();

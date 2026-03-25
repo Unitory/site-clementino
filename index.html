@@ -9,7 +9,7 @@
 <link rel="shortcut icon" href="assets/img/simbolo-preto@2x.png">
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- CSS BASE TEMPLATE -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -60,53 +60,66 @@
 <!-- header-end -->
 
 <!-- hero-start -->
+<div class="cca-hero-sticky-wrap">
 
-<section class="bs-hero-5-area" id="home">
+  <section class="bs-hero-5-area" id="home">
 
     <video
-        class="bs-hero-5-video-bg"
-        src="assets/img/hero.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-        aria-hidden="true">
+      class="bs-hero-5-video-bg"
+      src="assets/img/hero.mp4"
+      autoplay muted loop playsinline
+      aria-hidden="true">
     </video>
 
-    <div class="bs-hero-5-video-overlay"></div>
+    <div class="cca-hero-video-overlay" aria-hidden="true"></div>
 
-    <div class="container bs-container-2">
-        <div class="bs-hero-5-wrap">
-            <div class="bs-hero-5-right">
-
-                <h1 class="bs-hero-5-title-1 bs-h-4 wa-split-right" data-split-delay=".5">
-                    Tradição Consolidada.
-                </h1>
-
-                <div class="inner-div-1">
-                    <p class="bs-p-4 bs-hero-5-disc">
-                        Conhecimento jurídico sólido ao serviço das pessoas e das empresas.
-                    </p>
-
-                    <h2 class="bs-hero-5-title-2 bs-h-4 wa-split-right cd-headline clip" data-split-delay=".1">
-                        <span class="cd-words-wrapper single-headline">
-                            <b class="is-visible">Inovação Constante.</b>
-                        </span>
-                    </h2>
-                </div>
-
-                <div class="inner-div-2">
-                    <h3 class="bs-hero-5-title-3 bs-h-4 wa-split-right" data-split-delay="1.5">
-                        Relação Única.
-                    </h3>
-                </div>
-
-            </div>
-        </div>
+    <div class="cca-hero-white-half" id="ccaWhiteHalf">
+      <div class="cca-hero-deco-circle cca-hero-deco-circle--1"></div>
+      <div class="cca-hero-deco-circle cca-hero-deco-circle--2"></div>
     </div>
 
-</section>
+    <!-- Filiais — canto inferior esquerdo -->
+    <div class="cca-hero-split-content" id="ccaSplitContent">
+      <div class="cca-hero-bottom-left">
+        <p class="cca-hero-filiais-label">Filiais:</p>
+        <ul class="cca-hero-filiais-list">
+          <li>Fafe . Porto</li>
+          <li>Braga . Mondim de Basto</li>
+        </ul>
+      </div>
+      <div class="cca-hero-bottom-right">
+        <p class="cca-hero-tagline">
+          Transformando conhecimento jurídico em<br>
+          segurança e confiança duradoura.
+        </p>
+      </div>
+    </div>
 
+    <!-- Título: só linha 1 e linha 3 no estado inicial -->
+    <div class="cca-hero-title-wrap" id="ccaTitleWrap">
+      <h1 class="cca-hero-title">
+
+        <span class="cca-hero-line" data-line="1">
+          <span class="cca-t-white">Tradição consolidada</span>
+          <span class="cca-t-dark" aria-hidden="true">Tradição consolidada</span>
+        </span>
+
+        <span class="cca-hero-line" data-line="3">
+          <span class="cca-t-white">Relação única</span>
+          <span class="cca-t-dark" aria-hidden="true">Relação única</span>
+        </span>
+
+      </h1>
+    </div>
+
+    <!-- Frase gigante — só aparece ao scroll -->
+    <div class="cca-hero-scroll-phrase" id="ccaScrollPhrase" aria-hidden="true">
+      <span class="cca-scroll-text">Inovação Constante.</span>
+    </div>
+
+  </section>
+
+</div>
 <!-- hero-end -->
 
 <div class="sticky-container">
@@ -235,7 +248,7 @@
                             </div>
                         </div>
                     </div>
-
+ 
                 </div>
             </div>
         </div>
@@ -465,7 +478,7 @@
                                     <div class="bs-testimonial-5-content-slider-single">
                                         <div class="cca-testimonial-header">
                                             <div class="cca-testimonial-author-img">
-                                                <img src="assets/img/COMIC CON.jpg" alt="Comic Con">
+                                                <img src="assets/img/COMIC-CON.jpg" alt="Comic Con">
                                             </div>
                                             <div class="bs-star-1">
                                                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>

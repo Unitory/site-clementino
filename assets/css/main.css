@@ -19023,6 +19023,7 @@ left:18%;
     overflow: hidden;
     background: #ffffff !important;
     background-image: none !important;
+    will-change: transform, border-radius;
 }
 
 /* Bloco vermelho que cobre a metade superior */
@@ -19169,6 +19170,7 @@ left:18%;
     z-index: 2;
     overflow: hidden;
     height: 420px;
+    border-radius: 8px;
 }
 
 /* ── Foto com parallax ───────────────────────────────────── */
@@ -19183,6 +19185,7 @@ left:18%;
     transform: translateY(0px) scale(1.08);
     filter: grayscale(100%);
     transition: filter 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    border-radius: 8px;
 }
 
 .cca-team-card:hover .cca-team-photo {
@@ -19195,6 +19198,7 @@ left:18%;
     position: relative;
     z-index: 3;
     padding: 20px 24px 24px;
+    border-radius: 0 0 8px 8px;
 }
 
 /* nome e cargo ficam sobre o branco — cor escura */
@@ -19241,8 +19245,6 @@ left:18%;
 .bs-hero-5-video-overlay {
     position: absolute;
     inset: 0;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
     background: rgba(0, 0, 0, 0.45);
     z-index: 1;
     pointer-events: none;
@@ -19577,8 +19579,6 @@ left:18%;
     height: 100%;
     object-fit: contain;
     padding: 6px;
-    filter: brightness(0) invert(1);
-    opacity: 0.85;
 }
 
 /* fallback Controlar — inicial em círculo */
@@ -19696,8 +19696,6 @@ left:18%;
     height: 100%;
     object-fit: contain;
     padding: 6px;
-    filter: brightness(0) invert(1);
-    opacity: 0.85;
 }
 
 .cca-testimonial-author-img--text {
@@ -20008,6 +20006,7 @@ left:18%;
     display: flex;
     align-items: center;
     padding-bottom: 135px;
+    border-radius: 0 !important;
 }
 
 /* slider de fundo */
@@ -20089,7 +20088,7 @@ left:18%;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
+    border-radius: 0 !important;
     padding: 40px;
 }
 
@@ -20117,7 +20116,7 @@ left:18%;
     width: 100%;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 6px;
+    border-radius: 0 !important;
     padding: 14px 18px;
     font-family: var(--font-body);
     font-size: 0.9rem;
@@ -20154,7 +20153,7 @@ left:18%;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     border: none;
-    border-radius: 100px;
+    border-radius: 0 !important;
     cursor: pointer;
     transition: background 0.35s ease, transform 0.2s ease;
 }
@@ -20434,206 +20433,376 @@ left:18%;
 }
 
 
-/* ── Header: transparente → branca no scroll ─────────────── */
+/* ============================================================
+   CCA HEADER
+   ============================================================ */
 
 .bs-header-5-area {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 999;
     background: transparent;
-    border-top: none;
-    border-bottom: none;
+    border: none !important;
+    padding: 22px 0;
     transition:
         background 0.4s ease,
         box-shadow 0.4s ease,
         padding    0.4s ease;
-    padding: 24px 0;
 }
 
 .bs-header-5-area.scrolled {
     background: #ffffff;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-    padding: 14px 0;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    padding: 13px 0;
 }
 
-/* Links do menu — brancos em cima, escuros no scroll */
 .bs-header-5-area .bs-main-navigation .navbar-nav li a {
-    color: rgba(255,255,255,0.80);
+    color: rgba(255,255,255,0.85) !important;
     transition: color 0.3s ease;
 }
-
 .bs-header-5-area.scrolled .bs-main-navigation .navbar-nav li a {
-    color: #292D29;
+    color: #292D29 !important;
 }
-
 .bs-header-5-area .bs-main-navigation .navbar-nav li a:hover,
 .bs-header-5-area.scrolled .bs-main-navigation .navbar-nav li a:hover {
-    color: #9A3324;
+    color: #9A3324 !important;
 }
 
-/* Linhas do botão hamburger — brancas em cima, escuras no scroll */
 .bs-header-5-area .bs-offcanvas-btn-1 .line {
-    background: rgba(255,255,255,0.80);
+    background: rgba(255,255,255,0.85) !important;
     transition: background 0.3s ease;
 }
-
 .bs-header-5-area.scrolled .bs-offcanvas-btn-1 .line {
-    background: #292D29;
+    background: #292D29 !important;
 }
 
-/* Botão "Fale connosco" */
 .bs-header-5-area .bs-pr-btn-3 {
-    background: #9A3324;
-    color: #ffffff;
-    border-radius: 100px;
-    padding: 10px 22px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.35s ease;
+    background: #9A3324 !important;
+    color: #ffffff !important;
+    border-radius: 100px !important;
+    padding: 11px 22px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    transition: background 0.35s ease !important;
 }
-
 .bs-header-5-area .bs-pr-btn-3::after {
-    background: #6B1F14; /* Brasa no hover */
+    background: #6B1F14 !important;
+    border-radius: 100px !important;
 }
-
-.bs-header-5-area .bs-pr-btn-3:hover {
-    background: #6B1F14;
-    color: #ffffff;
-}
-
 .bs-header-5-area .bs-pr-btn-3 .text {
     color: #ffffff !important;
 }
 
-/* ── Hero: overlay mais escuro + blur ────────────────────── */
+/* ============================================================
+   CCA HERO — Split Screen + Scroll Reveal
+   ============================================================ */
 
-.bs-hero-5-video-overlay {
-    background: linear-gradient(
-        110deg,
-        rgba(10, 6, 4, 0.85) 0%,
-        rgba(10, 6, 4, 0.72) 45%,
-        rgba(10, 6, 4, 0.38) 100%
-    ) !important;
-    backdrop-filter: blur(2px) !important;
-    -webkit-backdrop-filter: blur(2px) !important;
-}
-
-/* Padding-top para não ficar atrás da header fixa */
-.bs-hero-5-area .container {
-    padding-top: 80px;
-}
-
-/* ── Títulos hero: maiores e alinhados à esquerda ─────────── */
-
-.bs-hero-5-right {
-    padding: 0 0 0 40px !important;
-    max-width: 780px;
-}
-
-.bs-hero-5-title-1 {
-    font-family: "Lora", Georgia, serif !important;
-    font-size: clamp(2.8rem, 5.5vw, 5rem) !important;
-    font-weight: 700 !important;
-    line-height: 0.95 !important;
-    color: #ffffff !important;
-    text-transform: uppercase !important;
-    letter-spacing: -0.025em !important;
-    margin-bottom: 8px !important;
-}
-
-.bs-hero-5-title-2 {
-    font-family: "Lora", Georgia, serif !important;
-    font-size: clamp(2.8rem, 5.5vw, 5rem) !important;
-    font-weight: 700 !important;
-    font-style: italic !important;
-    line-height: 0.95 !important;
-    color: #9A3324 !important;
-    letter-spacing: -0.025em !important;
-    margin: 0 !important;
-    flex: 1;
-}
-
-.bs-hero-5-title-2 .cd-words-wrapper b {
-    color: #9A3324 !important;
-}
-
-.bs-hero-5-title-3 {
-    font-family: "Lora", Georgia, serif !important;
-    font-size: clamp(2.8rem, 5.5vw, 5rem) !important;
-    font-weight: 700 !important;
-    line-height: 0.95 !important;
-    color: rgba(255,255,255,0.88) !important;
-    text-transform: uppercase !important;
-    letter-spacing: -0.025em !important;
-    margin-top: 8px !important;
-}
-
-/* Parágrafo descritivo */
-.bs-hero-5-disc {
-    font-size: 0.82rem !important;
-    line-height: 1.75 !important;
-    color: rgba(255,255,255,0.42) !important;
-    max-width: 200px !important;
-    border-left: 1px solid rgba(255,255,255,0.15) !important;
-    padding-left: 14px !important;
-    margin-top: 8px !important;
-}
-
-.hero-custom {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  background-color: #2c3e50;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 1; /* Fica atrás do conteúdo */
-}
-
-.hero-content-custom {
+/* ── Wrapper sticky ──────────────────────────────────────── */
+.cca-hero-sticky-wrap {
     position: relative;
-    z-index: 2; /* Fica acima do hero */
-    background-color: white;
+    height: 260vh;
+    z-index: 1;
+}
+.cca-hero-sticky-wrap + * {
+    position: relative;
+    z-index: 2;
 }
 
-/* Horizontal Scroll (fake horizontal) */
-
-/* altura falsa para permitir scroll vertical */
-.horizontal-wrapper {
-  height: 200vh; /* depende da largura do conteúdo */
+.bs-about-5-area {
+    position: relative;
+    z-index: 2;
+    background: #ffffff;
 }
 
-/* elemento fica fixo durante o scroll */
-.sticky-container {
-  position: sticky;
-  top: 0;
-  height: 200vh;
-  z-index: 1; /* Fica atrás do conteúdo */
+.bs-team-5-area {
+    position: relative;
+    z-index: 3;
 }
 
-/* conteúdo que vai deslizar */
-.horizontal-content {
-  display: flex;
-  height: 100%;
-  will-change: transform;
+/* ── Secção hero ─────────────────────────────────────────── */
+.bs-hero-5-area {
+    position: sticky !important;
+    top: 0;
+    height: 100vh;
+    max-height: none !important;
+    overflow: hidden;
+    background: #6B1F14;
+    z-index: 1;
+    padding: 0 !important;
+    transform-origin: center center;
+    will-change: transform, border-radius;
 }
 
-/* slides */
-.panel {
-  min-width: 100vw;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 80px;
-  color: black;
+/* ── Vídeo: começa clipado à direita ─────────────────────── */
+.bs-hero-5-video-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    z-index: 0;
+    pointer-events: none;
+    will-change: clip-path, transform;
+    clip-path: inset(0 0 0 50%);
+    transform: scale(1);
+    transform-origin: center center;
+    transition: none;
 }
 
+/* ── Overlay escuro: contraste para o texto sobre o vídeo ─── */
+.cca-hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+}
+
+/* ── Metade esquerda: degradê ────────────────────────────── */
+.cca-hero-white-half {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(160deg, #9A3324 0%, #6B1F14 100%);
+    z-index: 2;
+    will-change: width;
+    transform-origin: left center;
+    overflow: hidden;
+}
+
+/* ── Círculos decorativos ────────────────────────────────── */
+.cca-hero-deco-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: #6B1F14;
+    pointer-events: none;
+}
+.cca-hero-deco-circle--1 {
+    width: 500px;
+    height: 500px;
+    top: -180px;
+    left: -120px;
+    opacity: 0.48;
+}
+.cca-hero-deco-circle--2 {
+    width: 320px;
+    height: 320px;
+    top: -80px;
+    left: 60px;
+    opacity: 0.30;
+}
+
+/* ── Linha divisória ─────────────────────────────────────── */
+.cca-hero-divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(245, 240, 234, 0.18) 20%,
+        rgba(245, 240, 234, 0.38) 50%,
+        rgba(245, 240, 234, 0.18) 80%,
+        transparent 100%
+    );
+    z-index: 5;
+    pointer-events: none;
+    will-change: opacity;
+}
+
+/* ── Título: centrado horizontal e verticalmente ────────── */
+.cca-hero-title-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    padding: 0 5vw 180px 8vw;
+    padding-top: 80px;
+    opacity: 1;
+    transform: none;
+}
+
+.cca-hero-title {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 4vh, 3.5rem);
+    align-items: center;
+}
+
+/* ── Linha 1 — maior ─────────────────────────────────────── */
+.cca-hero-line[data-line="1"] {
+    font-family: "Lora", Georgia, serif;
+    font-size: clamp(4rem, 8.5vw, 10.5rem);
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    position: relative;
+    display: block;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+/* ── Linha 3 — ligeiramente menor ────────────────────────── */
+.cca-hero-line[data-line="3"] {
+    font-family: "Lora", Georgia, serif;
+    font-size: clamp(3.6rem, 7.8vw, 9.5rem);
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    position: relative;
+    display: block;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+/* Tipografia da hero: branco puro em toda a largura */
+.cca-t-white {
+    display: block;
+    color: #FFFFFF;
+    position: relative;
+    z-index: 1;
+}
+
+/* Camada de split desactivada */
+.cca-t-dark {
+    display: none;
+}
+
+/* ── Rodapé da hero: filiais esq + tagline dir ───────────── */
+.cca-hero-split-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 5vw 52px;
+    pointer-events: none;
+    will-change: opacity;
+}
+
+/* Filiais — esquerda */
+.cca-hero-bottom-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* "Filiais:" em Lora bold */
+.cca-hero-filiais-label {
+    font-family: "Lora", Georgia, serif;
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
+    font-weight: 700;
+    color: rgba(245, 240, 234, 0.95);
+    margin: 0 0 10px 0;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* Lista em coluna simples com separador no texto */
+.cca-hero-filiais-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.cca-hero-filiais-list li {
+    font-family: "Lora", Georgia, serif;
+    font-size: clamp(1.1rem, 1.4vw, 1.5rem);
+    font-weight: 400;
+    color: rgba(245, 240, 234, 0.88);
+    line-height: 1.7;
+}
+
+/* Tagline — direita, sobre o vídeo */
+.cca-hero-bottom-right {
+    text-align: right;
+    max-width: 540px;
+}
+
+.cca-hero-tagline {
+    font-family: "Lora", Georgia, serif;
+    font-size: clamp(1.1rem, 1.5vw, 1.6rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: rgba(245, 240, 234, 0.88);
+    max-width: 540px;
+    text-align: right;
+    margin-left: auto;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+}
+
+/* ── Frase gigante: só ao scroll ─────────────────────────── */
+.cca-hero-scroll-phrase {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    z-index: 7;
+    opacity: 0;
+    pointer-events: none;
+    will-change: opacity;
+    padding: 0 5vw;
+}
+
+.cca-scroll-text {
+    display: block;
+    font-family: "Lora", Georgia, serif;
+    font-size: clamp(5rem, 9.5vw, 12rem);
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: rgba(245, 240, 234, 0.90);
+    white-space: nowrap;
+    transform: translateX(6%);
+    will-change: transform;
+}
+
+/* ── Responsivo ──────────────────────────────────────────── */
+@media (max-width: 991px) {
+    .cca-hero-sticky-wrap  { height: 210vh; }
+    .bs-hero-5-video-bg    { clip-path: inset(0) !important; }
+    .cca-hero-white-half   { display: none; }
+    .cca-hero-divider      { display: none; }
+    .cca-t-dark            { display: none; }
+    .cca-hero-line[data-line="1"] { font-size: clamp(2.4rem, 9vw, 5rem); line-height: 0.92; }
+    .cca-hero-line[data-line="3"] { font-size: clamp(2rem, 7.5vw, 4.2rem); line-height: 0.92; }
+    .cca-hero-title               { gap: clamp(1.5rem, 3.5vh, 3rem); }
+    .cca-hero-title-wrap          { padding: 0 5vw; padding-top: 80px; padding-bottom: 120px; }
+    .cca-hero-split-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 0 5vw 40px;
+    }
+    .cca-hero-bottom-right { text-align: left; }
+    .cca-scroll-text       { font-size: clamp(3rem, 11vw, 7rem); }
+}
+
+@media (max-width: 575px) {
+    .cca-hero-line[data-line="1"] { font-size: clamp(2rem, 12vw, 3.5rem); }
+    .cca-hero-line[data-line="3"] { font-size: clamp(1.8rem, 10vw, 3rem); }
+}
