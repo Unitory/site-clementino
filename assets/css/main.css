@@ -19352,6 +19352,7 @@ left:18%;
         max-width: 100%;
     }
 }
+
 /* ── Hero sticky + zoom out ──────────────────────────────── */
 
 /* wrapper que mantém o espaço enquanto a hero fica sticky */
@@ -19722,18 +19723,17 @@ left:18%;
     max-width: 100% !important;
 }
 
-/* avatar + estrelas em linha */
-.cca-testimonial-header {
+/* rodapé do card: logo + nome/sector em linha */
+.cca-testimonial-footer {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 20px;
+    gap: 20px;
+    margin-top: 24px;
 }
 
-/* círculo pequeno com logo */
-.cca-testimonial-author-img {
-    width: 44px;
-    height: 44px;
+.cca-testimonial-logo-wrap {
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
@@ -19744,25 +19744,10 @@ left:18%;
     justify-content: center;
 }
 
-.cca-testimonial-author-img img {
+.cca-testimonial-logo-wrap img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    padding: 5px;
-    filter: brightness(0) invert(1);
-    opacity: 0.90;
-}
-
-.cca-testimonial-author-img--text span {
-    font-family: var(--font-title);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.85);
-}
-
-/* estrelas sem margin extra */
-.cca-testimonial-header .bs-star-1 {
-    margin: 0;
+    object-fit: cover;
 }
 
 /* ── Slider próprio — não depende do template ────────────── */

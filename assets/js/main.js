@@ -2812,10 +2812,10 @@ window.addEventListener("scroll", function(){
         new Swiper('.bs-t5-content-active', {
             loop: true,
             autoplay: {
-                delay: 5000,
+                delay: 8000,
                 disableOnInteraction: false
             },
-            speed: 700,
+            speed: 1200,
             pagination: {
                 el: '.bs-t1-pagi',
                 clickable: true
@@ -3136,6 +3136,7 @@ window.addEventListener("scroll", function(){
     entry.from(splitContent, { y: 18, opacity: 0, duration: 0.7, immediateRender: false }, '-=0.6');
 
 }());
+
 
 
 /* ── Sobre Nós: zoom-out + parallax horizontal na imagem ─── */
