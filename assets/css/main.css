@@ -9119,7 +9119,10 @@ Primary style
     work-5-start
 */
 .bs-work-5-sec-title {
-  max-width: 790px;
+  max-width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .bs-work-5-wrap {
   display: grid;
@@ -19604,7 +19607,7 @@ left:18%;
 
 .cca-testi-b-text {
     font-family: 'Lora', serif;
-    font-size: clamp(15px, 1.5vw, 19px);
+    font-size: clamp(17px, 1.8vw, 22px);
     font-style: italic;
     color: rgba(255, 255, 255, 0.90);
     line-height: 1.80;
@@ -20090,7 +20093,7 @@ left:18%;
 /* ── Comunicação e Media: secção com position para decorativo ── */
 .bs-work-5-area {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* ── Comunicação e Media: símbolo decorativo ─────────────── */
@@ -20109,36 +20112,38 @@ left:18%;
 
 .cca-work-rotator {
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     height: auto;
     min-height: 90px;
     margin-top: 12px;
-    white-space: nowrap;
+    width: 100%;
+    text-align: center;
 }
 
 .cca-work-track {
     position: relative;
     min-height: 90px;
-    white-space: nowrap;
+    width: 100%;
     overflow: visible;
 }
 
 .cca-work-phrase {
     position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+    transform: translateY(100%);
     font-family: 'Lora', serif !important;
     font-style: italic;
-    font-size: clamp(42px, 5vw, 68px);
+    font-size: clamp(28px, 3.2vw, 48px);
     text-transform: none;
-    white-space: nowrap;
     font-weight: 700;
     line-height: 1.15;
     color: inherit;
     opacity: 0;
-    transform: translateY(100%);
     transition:
         opacity   0.65s cubic-bezier(0.22, 1, 0.36, 1),
         transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
@@ -20208,6 +20213,11 @@ left:18%;
     position: relative;
     z-index: 2;
     transition: color 0.3s ease;
+    text-transform: none !important;
+}
+
+.bs-work-5-card .title {
+    text-transform: none !important;
 }
 
 .cca-media-card:hover .title,
