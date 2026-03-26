@@ -137,9 +137,6 @@
 
         <!-- section-title -->
         <div class="bs-about-5-sec-title mb-55">
-            <h6 class="bs-subtitle-5">
-                <span class="wa-split-right">Sobre nós</span>
-            </h6>
             <h2 class="bs-sec-title-4 wa-split-right" data-cursor="-opaque">Tradição e excelência jurídica.</h2>
         </div>
 
@@ -162,8 +159,12 @@
             <!-- right-side -->
             <div class="bs-about-5-right">
                 <div class="bs-about-5-img-2 wa-fix wa-img-cover wa-fadeInUp" data-cursor="-opaque">
-                                    <img class="wa-parallax-img" src="assets/img/sobrenos2.jpg" alt="">
-                                </div>
+                    <div class="cca-about-slider">
+                        <div class="cca-about-slide cca-about-slide-active" style="background-image: url('assets/img/sobrenos2.jpg')"></div>
+                        <div class="cca-about-slide" style="background-image: url('assets/img/edificio-reforma.jpg')"></div>
+                        <div class="cca-about-slide" style="background-image: url('assets/img/edificio-antigo.jpg')"></div>
+                    </div>
+                </div>
                             </div>
                         </div>
                     </div>
@@ -175,13 +176,10 @@
 </div>
 
 <!-- team-start -->
-<section class="bs-team-5-area wa-fix wa-p-relative pt-100 hero-content-custom">
-    <div class="container bs-container-2">
+<section class="bs-team-5-area wa-fix wa-p-relative pt-100 hero-content-custom" style="position:relative;overflow:hidden;">
+    <div class="container bs-container-2" style="position:relative;z-index:1;">
 
         <div class="bs-team-5-sec-title text-center mb-70">
-            <h6 class="bs-subtitle-5">
-                <span class="wa-split-right">Sócios e Equipa</span>
-            </h6>
             <div class="cca-phrase-rotator" aria-live="polite">
                 <div class="cca-phrase-track">
                     <div class="cca-phrase cca-phrase-active">Confiança que atravessa gerações.</div>
@@ -197,51 +195,36 @@
 
                     <!-- Clementino -->
                     <div class="swiper-slide">
-                        <div class="bs-team-5-member cca-team-card">
-                            <div class="main-img wa-fix wa-img-cover cca-img-wrap">
-                                <a href="team-details.html" data-cursor-text="Details">
-                                    <img src="assets/img/clementino.jpg" alt="Clementino Cunha" class="cca-team-photo">
-                                </a>
-                            </div>
-                            <div class="content cca-card-content">
-                                <h4 class="bs-h-1 name">
-                                    <a href="team-details.html" aria-label="name">Clementino Cunha</a>
-                                </h4>
-                                <p class="bs-p-4 bio">Sócio-Fundador</p>
+                        <div class="cca-team-card">
+                            <div class="cca-team-card-img" style="background-image: url('assets/img/clementino.jpg')"></div>
+                            <div class="cca-team-card-gradient"></div>
+                            <div class="cca-team-card-body">
+                                <div class="cca-team-card-name">Clementino Cunha</div>
+                                <div class="cca-team-card-role">Sócio-Fundador</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Paula -->
                     <div class="swiper-slide">
-                        <div class="bs-team-5-member cca-team-card">
-                            <div class="main-img wa-fix wa-img-cover cca-img-wrap">
-                                <a href="team-details.html" data-cursor-text="Details">
-                                    <img src="assets/img/paula.jpg" alt="Paula Cunha" class="cca-team-photo">
-                                </a>
-                            </div>
-                            <div class="content cca-card-content">
-                                <h4 class="bs-h-1 name">
-                                    <a href="team-details.html" aria-label="name">Paula Cunha</a>
-                                </h4>
-                                <p class="bs-p-4 bio">Sócia</p>
+                        <div class="cca-team-card">
+                            <div class="cca-team-card-img" style="background-image: url('assets/img/paula.jpg')"></div>
+                            <div class="cca-team-card-gradient"></div>
+                            <div class="cca-team-card-body">
+                                <div class="cca-team-card-name">Paula Cunha</div>
+                                <div class="cca-team-card-role">Sócia</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Ana -->
                     <div class="swiper-slide">
-                        <div class="bs-team-5-member cca-team-card">
-                            <div class="main-img wa-fix wa-img-cover cca-img-wrap">
-                                <a href="team-details.html" data-cursor-text="Details">
-                                    <img src="assets/img/ana.jpg" alt="Ana Cunha" class="cca-team-photo">
-                                </a>
-                            </div>
-                            <div class="content cca-card-content">
-                                <h4 class="bs-h-1 name">
-                                    <a href="team-details.html" aria-label="name">Ana Cunha</a>
-                                </h4>
-                                <p class="bs-p-4 bio">Sócia</p>
+                        <div class="cca-team-card">
+                            <div class="cca-team-card-img" style="background-image: url('assets/img/ana.jpg')"></div>
+                            <div class="cca-team-card-gradient"></div>
+                            <div class="cca-team-card-body">
+                                <div class="cca-team-card-name">Ana Cunha</div>
+                                <div class="cca-team-card-role">Sócia</div>
                             </div>
                         </div>
                     </div>
@@ -250,12 +233,14 @@
             </div>
         </div>
     </div>
+    <div class="cca-team-circle-1" aria-hidden="true"></div>
+    <div class="cca-team-circle-2" aria-hidden="true"></div>
 </section>
 <!-- team-end -->
 
 <!-- counter-start -->
-<section class="bs-core-feature-5-area hero-content-custom">
-    <div class="container bs-container-2">
+<section class="bs-core-feature-5-area hero-content-custom" style="background-color: #9A3122; position: relative; overflow: hidden;">
+    <div class="container bs-container-2" style="position:relative;z-index:1;">
         <div class="bs-core-feature-4-line wa-scaleXInUp"></div>
         <div class="bs-core-feature-4-wrap has-5">
 
@@ -264,8 +249,7 @@
                 
             
                 <h4 class="bs-h-4 item-counter" data-cursor="-opaque">
-                    + <span class="counter wa-counter">45</span>
-                    
+                    <span class="cca-counter-prefix">+</span><span class="counter wa-counter">45</span>
                 </h4>
                 <p class="bs-p-4 item-disc">anos</p>
             </div>
@@ -293,8 +277,7 @@
             <div class="bs-core-feature-4-item wow fadeInRight" data-wow-delay="0.6s">
                 
                 <h5 class="bs-h-4 item-counter" data-cursor="-opaque">
-                    + <span class="counter wa-counter">20.000</span>
-                    
+                    <span class="cca-counter-prefix">+</span><span class="counter wa-counter">20.000</span>
                 </h5>
                 <p class="bs-p-4 item-disc">litígios</p>
             </div>
@@ -307,13 +290,10 @@
 
 <!-- services-start -->
 <section id="actuacao" class="bs-services-5-area hero-content-custom pt-120 pb-120" style="background: #9A3122;">
-    <div class="container bs-container-2">
+    <div class="container bs-container-2" style="position:relative;z-index:1;">
 
         <!-- section title -->
         <div>
-            <h6 class="bs-subtitle-5">
-                <span>Áreas de Actuação</span>
-            </h6>
             <div class="cca-rotator" aria-live="polite">
                 <div class="cca-rotator-phrase cca-rotator-active">Cada área, um conhecimento profundo.</div>
                 <div class="cca-rotator-phrase">Cada cliente, uma solução própria.</div>
@@ -327,6 +307,7 @@
                 <div class="area-overlay"></div>
                 <div class="area-content">
                     <h3>Direito Civil, Família e Sucessões</h3>
+                    <span class="cca-area-cta">Ver mais <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </div>
             </a>
 
@@ -334,20 +315,23 @@
                 <div class="area-overlay"></div>
                 <div class="area-content">
                     <h3>Laboral e Segurança Social</h3>
+                    <span class="cca-area-cta">Ver mais <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </div>
             </a>
 
             <a href="services-details.html" class="area-card" style="background-image: url('assets/img/contratacao.jpg');">
                 <div class="area-overlay"></div>
                 <div class="area-content">
-                    <h3>Direito Público, Administrativo e Contratação Pública</h3>
+                    <h3>Direito Público, Administrativo&nbsp;e Contratação Pública</h3>
+                    <span class="cca-area-cta">Ver mais <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </div>
             </a>
 
             <a href="services-details.html" class="area-card" style="background-image: url('assets/img/judicial.jpg');">
                 <div class="area-overlay"></div>
                 <div class="area-content">
-                    <h3>Societário, Comercial e Recuperação de Crédito e Insolvência</h3>
+                    <h3>Societário, Comercial e Recuperação de Crédito&nbsp;e Insolvência</h3>
+                    <span class="cca-area-cta">Ver mais <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </div>
             </a>
 
@@ -363,144 +347,105 @@
 <section class="bs-testimonial-5-area wa-fix cca-testimonial hero-content-custom">
     <div class="container bs-container-2">
 
-        <div class="bs-testimonial-5-wrap">
+        <div class="cca-testi-b-wrap">
 
-            <!-- esquerda: título + depoimentos -->
-            <div class="bs-testimonial-5-content pt-135">
+            <h2 class="cca-testi-b-title">O que os nossos clientes dizem.</h2>
 
-                <div class="bs-testimonial-5-sec-title mb-60">
-                    <h6 class="bs-subtitle-5">
-                        <span class="wa-split-right">Depoimentos</span>
-                    </h6>
-                    <h2 class="bs-sec-title-4 wa-split-right" data-cursor="-opaque">
-                        O que os nossos clientes dizem.
-                    </h2>
+            <div class="cca-testi-b-slider">
+
+                <div class="cca-testi-b-slide cca-testi-b-active">
+                    <div class="cca-testi-b-card">
+                        <div class="cca-testi-b-mark">"</div>
+                        <p class="cca-testi-b-text">A Clementino Cunha Advogados é um parceiro desta instituição, com uma visão inovadora da advocacia, onde a competência e o profissionalismo são palavras de ordem!</p>
+                        <div class="cca-testi-b-author">
+                            <div class="cca-testi-b-logo"><img src="assets/img/AEFAFE.jpg" alt="AEFAFE"></div>
+                            <div class="cca-testi-b-info">
+                                <span class="cca-testi-b-name">Associação Empresarial</span>
+                                <span class="cca-testi-b-sector">Fafe, Cabeceiras Basto e Celorico de Basto</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- slider depoimentos -->
-                <div class="bs-testimonial-5-wrap-2 wa-p-relative" style="display:block; position:relative;">
-
-                    <!-- slider de fotos: mantido invisível para o template não quebrar -->
-                    <div class="bs-testimonial-5-img-slider" style="display:none;">
-                        <div class="swiper-container bs-t5-img-active">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide"><div class="bs-testimonial-5-img-slider-single"></div></div>
-                                <div class="swiper-slide"><div class="bs-testimonial-5-img-slider-single"></div></div>
-                                <div class="swiper-slide"><div class="bs-testimonial-5-img-slider-single"></div></div>
-                                <div class="swiper-slide"><div class="bs-testimonial-5-img-slider-single"></div></div>
-                                <div class="swiper-slide"><div class="bs-testimonial-5-img-slider-single"></div></div>
-                                <div class="swiper-slide"><div class="bs-testimonial-5-img-slider-single"></div></div>
+                <div class="cca-testi-b-slide">
+                    <div class="cca-testi-b-card">
+                        <div class="cca-testi-b-mark">"</div>
+                        <p class="cca-testi-b-text">O envolvimento e o conhecimento que nos fornecem, garantem-nos uma sensação de paz e confiança de que verdadeiros profissionais estão ao nosso lado, a aconselhar e proteger os nossos interesses. Quando existe necessidade de recorrer aos seus serviços, a Clementino Cunha Advogados dedica tempo para avaliar completamente a situação e dá conselhos específicos feitos sob medida para nossas necessidades. Gosto de pensar que fazem parte da nossa estrutura legal e confio sempre nas suas indicações para qualquer assunto necessário.</p>
+                        <div class="cca-testi-b-author">
+                            <div class="cca-testi-b-logo"><img src="assets/img/COMIC-CON.jpg" alt="Comic Con Portugal"></div>
+                            <div class="cca-testi-b-info">
+                                <span class="cca-testi-b-name">Comic Con Portugal</span>
+                                <span class="cca-testi-b-sector">Entretenimento e Cultura</span>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- slider de depoimentos -->
-                    <div class="bs-testimonial-5-content-slider wa-fix wa-p-relative" style="width:100%; max-width:100%;">
-                        <div class="swiper-container wa-fix bs-t5-content-active">
-                            <div class="swiper-wrapper">
-
-                                <div class="swiper-slide">
-                                    <div class="bs-testimonial-5-content-slider-single">
-                                        <p class="bs-p-4 comment">"A Clementino Cunha Advogados é um parceiro desta instituição, com uma visão inovadora da advocacia, onde a competência e o profissionalismo são palavras de ordem!"</p>
-                                        <div class="cca-testimonial-footer">
-                                            <div class="cca-testimonial-logo-wrap">
-                                                <img src="assets/img/AEFAFE.jpg" alt="AEFAFE">
-                                            </div>
-                                            <div>
-                                                <h4 class="bs-h-4 name">Associação Empresarial</h4>
-                                                <p class="bs-p-4 disc">Fafe, Cabeceiras Basto e Celorico de Basto</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="bs-testimonial-5-content-slider-single">
-                                        <p class="bs-p-4 comment">O envolvimento e o conhecimento que nos fornecem, garantem-nos uma sensação de paz e confiança de que verdadeiros profissionais estão ao nosso lado, a aconselhar e proteger os nossos interesses. Quando existe necessidade de recorrer aos seus serviços, a Clementino Cunha Advogados dedica tempo para avaliar completamente a situação e dá conselhos específicos feitos sob medida para nossas necessidades. Gosto de pensar que fazem parte da nossa estrutura legal e confio sempre nas suas indicações para qualquer assunto necessário.</p>
-                                        <div class="cca-testimonial-footer">
-                                            <div class="cca-testimonial-logo-wrap">
-                                                <img src="assets/img/COMIC-CON.jpg" alt="Comic Con">
-                                            </div>
-                                            <div>
-                                                <h4 class="bs-h-4 name">Comic Con Portugal</h4>
-                                                <p class="bs-p-4 disc">Entretenimento e Cultura</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="bs-testimonial-5-content-slider-single">
-                                        <p class="bs-p-4 comment">A parceria com a Clementino Cunha Advogados é uma mais valia para a Medimarco, pois tem-nos permitido um apoio legal constante e de excelência. Destaco ainda a disponibilidade, proximidade e diversidade de especialidades jurídicas como uma mais valia da Clementino Cunha Advogados.</p>
-                                        <div class="cca-testimonial-footer">
-                                            <div class="cca-testimonial-logo-wrap">
-                                                <img src="assets/img/MEDIMARCO.jpg" alt="Medimarco">
-                                            </div>
-                                            <div>
-                                                <h4 class="bs-h-4 name">Medimarco</h4>
-                                                <p class="bs-p-4 disc">Saúde e Segurança no Trabalho</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="bs-testimonial-5-content-slider-single">
-                                        <p class="bs-p-4 comment">"A competência, disponibilidade e profissionalismo da Clementino Cunha Advogados foi essencial para o sucesso da transformação da nossa empresa no cumprimento do Regulamento da Proteção de Dados Pessoais."</p>
-                                        <div class="cca-testimonial-footer">
-                                            <div class="cca-testimonial-logo-wrap">
-                                                <img src="assets/img/controlar.jpg" alt="Controlar">
-                                            </div>
-                                            <div>
-                                                <h4 class="bs-h-4 name">Controlar</h4>
-                                                <p class="bs-p-4 disc">Automação Industrial</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="bs-testimonial-5-content-slider-single">
-                                        <p class="bs-p-4 comment">"Reconhecemos o vosso empenho, agradecemos o vosso profissionalismo e sentimos orgulho em ser representados por quem se esforça por garantir os nossos direitos e deveres ao longo de todos estes anos."</p>
-                                        <div class="cca-testimonial-footer">
-                                            <div class="cca-testimonial-logo-wrap">
-                                                <img src="assets/img/FRIAR.jpg" alt="FRIAR">
-                                            </div>
-                                            <div>
-                                                <h4 class="bs-h-4 name">FRIAR</h4>
-                                                <p class="bs-p-4 disc">Refrigeração e Ar Condicionado, Lda</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="bs-testimonial-5-content-slider-single">
-                                        <p class="bs-p-4 comment">A equipa da Clementino Cunha Advogados representa para a Tintojal segurança pelo seu dinamismo, apoio, rapidez e eficiência nas respostas às mais diversas solicitações que nos aparecem no dia a dia, sejam elas do foro ambiental, de recursos humanos, de contratos com fornecedores. É uma equipa munida de especialistas nas mais diversas áreas podendo assim salvaguardar e ir de encontro às necessidades atuais das empresas.</p>
-                                        <div class="cca-testimonial-footer">
-                                            <div class="cca-testimonial-logo-wrap">
-                                                <img src="assets/img/TINTOJAL.jpg" alt="Tintojal">
-                                            </div>
-                                            <div>
-                                                <h4 class="bs-h-4 name">Tintojal</h4>
-                                                <p class="bs-p-4 disc">Tinturaria e Acabamentos, Lda</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                <div class="cca-testi-b-slide">
+                    <div class="cca-testi-b-card">
+                        <div class="cca-testi-b-mark">"</div>
+                        <p class="cca-testi-b-text">A parceria com a Clementino Cunha Advogados é uma mais valia para a Medimarco, pois tem-nos permitido um apoio legal constante e de excelência. Destaco ainda a disponibilidade, proximidade e diversidade de especialidades jurídicas como uma mais valia da Clementino Cunha Advogados.</p>
+                        <div class="cca-testi-b-author">
+                            <div class="cca-testi-b-logo"><img src="assets/img/MEDIMARCO.jpg" alt="Medimarco"></div>
+                            <div class="cca-testi-b-info">
+                                <span class="cca-testi-b-name">Medimarco</span>
+                                <span class="cca-testi-b-sector">Saúde e Segurança no Trabalho</span>
                             </div>
                         </div>
-                        <div class="bs-testimonial-5-img-slider-pagi bs-t1-pagi"></div>
                     </div>
+                </div>
 
+                <div class="cca-testi-b-slide">
+                    <div class="cca-testi-b-card">
+                        <div class="cca-testi-b-mark">"</div>
+                        <p class="cca-testi-b-text">A competência, disponibilidade e profissionalismo da Clementino Cunha Advogados foi essencial para o sucesso da transformação da nossa empresa no cumprimento do Regulamento da Proteção de Dados Pessoais.</p>
+                        <div class="cca-testi-b-author">
+                            <div class="cca-testi-b-logo"><img src="assets/img/controlar.jpg" alt="Controlar"></div>
+                            <div class="cca-testi-b-info">
+                                <span class="cca-testi-b-name">Controlar</span>
+                                <span class="cca-testi-b-sector">Automação Industrial</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cca-testi-b-slide">
+                    <div class="cca-testi-b-card">
+                        <div class="cca-testi-b-mark">"</div>
+                        <p class="cca-testi-b-text">Reconhecemos o vosso empenho, agradecemos o vosso profissionalismo e sentimos orgulho em ser representados por quem se esforça por garantir os nossos direitos e deveres ao longo de todos estes anos.</p>
+                        <div class="cca-testi-b-author">
+                            <div class="cca-testi-b-logo"><img src="assets/img/FRIAR.jpg" alt="FRIAR"></div>
+                            <div class="cca-testi-b-info">
+                                <span class="cca-testi-b-name">FRIAR</span>
+                                <span class="cca-testi-b-sector">Refrigeração e Ar Condicionado, Lda</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cca-testi-b-slide">
+                    <div class="cca-testi-b-card">
+                        <div class="cca-testi-b-mark">"</div>
+                        <p class="cca-testi-b-text">A equipa da Clementino Cunha Advogados representa para a Tintojal segurança pelo seu dinamismo, apoio, rapidez e eficiência nas respostas às mais diversas solicitações que nos aparecem no dia a dia, sejam elas do foro ambiental, de recursos humanos, de contratos com fornecedores. É uma equipa munida de especialistas nas mais diversas áreas podendo assim salvaguardar e ir de encontro às necessidades atuais das empresas.</p>
+                        <div class="cca-testi-b-author">
+                            <div class="cca-testi-b-logo"><img src="assets/img/TINTOJAL.jpg" alt="Tintojal"></div>
+                            <div class="cca-testi-b-info">
+                                <span class="cca-testi-b-name">Tintojal</span>
+                                <span class="cca-testi-b-sector">Tinturaria e Acabamentos, Lda</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
 
-            <!-- direita: imagem grande -->
-            <div class="bs-testimonial-5-img wa-fix wa-img-cover" data-cursor="-opaque">
-                <img class="wa-parallax-img" src="assets/img/depoimentosimg.jpg" alt="">
+            <div class="cca-testi-b-dots">
+                <button class="cca-testi-b-dot cca-testi-b-dot-active"></button>
+                <button class="cca-testi-b-dot"></button>
+                <button class="cca-testi-b-dot"></button>
+                <button class="cca-testi-b-dot"></button>
+                <button class="cca-testi-b-dot"></button>
+                <button class="cca-testi-b-dot"></button>
             </div>
 
         </div>
@@ -515,13 +460,11 @@
 
 <!-- work-start -->
 <section class="bs-work-5-area wa-bg-default pt-135 pb-170 hero-content-custom" data-background="assets/img/work/w5-bg-img.png">
+    <img src="assets/img/Símbolo aprovado cópia 3@2x.png" alt="" class="cca-work-deco">
     <div class="container bs-container-2">
 
         <!-- section-title -->
         <div class="bs-work-5-sec-title mb-90">
-            <h6 class="bs-subtitle-5">
-                <span class="wa-split-right">Comunicação e Media</span>
-            </h6>
             <!-- rotator -->
             <div class="cca-work-rotator" aria-live="polite">
                 <div class="cca-work-track">
@@ -544,7 +487,6 @@
                     <span class="cca-media-date">12 Mar 2026</span>
                     <h4 class="bs-h-1 title">O valor da proximidade na advocacia contemporânea</h4>
                 </div>
-                <h5 class="bs-h-1 number">01</h5>
             </div>
 
             <!-- card 2 -->
@@ -556,7 +498,6 @@
                     <span class="cca-media-date">28 Fev 2026</span>
                     <h4 class="bs-h-1 title">Como o conhecimento jurídico se transforma em decisões seguras</h4>
                 </div>
-                <h5 class="bs-h-1 number">02</h5>
             </div>
 
             <!-- card 3 -->
@@ -568,7 +509,6 @@
                     <span class="cca-media-date">10 Fev 2026</span>
                     <h4 class="bs-h-1 title">Tradição e inovação: o equilíbrio que gera soluções eficazes</h4>
                 </div>
-                <h5 class="bs-h-1 number">03</h5>
             </div>
 
             <!-- card 4 -->
@@ -580,7 +520,6 @@
                     <span class="cca-media-date">02 Jan 2026</span>
                     <h4 class="bs-h-1 title">Desafios jurídicos atuais e a importância de uma abordagem estratégica</h4>
                 </div>
-                <h5 class="bs-h-1 number">04</h5>
             </div>
 
         </div>
@@ -597,11 +536,8 @@
             <div class="bs-award-5-content cca-contact-left">
 
                 <div class="bs-award-5-sec-title mb-50">
-                    <h6 class="bs-subtitle-5">
-                        <span class="wa-split-right">Contactos</span>
-                    </h6>
                     <h2 class="bs-sec-title-4 wa-split-right cca-contact-title" data-cursor="-opaque">
-                        Sempre próximos de si.
+                        Sempre<br>próximos<br>de si.
                     </h2>
                 </div>
 
@@ -926,6 +862,20 @@
 <script src="assets/js/lenis.min.js"></script>
 <script src="assets/js/ScrollTrigger.min.js"></script>
 <script src="assets/js/main.js"></script>
+
+<!-- Sobre Nós — slideshow -->
+<script>
+(function () {
+  var slides = document.querySelectorAll('.cca-about-slide');
+  if (!slides.length) return;
+  var current = 0;
+  setInterval(function () {
+    slides[current].classList.remove('cca-about-slide-active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('cca-about-slide-active');
+  }, 4000);
+})();
+</script>
 
 <!-- Áreas de Actuação — rotator, card entry, title parallax -->
 <script>

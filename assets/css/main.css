@@ -1945,7 +1945,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   font-family: var(--bs-font-1);
   font-weight: 600;
   letter-spacing: -0.03em;
-  text-transform: capitalize;
+  text-transform: none;
   color: var(--bs-clr-h-4);
   line-height: 1.076;
   font-size: 52px;
@@ -19081,20 +19081,21 @@ left:18%;
     z-index: 1;
 }
 
+
 /* ── Phrase Rotator ──────────────────────────────────────── */
 
 .cca-phrase-rotator {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     height: auto;
-    min-height: 1.3em;
+    min-height: 80px;
     margin-top: 16px;
 }
 
 .cca-phrase-track {
     position: relative;
     width: 100%;
-    min-height: 1.3em;
+    min-height: 80px;
 }
 
 .cca-phrase {
@@ -19104,13 +19105,14 @@ left:18%;
     align-items: center;
     justify-content: center;
     font-family: 'Lora', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-    font-weight: 400;
+    font-size: clamp(34px, 3.8vw, 54px);
+    font-weight: 700;
     font-style: italic;
     line-height: 1.3;
     text-align: center;
     color: #ffffff;
     white-space: nowrap;
+    text-transform: none;
     padding: 0 20px;
     opacity: 0;
     transform: translateY(100%);
@@ -19133,106 +19135,130 @@ left:18%;
     position: absolute;
 }
 
+/* ── Círculos decorativos da secção Equipa ───────────────── */
+
+.cca-team-circle-1,
+.cca-team-circle-2 {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cca-team-circle-1 {
+    width: 500px;
+    height: 500px;
+    border: 1.5px solid rgba(255, 255, 255, 0.10);
+    top: -100px;
+    right: -120px;
+}
+
+.cca-team-circle-2 {
+    width: 320px;
+    height: 320px;
+    border: 1.5px solid rgba(255, 255, 255, 0.07);
+    top: -30px;
+    right: -40px;
+}
+
 /* subtítulo branco */
 .bs-team-5-area .bs-subtitle-5,
 .bs-team-5-area .bs-subtitle-5 span {
     color: rgba(255, 255, 255, 0.60) !important;
 }
 
-/* ── Cards: sem fundo, transparentes ────────────────────── */
+/* ── Cards: novo estilo foto + gradiente + texto ─────────── */
 
 .cca-team-card {
     position: relative;
-    border-radius: 4px;
-    background: transparent !important;
-    box-shadow: none !important;
-    opacity: 0;
-    transform: translateX(-60px);
-    transition:
-        opacity   0.7s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.cca-team-card.cca-visible {
-    opacity: 1;
-    transform: translateX(0);
-    transition:
-        opacity   0.7s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.cca-team-card.cca-visible:hover {
-    transform: scale(1.05);
-    z-index: 2;
-}
-
-.swiper-slide:nth-child(1) .cca-team-card { transition-delay: 0.05s; }
-.swiper-slide:nth-child(2) .cca-team-card { transition-delay: 0.20s; }
-.swiper-slide:nth-child(3) .cca-team-card { transition-delay: 0.35s; }
-
-.cca-card-bg-deco {
-    display: none;
-}
-/* ── Wrapper da imagem ───────────────────────────────────── */
-
-.cca-img-wrap {
-    position: relative;
-    z-index: 2;
+    border-radius: 14px;
     overflow: hidden;
-    height: 420px;
-    border-radius: 8px;
-}
-
-/* ── Foto com parallax ───────────────────────────────────── */
-
-.cca-team-photo {
-    width: 100%;
-    height: 130%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    will-change: transform;
-    transform: translateY(0px) scale(1.08);
-    filter: grayscale(100%);
-    transition: filter 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-    border-radius: 8px;
-}
-
-.cca-team-photo {
+    aspect-ratio: 3 / 4;
+    cursor: pointer;
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                filter 0.5s ease;
+                border-radius 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
 }
 
-.cca-team-card:hover .cca-team-photo {
+.cca-team-card:hover {
+    transform: scale(1.05);
+    border-radius: 14px;
+    z-index: 2;
+}
+
+.cca-team-card-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center top;
+    filter: grayscale(100%);
+    transition: filter 0.6s ease;
+}
+
+.cca-team-card:hover .cca-team-card-img {
     filter: grayscale(0%);
-    transform: scale(1.06);
 }
 
-/* ── Texto do card ───────────────────────────────────────── */
-
-.cca-card-content {
-    position: relative;
-    z-index: 3;
-    padding: 20px 24px 24px;
-    border-radius: 0 0 8px 8px;
+.cca-team-card-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(90, 15, 15, 0.92) 0%,
+        rgba(90, 15, 15, 0.45) 35%,
+        rgba(0, 0, 0, 0) 65%
+    );
+    z-index: 1;
+    pointer-events: none;
 }
 
-/* nome e cargo ficam sobre o branco — cor escura */
-.cca-card-content .name a,
-.cca-card-content .bio {
-    transition: color 0.3s ease;
+.cca-team-card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 20px 20px 24px;
+}
+
+.cca-team-card-body::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background: #EECDC7;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.cca-team-card-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 6px;
+}
+
+.cca-team-card-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: rgba(238, 205, 199, 0.65);
 }
 
 /* ── Acessibilidade ──────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
     .cca-phrase,
-    .cca-team-card,
-    .cca-team-photo {
-        opacity: 1 !important;
-        transform: none !important;
+    .cca-team-card-img {
         transition: none !important;
-        filter: none !important;
     }
 }
 /* ── Hero ────────────────────────────────────────────────── */
@@ -19506,6 +19532,188 @@ left:18%;
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, #6B1F14 0%, #9A3324 100%) !important;
+    padding-top: 60px !important;
+    padding-bottom: 80px !important;
+}
+
+/* layout centrado após remoção da imagem lateral */
+.cca-testimonial .bs-testimonial-5-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.cca-testimonial .bs-testimonial-5-content {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    padding-top: 0 !important;
+}
+
+.cca-testimonial .bs-testimonial-5-sec-title {
+    text-align: center;
+}
+
+.cca-testimonial .bs-testimonial-5-wrap-2 {
+    margin-top: 60px !important;
+    width: 100%;
+    max-width: 900px;
+}
+
+.cca-testimonial .bs-testimonial-5-content-slider {
+    padding: 0 !important;
+}
+
+.cca-testimonial .cca-testimonial-footer {
+    justify-content: center;
+}
+
+/* ── Testimonial: slider centrado (substituiu split layout) ── */
+
+.cca-testi-b-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    padding: 20px 0;
+}
+
+.cca-testi-b-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(34px, 3.8vw, 54px);
+    font-weight: 600;
+    font-style: italic;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.cca-testi-b-slider {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+}
+
+.cca-testi-b-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    pointer-events: none;
+}
+
+.cca-testi-b-slide.cca-testi-b-active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    position: relative;
+}
+
+.cca-testi-b-card {
+    background: rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 48px 52px;
+    text-align: center;
+}
+
+.cca-testi-b-mark {
+    font-family: 'Lora', serif;
+    font-size: 72px;
+    line-height: 0.6;
+    color: rgba(255, 255, 255, 0.15);
+    display: block;
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+.cca-testi-b-text {
+    font-family: 'Lora', serif;
+    font-size: clamp(15px, 1.5vw, 19px);
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.90);
+    line-height: 1.80;
+    margin-bottom: 36px;
+}
+
+.cca-testi-b-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.cca-testi-b-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.cca-testi-b-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.cca-testi-b-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: left;
+}
+
+.cca-testi-b-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.cca-testi-b-sector {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.50);
+}
+
+.cca-testi-b-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cca-testi-b-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.3s ease, width 0.3s ease;
+}
+
+.cca-testi-b-dot.cca-testi-b-dot-active {
+    background: #ffffff;
+    width: 22px;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .cca-testi-b-card {
+        padding: 36px 28px;
+    }
 }
 
 /* ── Círculos decorativos ────────────────────────────────── */
@@ -19549,11 +19757,17 @@ left:18%;
 .cca-testimonial .bs-sec-title-4 {
     color: #ffffff !important;
     font-family: var(--font-title) !important;
+    font-size: clamp(34px, 3.8vw, 54px);
+    font-weight: 700 !important;
+    text-transform: none !important;
 }
 
 .cca-testimonial .comment {
     color: rgba(255, 255, 255, 0.85) !important;
     font-style: italic;
+    font-size: clamp(18px, 1.8vw, 26px) !important;
+    line-height: 1.7 !important;
+    margin-bottom: 48px !important;
 }
 
 .cca-testimonial .name {
@@ -19666,11 +19880,17 @@ left:18%;
 .cca-testimonial .bs-sec-title-4 {
     color: #ffffff !important;
     font-family: var(--font-title) !important;
+    font-size: clamp(34px, 3.8vw, 54px);
+    font-weight: 700 !important;
+    text-transform: none !important;
 }
 
 .cca-testimonial .comment {
     color: rgba(255, 255, 255, 0.85) !important;
     font-style: italic;
+    font-size: clamp(18px, 1.8vw, 26px) !important;
+    line-height: 1.7 !important;
+    margin-bottom: 48px !important;
 }
 
 .cca-testimonial .name {
@@ -19897,30 +20117,55 @@ left:18%;
     padding-bottom: 60px !important;
 }
 
+/* ── Comunicação e Media: secção com position para decorativo ── */
+.bs-work-5-area {
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Comunicação e Media: símbolo decorativo ─────────────── */
+.cca-work-deco {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 280px;
+    height: auto;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+}
+
 /* ── Comunicação e Media: rotator do título ──────────────── */
 
 .cca-work-rotator {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     height: auto;
-    min-height: 1.2em;
+    min-height: 90px;
     margin-top: 12px;
+    white-space: nowrap;
 }
 
 .cca-work-track {
     position: relative;
-    min-height: 1.2em;
+    min-height: 90px;
+    white-space: nowrap;
+    overflow: visible;
 }
 
 .cca-work-phrase {
     position: absolute;
     inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Lora', serif !important;
     font-style: italic;
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-size: clamp(42px, 5vw, 68px);
+    text-transform: none;
     white-space: nowrap;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.15;
     color: inherit;
     opacity: 0;
     transform: translateY(100%);
@@ -19982,7 +20227,7 @@ left:18%;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.60);
+    color: #9A3122;
     margin-bottom: 10px;
     transition: color 0.3s ease;
 }
@@ -20071,6 +20316,9 @@ left:18%;
 .cca-contact-title {
     font-family: var(--font-title) !important;
     color: #ffffff !important;
+    font-size: clamp(34px, 3.8vw, 54px);
+    font-weight: 700 !important;
+    text-transform: none !important;
 }
 
 .cca-contact-desc {
@@ -20091,7 +20339,7 @@ left:18%;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 0 !important;
+    border-radius: 20px !important;
     padding: 40px;
 }
 
@@ -20156,7 +20404,7 @@ left:18%;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     border: none;
-    border-radius: 0 !important;
+    border-radius: 50px !important;
     cursor: pointer;
     transition: background 0.35s ease, transform 0.2s ease;
 }
@@ -20246,7 +20494,7 @@ left:18%;
     height: 380px;
     border-radius: 50%;
     border: 1.5px solid #EECDC7;
-    opacity: 0.35;
+    opacity: 0.65;
     bottom: -60px;
     right: -100px;
     pointer-events: none;
@@ -20260,7 +20508,7 @@ left:18%;
     height: 220px;
     border-radius: 50%;
     border: 1.5px solid #EECDC7;
-    opacity: 0.20;
+    opacity: 0.45;
     bottom: 40px;
     right: 80px;
     pointer-events: none;
@@ -20533,6 +20781,11 @@ left:18%;
 .bs-team-5-area {
     position: relative;
     z-index: 3;
+    padding-bottom: 140px;
+}
+
+.bs-core-feature-5-area {
+    padding-top: 120px;
 }
 
 /* ── Secção hero ─────────────────────────────────────────── */
@@ -20819,12 +21072,37 @@ left:18%;
     .cca-hero-line[data-line="3"] { font-size: clamp(1.8rem, 10vw, 3rem); }
 }
 
+/* ===== Sobre Nós — slideshow ===== */
+.cca-about-slider {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
+}
+
+.cca-about-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    will-change: opacity;
+}
+
+.cca-about-slide.cca-about-slide-active {
+    opacity: 1;
+}
+
 /* ===== Sobre Nós — h2 em Lora, sentence case ===== */
 .bs-about-5-sec-title .bs-sec-title-4 {
     font-family: 'Lora', serif;
     font-weight: 700;
     font-style: normal;
     text-transform: none;
+    font-size: clamp(34px, 3.8vw, 54px);
 }
 
 /* ===== Áreas de Actuação — título pequeno branco ===== */
@@ -20839,18 +21117,6 @@ left:18%;
     overflow: hidden;
 }
 
-.bs-services-5-area::before {
-    content: '';
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    border-radius: 50%;
-    background: rgba(107, 31, 20, 0.45);
-    top: -200px;
-    right: -150px;
-    pointer-events: none;
-    z-index: 0;
-}
 
 .bs-services-5-area .bs-container-2 {
     position: relative;
@@ -20893,24 +21159,28 @@ left:18%;
 /* ===== Áreas de Actuação — rotator ===== */
 .cca-rotator {
     position: relative;
-    min-height: 140px;
-    margin-top: 40px;
-    margin-bottom: 60px;
-    overflow: hidden;
+    min-height: 80px;
+    margin-top: 28px;
+    margin-bottom: 48px;
+    overflow: visible;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
 }
 
 .cca-rotator-phrase {
     font-family: 'Lora', serif;
-    font-size: clamp(36px, 4.5vw, 60px);
-    font-weight: 400;
+    font-size: clamp(34px, 3.8vw, 54px);
+    font-weight: 700;
     white-space: nowrap;
     font-style: italic;
+    text-transform: none;
     color: #FFFFFF;
     line-height: 1.2;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    text-align: center;
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.7s ease, transform 0.7s ease;
@@ -20921,6 +21191,7 @@ left:18%;
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+    position: relative;
 }
 
 /* ===== Áreas de Actuação — cards grid ===== */
@@ -21014,12 +21285,84 @@ left:18%;
 
 .area-content h3 {
     font-family: 'Lora', serif;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 600;
     letter-spacing: -0.01em;
     color: #ffffff;
-    margin-bottom: 0;
-    line-height: 1.3;
+    margin-bottom: 16px;
+    line-height: 1.25;
+}
+
+/* "Ver mais" CTA inside area cards */
+.cca-area-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.03em;
+    margin-bottom: 12px;
+    transition: color 0.3s ease, gap 0.3s ease;
+}
+
+.area-card:hover .cca-area-cta {
+    color: rgba(255, 255, 255, 1);
+    gap: 10px;
+}
+
+.cca-area-cta svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.area-card:hover .cca-area-cta svg {
+    transform: translateX(3px);
+}
+
+/* ===== Secção Big Numbers — tipografia sobre fundo Brasa ===== */
+
+/* Números grandes */
+.bs-core-feature-5-area .item-counter {
+    font-family: 'Lora', serif !important;
+    font-size: clamp(40px, 5vw, 72px) !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    line-height: 1 !important;
+    letter-spacing: -0.02em;
+}
+
+.bs-core-feature-5-area .item-counter .counter {
+    font-family: 'Lora', serif !important;
+    font-size: inherit !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+}
+
+/* Prefixo "+" — mais pequeno e superscript */
+.cca-counter-prefix {
+    font-size: 0.45em;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+    vertical-align: super;
+    line-height: 1;
+    margin-right: 4px;
+}
+
+/* Labels descritivas */
+.bs-core-feature-5-area .item-disc {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, 0.70) !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+
+/* Linhas divisórias */
+.bs-core-feature-5-area .bs-core-feature-4-line {
+    background: rgba(255, 255, 255, 0.15) !important;
 }
 
 /* Linha divisória no fim da secção Áreas */

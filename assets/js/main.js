@@ -1846,58 +1846,7 @@ if($('.bs-t4-active').length) {
 }
 
 
-/* 
-	testimonial-5-slider-activation
-*/
-if($('.bs-t5-img-active').length) {
-	let bsT5slider = new Swiper('.bs-t5-img-active', {
-		loop: true,
-		speed: 1000,
-
-		effect: "creative",
-		creativeEffect: {
-		  prev: {
-			shadow: true,
-			origin: "left center",
-			translate: ["-5%", 0, -200],
-			rotate: [0, 100, 0],
-		  },
-		  next: {
-			origin: "right center",
-			translate: ["5%", 0, -200],
-			rotate: [0, -100, 0],
-		  },
-		},
-
-		pagination: {
-			el: ".bs-t1-pagi",
-			clickable: true,
-		},
-	});
-
-	let slider = new Swiper('.bs-t5-content-active', {
-		loop: true,
-		speed: 1000,
-		effect: "fade",
-		fadeEffect: {
-			crossFade: true
-		},
-
-		autoplay: {
-			delay: 4000,
-		},
-
-
-
-		thumbs: {
-			swiper: bsT5slider,
-		},
-
-
-	});
-
-
-}
+/* testimonial-5-slider-activation — replaced by cca-testi interactive layout */
 
 /* 
 	team-5-slider-activation
@@ -2345,7 +2294,7 @@ if($('.bs-brand-4-marquee-active').length) {
 */
 $('.counter').counterUp({
 	delay: 10,
-	time: 5000
+	time: 1200
 });
 
 if($(".wa-counter").length) {
@@ -2774,39 +2723,38 @@ window.addEventListener("scroll", function(){
 
 })();
 
-/* ── Testimonial: slider de depoimentos ─────────────────── */
+/* ── Testimonial: slider centrado com dots ──────────────── */
 (function () {
     'use strict';
 
-    function initTestimonialSlider() {
-        if (typeof Swiper === 'undefined') return;
+    var slides  = document.querySelectorAll('.cca-testi-b-slide');
+    var dots    = document.querySelectorAll('.cca-testi-b-dot');
+    if (!slides.length) return;
 
-        var el = document.querySelector('.bs-t5-content-active');
-        if (!el) return;
+    var current = 0;
+    var timer;
 
-        /* destrói instância do template se existir */
-        if (el.swiper) {
-            el.swiper.destroy(true, true);
-        }
-
-        new Swiper('.bs-t5-content-active', {
-            loop: true,
-            autoplay: {
-                delay: 8000,
-                disableOnInteraction: false
-            },
-            speed: 1200,
-            pagination: {
-                el: '.bs-t1-pagi',
-                clickable: true
-            }
-        });
+    function activate(index) {
+        slides[current].classList.remove('cca-testi-b-active');
+        dots[current].classList.remove('cca-testi-b-dot-active');
+        current = index;
+        slides[current].classList.add('cca-testi-b-active');
+        dots[current].classList.add('cca-testi-b-dot-active');
     }
 
-    /* aguarda o template init antes de destruir e recriar */
-    window.addEventListener('load', function () {
-        setTimeout(initTestimonialSlider, 500);
+    function next() {
+        activate((current + 1) % slides.length);
+    }
+
+    dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () {
+            clearInterval(timer);
+            activate(i);
+            timer = setInterval(next, 5000);
+        });
     });
+
+    timer = setInterval(next, 5000);
 
 })();
 
