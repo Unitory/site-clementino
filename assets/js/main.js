@@ -1845,26 +1845,6 @@ if($('.bs-t4-active').length) {
 	});
 }
 
-/* 
-	services-5-slider-activation
-*/
-if($('.bs-s5-active').length) {
-
-	let slider = new Swiper('.bs-s5-active', {
-		loop: true,
-		speed: 1000,
-		effect: "fade",
-		fadeEffect: {
-			crossFade: true
-		},
-		
-		autoplay: {
-			delay: 5000,
-		},
-
-
-	});
-}
 
 /* 
 	testimonial-5-slider-activation
