@@ -19039,36 +19039,6 @@ left:18%;
     z-index: 0;
 }
 
-/* ── Círculos decorativos — canto inferior direito do bloco vermelho ── */
-
-.bs-team-5-area::after {
-    content: '';
-    position: absolute;
-    top: -250px;
-    right: -100px;
-    width: 480px;
-    height: 480px;
-    border-radius: 50%;
-    background: #6B1F14;
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* segundo círculo menor, deslocado para baixo-esquerda do primeiro */
-.bs-team-5-area .bs-container-2::before {
-    content: '';
-    position: absolute;
-    top: -80px;
-    right: -200px;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: #6B1F14;
-    opacity: 0.28;
-    pointer-events: none;
-    z-index: 0;
-}
 
 .bs-container-2 {
     position: relative;
@@ -19135,30 +19105,30 @@ left:18%;
     position: absolute;
 }
 
-/* ── Círculos decorativos da secção Equipa ───────────────── */
+/* ── Círculos decorativos Brasa — secção Equipa ──────────── */
 
-.cca-team-circle-1,
-.cca-team-circle-2 {
+.cca-team-brasa-1 {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
+    width: 520px;
+    height: 520px;
+    background: rgba(107, 31, 20, 0.45);
+    top: -80px;
+    right: -160px;
 }
 
-.cca-team-circle-1 {
-    width: 500px;
-    height: 500px;
-    border: 1.5px solid rgba(255, 255, 255, 0.10);
-    top: -100px;
-    right: -120px;
-}
-
-.cca-team-circle-2 {
-    width: 320px;
-    height: 320px;
-    border: 1.5px solid rgba(255, 255, 255, 0.07);
-    top: -30px;
-    right: -40px;
+.cca-team-brasa-2 {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    width: 340px;
+    height: 340px;
+    background: rgba(107, 31, 20, 0.55);
+    top: -10px;
+    right: -50px;
 }
 
 /* subtítulo branco */
