@@ -1851,7 +1851,7 @@ if($('.bs-t4-active').length) {
 /* 
 	team-5-slider-activation
 */
-if($('.bs-team-5-active').length) {
+if(false && $('.bs-team-5-active').length) {
 	let slider = new Swiper('.bs-team-5-active', {
 		loop: true,
 		spaceBetween: 32,
@@ -3088,7 +3088,7 @@ window.addEventListener("scroll", function(){
     );
 
     /* Zoom out nos textos do Sobre Nós */
-    gsap.fromTo('.bs-about-5-sec-title, .bs-about-5-left, .bs-about-5-right',
+    gsap.fromTo('.bs-about-5-sec-title, .bs-about-5-left',
         { scale: 1.04, y: 24, opacity: 0 },
         {
             scale: 1.0,
@@ -3191,4 +3191,34 @@ window.addEventListener("scroll", function(){
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+})();
+
+/* ── Sobre Nós: slider manual com setas ─────────────────── */
+(function () {
+    'use strict';
+    var slides = document.querySelectorAll('.cca-about-slide');
+    var prev   = document.querySelector('.cca-about-prev');
+    var next   = document.querySelector('.cca-about-next');
+    if (!slides.length || !prev || !next) return;
+
+    var current = 0;
+
+    function goTo(index, instant) {
+        if (instant) {
+            slides.forEach(function (s) { s.style.transition = 'none'; });
+        }
+        slides[current].classList.remove('cca-about-slide-active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('cca-about-slide-active');
+        if (instant) {
+            // force reflow then restore transition
+            slides[current].offsetHeight; // jshint ignore:line
+            requestAnimationFrame(function () {
+                slides.forEach(function (s) { s.style.transition = ''; });
+            });
+        }
+    }
+
+    prev.addEventListener('click', function () { goTo(current - 1, true); });
+    next.addEventListener('click', function () { goTo(current + 1, true); });
 })();
