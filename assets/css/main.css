@@ -21092,6 +21092,7 @@ left:18%;
     height: 100%;
     border-radius: inherit;
     overflow: hidden;
+    background-color: #1a1a1a; /* fallback: never shows white if all slides briefly invisible */
 }
 
 .cca-about-slide {

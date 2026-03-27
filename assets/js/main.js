@@ -3204,14 +3204,20 @@ window.addEventListener("scroll", function(){
     var current = 0;
 
     function goTo(index, instant) {
+        var previous = current;
+        current = (index + slides.length) % slides.length;
+        if (previous === current) return;
+
         if (instant) {
             slides.forEach(function (s) { s.style.transition = 'none'; });
         }
-        slides[current].classList.remove('cca-about-slide-active');
-        current = (index + slides.length) % slides.length;
+
+        // Add new slide first — ensures at least one slide is always visible
         slides[current].classList.add('cca-about-slide-active');
+        slides[previous].classList.remove('cca-about-slide-active');
+
         if (instant) {
-            // force reflow then restore transition
+            // Force reflow so transition:none takes effect, then restore
             slides[current].offsetHeight; // jshint ignore:line
             requestAnimationFrame(function () {
                 slides.forEach(function (s) { s.style.transition = ''; });
