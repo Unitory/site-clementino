@@ -1522,6 +1522,11 @@ if($('.bs-a1-active').length) {
 			delay: 5000,
 		},
 
+		navigation: {
+			nextEl: '.bs-a1-next',
+			prevEl: '.bs-a1-prev',
+		},
+
 
 		breakpoints: {
 			0: {
