@@ -20939,7 +20939,7 @@ left:18%;
 /* ── Linha 3 — ligeiramente menor ────────────────────────── */
 .cca-hero-line[data-line="3"] {
     font-family: "Lora", Georgia, serif;
-    font-size: 3.8rem;
+    font-size: 4.8rem;
     font-weight: 700;
     line-height: 0.92;
     letter-spacing: -0.03em;
@@ -21036,14 +21036,14 @@ left:18%;
 .cca-hero-scroll-phrase {
     position: absolute;
     top: 50%;
-    left: 0;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     z-index: 7;
     opacity: 0;
     pointer-events: none;
     will-change: opacity;
-    padding: 0 5vw;
+    text-align: center;
 }
 
 .cca-scroll-text {
@@ -21056,8 +21056,7 @@ left:18%;
     letter-spacing: -0.03em;
     color: rgba(245, 240, 234, 0.90);
     white-space: nowrap;
-    transform: translateX(6%);
-    will-change: transform;
+    will-change: opacity;
 }
 
 /* ── Responsivo ──────────────────────────────────────────── */
@@ -21068,7 +21067,7 @@ left:18%;
     .cca-hero-divider      { display: none; }
     .cca-t-dark            { display: none; }
     .cca-hero-line[data-line="1"] { font-size: clamp(2.4rem, 9vw, 5rem); line-height: 0.92; }
-    .cca-hero-line[data-line="3"] { font-size: clamp(2rem, 7.5vw, 4.2rem); line-height: 0.92; }
+    .cca-hero-line[data-line="3"] { font-size: clamp(2.4rem, 9vw, 5rem); line-height: 0.92; }
     .cca-hero-title               { gap: clamp(1.5rem, 3.5vh, 3rem); }
     .cca-hero-title-wrap          { padding: 0 5vw; padding-top: 80px; padding-bottom: 120px; }
     .cca-hero-split-content {
@@ -21083,7 +21082,7 @@ left:18%;
 
 @media (max-width: 575px) {
     .cca-hero-line[data-line="1"] { font-size: clamp(2rem, 12vw, 3.5rem); }
-    .cca-hero-line[data-line="3"] { font-size: clamp(1.8rem, 10vw, 3rem); }
+    .cca-hero-line[data-line="3"] { font-size: clamp(2rem, 12vw, 3.5rem); }
 }
 
 /* ===== Sobre Nós — slideshow ===== */
