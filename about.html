@@ -36,15 +36,77 @@
         }
         .cca-about-header-social a:hover { opacity: 1; }
 
+        /* separador curto após história — igual à linha dos cards de Actuação */
+        .cca-historia-sep {
+            width: 40px;
+            height: 2px;
+            background: #ffffff;
+            margin-top: 40px;
+        }
+
+        /* ícones: estado inicial para animação */
+        .anim-icon {
+            opacity: 0;
+            transform: translateY(48px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .anim-icon.anim-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Lora em todos os títulos de secção h1/h2 (scoped a about.html) */
         h1, h2 { font-family: 'Lora', serif !important; }
 
-        /* título grande abaixo da hero: 2 linhas, caixa baixa */
-        .bs-about-1-sec-title .bs-sec-title-1 {
-            font-size: 44px !important;
+        /* título grande abaixo da hero */
+        .cca-about-title {
+            font-size: clamp(2.8rem, 5vw, 4.2rem) !important;
             text-transform: none !important;
-            line-height: 1.15 !important;
+            line-height: 1.2 !important;
             font-family: 'Lora', serif !important;
+            display: flex !important;
+            flex-direction: column;
+            gap: 0.1em;
+        }
+
+        /* pill "Desde 1980" */
+        .cca-pill-1980 {
+            display: inline-block;
+            background: #9A3122;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 50px;
+            padding: 4px 14px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .cca-pill-1980.cca-anim-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* linhas do título: clip-path reveal */
+        .cca-title-line {
+            display: block;
+            overflow: hidden;
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .cca-title-line--1 {
+            color: #9A3122;
+            transition-delay: 0.2s;
+        }
+        .cca-title-line--2 {
+            color: var(--bs-clr-black-1, #1a1a1a);
+            transition-delay: 0.45s;
+        }
+        .cca-title-line.cca-anim-in {
+            clip-path: inset(0 0% 0 0);
         }
 
         /* breadcrumb separator — replace orange svg with red (#9A3122) */
@@ -166,11 +228,12 @@
                 <div class="container bs-container-1">
 
                     <!-- section-title -->
-                    <div class="bs-about-1-sec-title mb-30">
-                        <h6 class="bs-subtitle-1 wa-split-clr wa-capitalize">
-                            Desde 1980
-                        </h6>
-                        <h2 class="bs-sec-title-1 cca-reveal-h" data-cursor="-opaque">Mais de quatro décadas ao serviço dos nossos clientes</h2>
+                    <div class="bs-about-1-sec-title mb-30" id="ccaAboutTitle">
+                        <span class="cca-pill-1980">Desde 1980</span>
+                        <h2 class="bs-sec-title-1 cca-about-title" data-cursor="-opaque">
+                            <span class="cca-title-line cca-title-line--1">Mais de 4 décadas</span>
+                            <span class="cca-title-line cca-title-line--2">ao serviço dos nossos clientes</span>
+                        </h2>
                     </div>
 
                     <!-- slider -->
@@ -235,7 +298,7 @@
                             </div>
                         </div>
 
-                        <div class="bs-about-1-slider-drag bs-p-1">drag</div>
+                        <div class="bs-about-1-slider-drag bs-p-1"></div>
 
                         <button class="bs-a1-prev" aria-label="Anterior">&#8592;</button>
                         <button class="bs-a1-next" aria-label="Seguinte">&#8594;</button>
@@ -254,14 +317,16 @@
                 <div class="container bs-container-1">
                     <div class="cca-historia-inner">
 
-                        <h2 class="cca-section-title cca-section-title--white cca-reveal-h">A Nossa História</h2>
+                        <h2 class="cca-section-title cca-section-title--white cca-reveal-h anim-ready" id="ccaTitleHistoria">A Nossa História</h2>
 
-                        <div class="cca-historia-body">
+                        <div class="cca-historia-body" id="ccaBodyHistoria">
                             <p>Fundada em 2002, a Clementino Cunha Advogados tem a sua génese no percurso profissional de Clementino Fernandes Cunha, iniciado em 1980, marcado desde sempre pela excelência técnica, rigor ético e uma relação de absoluta confiança com os seus clientes.</p>
                             <p>Ao longo de mais de quatro décadas, a Clementino Cunha Advogados construiu uma tradição sólida, feita de relações duradouras com os seus clientes, de permanente estudo e de uma ambição constante de fazer melhor. Cresceu com critério, integrou novas gerações de advogados e abraçou a inovação, sem nunca abdicar da proximidade, da dedicação e do sentido de responsabilidade que sempre a distinguiram.</p>
                             <p>Este caminho de crescimento refletiu-se na abertura do escritório de Braga, em 2014, e do Porto (Vila Nova de Gaia), em 2017, reforçando a presença da Sociedade e a sua capacidade de acompanhar os clientes de forma próxima e personalizada.</p>
                             <p>Hoje, a Clementino Cunha Advogados afirma-se como uma sociedade onde tradição e inovação coexistem, honrando o passado, vivendo o presente com exigência e escrevendo o futuro com a mesma paixão que esteve na sua origem.</p>
                         </div>
+
+                        <div class="cca-historia-sep" aria-hidden="true"></div>
 
                     </div>
                 </div>
@@ -381,10 +446,10 @@
             <!-- core-features-start -->
             <section class="bs-core-features-1-area pt-120">
                 <div class="container bs-container-1">
-                    <div class="bs-core-features-1-wrap">
+                    <div class="bs-core-features-1-wrap" id="ccaIconsWrap">
 
                         <!-- single-item -->
-                        <div class="bs-core-features-1-item">
+                        <div class="bs-core-features-1-item anim-icon">
                             <div class="icon">
                                 <img src="assets/img/following.svg" alt="">
                             </div>
@@ -401,7 +466,7 @@
                         </div>
 
                         <!-- single-item -->
-                        <div class="bs-core-features-1-item">
+                        <div class="bs-core-features-1-item anim-icon">
                             <div class="icon">
                                 <img src="assets/img/apps.svg" alt="">
                             </div>
@@ -418,7 +483,7 @@
                         </div>
 
                         <!-- single-item -->
-                        <div class="bs-core-features-1-item">
+                        <div class="bs-core-features-1-item anim-icon">
                             <div class="icon">
                                 <img src="assets/img/rocket.svg" alt="">
                             </div>
@@ -435,7 +500,7 @@
                         </div>
 
                         <!-- single-item -->
-                        <div class="bs-core-features-1-item">
+                        <div class="bs-core-features-1-item anim-icon">
                             <div class="icon">
                                 <img src="assets/img/shield.svg" alt="">
                             </div>
@@ -461,9 +526,9 @@
                 <div class="container bs-container-1">
                     <div class="cca-historia-inner">
 
-                        <h2 class="cca-section-title cca-section-title--dark cca-reveal-h" style="margin-bottom:48px;">Os Nossos Valores</h2>
+                        <h2 class="cca-section-title cca-section-title--dark cca-reveal-h anim-ready" id="ccaTitleValores" style="margin-bottom:48px;">Os Nossos Valores</h2>
 
-                        <div class="cca-historia-body">
+                        <div class="cca-historia-body" id="ccaBodyValores">
                             <p>Na Clementino Cunha Advogados, a proximidade ao cliente é um valor essencial. Conhecer em profundidade cada cliente, a sua realidade e os seus objetivos permite-nos construir relações duradouras, assentes na confiança, na lealdade e na cumplicidade profissional.</p>
                             <p>Trabalhamos de forma integrada e especializada, com um acompanhamento personalizado e soluções jurídicas ajustadas a cada caso, sempre orientados pela ética, pelo rigor e pela defesa intransigente dos interesses que nos são confiados.</p>
                             <p>Acreditamos numa advocacia exigente e evolutiva, sustentada na formação contínua, no trabalho em equipa e na procura permanente das melhores soluções. Caminhamos lado a lado com os nossos clientes, com segurança, responsabilidade e compromisso, transformando o conhecimento jurídico em valor e confiança duradoura.</p>
@@ -612,6 +677,100 @@
                 })();
             </script>
             <!-- valores-end -->
+
+<style>
+    /* ── estados iniciais ── */
+    .anim-ready {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+    }
+    .anim-ready.anim-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .anim-para {
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+        transition: clip-path 0.85s cubic-bezier(0.77, 0, 0.175, 1),
+                    opacity 0.85s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    .anim-para.anim-visible {
+        opacity: 1;
+        clip-path: inset(0 0% 0 0);
+    }
+</style>
+<script>
+(function () {
+    function animateSection(titleId, bodyId) {
+        var title = document.getElementById(titleId);
+        var body  = document.getElementById(bodyId);
+        if (!title) return;
+
+        /* adiciona classe anim-para a cada parágrafo */
+        var paras = body ? Array.from(body.querySelectorAll('p')) : [];
+        paras.forEach(function (p) { p.classList.add('anim-para'); });
+
+        var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                /* título slide-up */
+                title.classList.add('anim-visible');
+                /* parágrafos: stagger com delay inicial 0.2s + 0.15s por parágrafo */
+                paras.forEach(function (p, i) {
+                    var delay = 0.2 + i * 0.15;
+                    p.style.transitionDelay = delay + 's';
+                    p.classList.add('anim-visible');
+                });
+                obs.unobserve(e.target);
+            });
+        }, { threshold: 0.2 });
+
+        obs.observe(title);
+    }
+
+    animateSection('ccaTitleHistoria', 'ccaBodyHistoria');
+    animateSection('ccaTitleValores',  'ccaBodyValores');
+
+    /* ── Ícones stagger ── */
+    var iconsWrap = document.getElementById('ccaIconsWrap');
+    if (iconsWrap) {
+        var icons = Array.from(iconsWrap.querySelectorAll('.anim-icon'));
+        var obsIcons = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                icons.forEach(function (el, i) {
+                    el.style.transitionDelay = (i * 0.12) + 's';
+                    el.classList.add('anim-visible');
+                });
+                obsIcons.unobserve(e.target);
+            });
+        }, { threshold: 0.15 });
+        obsIcons.observe(iconsWrap);
+    }
+})();
+</script>
+
+<script>
+(function () {
+    var section = document.getElementById('ccaAboutTitle');
+    if (!section) return;
+    var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            /* pill slide-up */
+            var pill = section.querySelector('.cca-pill-1980');
+            if (pill) pill.classList.add('cca-anim-in');
+            /* linhas clip-path reveal */
+            section.querySelectorAll('.cca-title-line').forEach(function (el) {
+                el.classList.add('cca-anim-in');
+            });
+            obs.unobserve(e.target);
+        });
+    }, { threshold: 0.2 });
+    obs.observe(section);
+})();
+</script>
 
 <style>
     /* hero parallax: permite que a imagem se mova para fora dos limites do container */
