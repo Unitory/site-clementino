@@ -1,0 +1,819 @@
+<!Doctype html>
+<html class="no-js" lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Contacto | Clementino Cunha Advogados</title>
+    <meta name="description" content="Entre em contacto com a Clementino Cunha Advogados. Estamos sempre próximos de si.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="assets/img/Símbolo aprovado cópia 3@2x.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/flaticon_barsi.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <style>
+        /* ── tipografia geral (scoped) ── */
+        h1, h2 { font-family: 'Lora', serif !important; }
+
+        /* ── HERO (breadcrumb-area style) ── */
+        /* overlay negro igual às outras heroes */
+        .breadcrumb-area { background: #000; }
+
+        /* Swiper como fundo da hero */
+        .cca-hero-bg-swiper {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .cca-hero-bg-swiper .swiper-container,
+        .cca-hero-bg-swiper .swiper-wrapper,
+        .cca-hero-bg-swiper .swiper-slide {
+            width: 100%;
+            height: 100%;
+        }
+        .cca-hero-bg-swiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.28;
+        }
+
+        /* breadcrumb: seta vermelha */
+        .breadcrumb-list a::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M6 3l6 6-6 6' stroke='%239A3122' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+        }
+        /* bullets do swiper */
+        .cca-hero-bg-swiper .swiper-pagination {
+            bottom: 28px;
+            z-index: 10;
+        }
+        .cca-hero-bg-swiper .swiper-pagination-bullet {
+            background: rgba(255,255,255,0.55);
+            opacity: 1;
+            width: 8px;
+            height: 8px;
+            transition: background 0.3s, width 0.3s;
+        }
+        .cca-hero-bg-swiper .swiper-pagination-bullet-active {
+            background: #9A3122;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* ── CONTACT SECTION ── */
+        .cca-contact-section {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+        .cca-contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+        @media (max-width: 991px) {
+            .cca-contact-grid { grid-template-columns: 1fr; gap: 60px; }
+        }
+
+        /* left col */
+        .cca-contact-info-label {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #ffffff;
+            background: #9A3122;
+            border-radius: 999px;
+            padding: 6px 20px;
+            margin-bottom: 22px;
+        }
+        .cca-contact-info-title {
+            font-family: 'Lora', serif !important;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+        .cca-contact-info-intro {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #4a4a4a;
+            line-height: 1.8;
+            margin-bottom: 44px;
+        }
+        .cca-contact-info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .cca-contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .cca-contact-info-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(154,49,34,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9A3122;
+            font-size: 15px;
+            margin-top: 2px;
+        }
+        .cca-contact-info-text strong {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #9A3122;
+            margin-bottom: 4px;
+        }
+        .cca-contact-info-text span,
+        .cca-contact-info-text a {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #2a2a2a;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        .cca-contact-info-text a:hover { color: #9A3122; }
+
+        /* anim states */
+        .cca-slide-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .cca-slide-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .cca-slide-left.anim-visible,
+        .cca-slide-right.anim-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* right col — form (espelha exactamente o formulário da home) */
+        .cca-contact-form-wrap {
+            flex: 1;
+        }
+        .cca-contact-form-inner {
+            background: #9A3122;
+            border-radius: 20px !important;
+            padding: 40px;
+        }
+        .cca-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 560px) {
+            .cca-form-row { grid-template-columns: 1fr; }
+        }
+        .cca-form-group {
+            margin-bottom: 16px;
+        }
+        .cca-form-group label {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 6px;
+        }
+        /* usa as classes globais da home (.cca-form-input, .cca-form-btn) —
+           apenas garante que os inputs do form de contacto herdam correctamente */
+        #ccaContactForm .cca-form-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 8px !important;
+            padding: 14px 18px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #ffffff;
+            outline: none;
+            transition: border-color 0.3s ease, background 0.3s ease;
+            box-sizing: border-box;
+        }
+        #ccaContactForm .cca-form-input::placeholder {
+            color: rgba(255, 255, 255, 0.50);
+        }
+        #ccaContactForm .cca-form-input:focus {
+            border-color: rgba(255, 255, 255, 0.55);
+            background: rgba(0, 0, 0, 0.25);
+        }
+        #ccaContactForm .cca-form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .cca-form-submit {
+            display: inline-block;
+            width: 100%;
+            margin-top: 8px;
+            padding: 16px 32px;
+            background: #6B1F14;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 999px !important;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .cca-form-submit:hover {
+            background: #c04535;
+            transform: translateY(-2px);
+        }
+        .cca-form-feedback {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            margin-top: 16px;
+            display: none;
+        }
+        .cca-form-feedback.success { color: #a5d6a7; }
+        .cca-form-feedback.error   { color: #ef9a9a; }
+
+        /* ── footer vermelho (scoped a contacto.html) ── */
+        .cca-footer {
+            background-color: #9A3122 !important;
+        }
+        .cca-footer,
+        .cca-footer p,
+        .cca-footer h5,
+        .cca-footer span,
+        .cca-footer a,
+        .cca-footer .cca-footer-office-name,
+        .cca-footer .cca-footer-office-tag,
+        .cca-footer .cca-footer-office-address,
+        .cca-footer .cca-footer-bottom p,
+        .cca-footer .cca-footer-bottom-links a {
+            color: #ffffff !important;
+        }
+        .cca-footer .cca-footer-social a,
+        .cca-footer .cca-footer-office-contacts a {
+            color: rgba(255,255,255,0.85) !important;
+        }
+        .cca-footer .cca-footer-social a:hover,
+        .cca-footer .cca-footer-office-contacts a:hover {
+            color: #ffffff !important;
+        }
+        .cca-footer .cca-footer-divider {
+            background: rgba(255,255,255,0.25) !important;
+            border-color: rgba(255,255,255,0.25) !important;
+        }
+        .cca-footer .cca-footer-bottom {
+            border-top-color: rgba(255,255,255,0.2) !important;
+        }
+        .cca-footer .cca-footer-bottom p,
+        .cca-footer .cca-footer-bottom-links a {
+            opacity: 0.75;
+        }
+        /* círculos Brasa via pseudo-elementos (os divs estão display:none no CSS global) */
+        .cca-footer::before {
+            border-color: rgba(107, 31, 20, 0.5) !important;
+            border-width: 2px !important;
+        }
+        .cca-footer::after {
+            border-color: rgba(107, 31, 20, 0.35) !important;
+            border-width: 2px !important;
+        }
+
+        /* fundo vermelho contínuo até ao fim da página */
+        body,
+        html,
+        .main-wrapper {
+            background: #9A3122;
+        }
+
+        .cca-footer .cca-footer-office-tag {
+            background: rgba(255,255,255,0.18) !important;
+            color: #ffffff !important;
+        }
+
+        /* offcanvas navbar social icons */
+        .cca-about-header-social {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-right: 20px;
+        }
+        .cca-about-header-social a {
+            color: #fff;
+            font-size: 15px;
+            text-decoration: none;
+            opacity: 0.85;
+            transition: opacity 0.2s ease;
+        }
+        .cca-about-header-social a:hover { opacity: 1; }
+    </style>
+</head>
+
+<body>
+<div class="main-wrapper wa-fix">
+
+    <!-- preloader -->
+    <div class="lw-preloader">
+        <div class="lw-preloader-content">
+            <div class="bs-preloader-logo">
+                <img src="assets/img/logo/logo-2.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- header-start -->
+    <header class="bs-header-5-area">
+        <div class="container bs-container-2">
+            <div class="bs-header-5-row d-flex align-items-center justify-content-between">
+
+                <a href="index.html" aria-label="Início" class="bs-header-5-logo">
+                    <img src="assets/img/Logo-preto-vermelho@2x.png" alt="Clementino Cunha Advogados">
+                </a>
+
+                <nav class="bs-main-navigation d-none d-lg-block">
+                    <ul id="main-nav" class="nav navbar-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">Sobre Nós</a></li>
+                        <li><a href="index.html#equipa">Equipa</a></li>
+                        <li><a href="index.html#actuacao">Actuação</a></li>
+                        <li><a href="index.html#depoimentos">Depoimentos</a></li>
+                        <li><a href="index.html#comunicacao">Comunicação</a></li>
+                        <li class="active"><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </nav>
+
+                <div class="bs-header-5-action-link d-flex align-items-center">
+                    <a href="contacto.html" aria-label="Fale Connosco" class="bs-pr-btn-3">
+                        <span class="text">Fale connosco</span>
+                        <span class="text">Fale connosco</span>
+                    </a>
+                    <button type="button" aria-label="Menu" class="bs-offcanvas-btn-1 offcanvas_toggle">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-end -->
+
+    <!-- hero-start -->
+    <section class="breadcrumb-area wa-p-relative">
+
+        <!-- swiper como fundo -->
+        <div class="cca-hero-bg-swiper">
+            <div class="swiper-container cca-hero-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="assets/img/equipe.jpg" alt="Equipa Clementino Cunha">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/Porto.jpg" alt="Escritório Porto">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/Braga.jpg" alt="Escritório Braga">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <div class="container bs-container-1">
+            <div class="breadcrumb-wrap">
+                <h1 class="breadcrumb-title wa-capitalize" style="font-family:'Lora',serif;">Contacto</h1>
+                <div class="breadcrumb-list">
+                    <a href="index.html">Home</a>
+                    <span>Contacto</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- hero-end -->
+
+    <!-- contact-section-start -->
+    <section class="cca-contact-section">
+        <div class="container bs-container-1">
+            <div class="cca-contact-grid">
+
+                <!-- col esquerda — dados -->
+                <div id="ccaContactInfo">
+                    <p class="cca-contact-info-label">Fale Connosco</p>
+                    <h2 class="cca-contact-info-title">Entre em Contacto</h2>
+                    <p class="cca-contact-info-intro">
+                        Estamos disponíveis para o receber e acompanhar no que precisar.<br>
+                        Não hesite em entrar em contacto.
+                    </p>
+
+                    <ul class="cca-contact-info-list">
+
+                        <!-- Sede Fafe -->
+                        <li class="cca-contact-info-item">
+                            <div class="cca-contact-info-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="cca-contact-info-text">
+                                <strong>Sede — Fafe</strong>
+                                <span>Rua Montenegro, n.º 105<br>4820-369 Fafe</span>
+                            </div>
+                        </li>
+
+                        <!-- Porto -->
+                        <li class="cca-contact-info-item">
+                            <div class="cca-contact-info-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="cca-contact-info-text">
+                                <strong>Filial — Porto / Vila Nova de Gaia</strong>
+                                <span>Lake Towers – Ed. D, Rua Daciano Baptista Marques,<br>n.º 245, 2.º Piso, Sala 214</span>
+                            </div>
+                        </li>
+
+                        <!-- Braga -->
+                        <li class="cca-contact-info-item">
+                            <div class="cca-contact-info-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="cca-contact-info-text">
+                                <strong>Filial — Braga</strong>
+                                <span>Rua do Raio, n.º 301 – Edif. do Rechicho,<br>3.º, Sala 33</span>
+                            </div>
+                        </li>
+
+                        <!-- Telefone -->
+                        <li class="cca-contact-info-item">
+                            <div class="cca-contact-info-icon">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="cca-contact-info-text">
+                                <strong>Telefone</strong>
+                                <a href="tel:253493517">253 493 517</a><br>
+                                <a href="tel:253493207">253 493 207</a>
+                            </div>
+                        </li>
+
+                        <!-- Email -->
+                        <li class="cca-contact-info-item">
+                            <div class="cca-contact-info-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="cca-contact-info-text">
+                                <strong>Email</strong>
+                                <a href="mailto:geral@ccunha.pt">geral@ccunha.pt</a>
+                            </div>
+                        </li>
+
+                        <!-- Horário -->
+                        <li class="cca-contact-info-item">
+                            <div class="cca-contact-info-icon">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <div class="cca-contact-info-text">
+                                <strong>Horário</strong>
+                                <span>Segunda a Sexta, 09h00 – 18h00</span>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <!-- col direita — formulário -->
+                <div id="ccaContactForm">
+                    <div class="cca-contact-form-wrap">
+                        <div class="cca-contact-form-inner">
+
+                        <form id="ccaForm" action="contact.php" method="POST" novalidate>
+
+                            <div class="cca-form-row">
+                                <div class="cca-form-group">
+                                    <label for="firstName">Primeiro Nome</label>
+                                    <input type="text" id="firstName" name="first_name" class="cca-form-input" placeholder="Clementino" required>
+                                </div>
+                                <div class="cca-form-group">
+                                    <label for="lastName">Último Nome</label>
+                                    <input type="text" id="lastName" name="last_name" class="cca-form-input" placeholder="Cunha" required>
+                                </div>
+                            </div>
+
+                            <div class="cca-form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="cca-form-input" placeholder="exemplo@email.com" required>
+                            </div>
+
+                            <div class="cca-form-group">
+                                <label for="phone">Contacto Telefónico</label>
+                                <input type="tel" id="phone" name="phone" class="cca-form-input" placeholder="+351 000 000 000">
+                            </div>
+
+                            <div class="cca-form-group">
+                                <label for="message">Mensagem <span style="font-weight:400;opacity:0.5;">(opcional)</span></label>
+                                <textarea id="message" name="message" class="cca-form-input cca-form-textarea" placeholder="Descreva brevemente como podemos ajudar..."></textarea>
+                            </div>
+
+                            <button type="submit" class="cca-form-submit">Enviar Pedido de Contacto</button>
+
+                            <p class="cca-form-feedback" id="ccaFormFeedback"></p>
+
+                        </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- contact-section-end -->
+
+    <!-- footer-start -->
+    <footer class="bs-footer-5-area cca-footer hero-content-custom">
+
+        <!-- círculos decorativos -->
+        <div class="cca-footer-circle cca-footer-circle-1"></div>
+        <div class="cca-footer-circle cca-footer-circle-2"></div>
+
+        <div class="container bs-container-2">
+            <div class="cca-footer-wrap">
+
+                <!-- logo + social -->
+                <div class="cca-footer-top">
+                    <a href="index.html" class="cca-footer-logo">
+                        <img src="assets/img/Logo-branco.png" alt="Clementino Cunha Advogados">
+                    </a>
+                    <div class="cca-footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- escritórios -->
+                <div class="cca-footer-offices">
+
+                    <div class="cca-footer-office">
+                        <h5 class="cca-footer-office-name">Fafe</h5>
+                        <span class="cca-footer-office-tag">Sede</span>
+                        <p class="cca-footer-office-address">Rua Montenegro, n.º 105</p>
+                        <div class="cca-footer-office-contacts">
+                            <a href="tel:253493517"><i class="fa-solid fa-phone"></i> 253 493 517</a>
+                            <a href="tel:253493207"><i class="fa-solid fa-phone"></i> 253 493 207</a>
+                            <a href="mailto:geral@ccunha.pt"><i class="fa-solid fa-envelope"></i> geral@ccunha.pt</a>
+                        </div>
+                    </div>
+
+                    <div class="cca-footer-office">
+                        <h5 class="cca-footer-office-name">Braga</h5>
+                        <span class="cca-footer-office-tag">Filial</span>
+                        <p class="cca-footer-office-address">Rua do Raio, n.º 301 – Edif. do Rechicho, 3.º, Sala 33</p>
+                        <div class="cca-footer-office-contacts">
+                            <a href="tel:253614112"><i class="fa-solid fa-phone"></i> 253 614 112</a>
+                            <a href="mailto:braga@ccunha.pt"><i class="fa-solid fa-envelope"></i> braga@ccunha.pt</a>
+                        </div>
+                    </div>
+
+                    <div class="cca-footer-office">
+                        <h5 class="cca-footer-office-name">Porto – Vila Nova de Gaia</h5>
+                        <span class="cca-footer-office-tag">Filial</span>
+                        <p class="cca-footer-office-address">Lake Towers – Ed. D, Rua Daciano Baptista Marques, n.º 245, 2.º Piso, Sala 214</p>
+                        <div class="cca-footer-office-contacts">
+                            <a href="tel:221202255"><i class="fa-solid fa-phone"></i> 221 202 255</a>
+                            <a href="mailto:porto@ccunha.pt"><i class="fa-solid fa-envelope"></i> porto@ccunha.pt</a>
+                        </div>
+                    </div>
+
+                    <div class="cca-footer-office">
+                        <h5 class="cca-footer-office-name">Mondim de Basto</h5>
+                        <span class="cca-footer-office-tag">Filial</span>
+                        <p class="cca-footer-office-address">Av. da Igreja, n.º 16, 1.º 4880-231 Mondim de Basto</p>
+                        <div class="cca-footer-office-contacts">
+                            <a href="tel:253493517"><i class="fa-solid fa-phone"></i> 253 493 517</a>
+                            <a href="tel:253493207"><i class="fa-solid fa-phone"></i> 253 493 207</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="cca-footer-divider"></div>
+
+                <div class="cca-footer-bottom">
+                    <p>© 2026 Clementino Cunha Advogados. Todos os direitos reservados.</p>
+                    <div class="cca-footer-bottom-links">
+                        <a href="#">Política de Privacidade</a>
+                        <a href="#">Termos Legais</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </footer>
+    <!-- footer-end -->
+
+    <!-- offcanvas-start -->
+    <div class="wa-offcanvas-area offcanvas_box_active lenis lenis-smooth">
+        <div class="wa-offcanvas-wrap">
+            <div class="wa-offcanvas-top">
+                <a href="index.html" aria-label="Início" class="wa-offcanvas-top-logo">
+                    <img src="assets/img/logo/logo-2.svg" alt="">
+                </a>
+                <button class="wa-offcanvas-close offcanvas_box_close" aria-label="Fechar">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <nav class="mobile-main-navigation mb-50">
+                <ul class="navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                    <li><a href="index.html#equipa">Equipa</a></li>
+                    <li><a href="index.html#actuacao">Actuação</a></li>
+                    <li><a href="index.html#depoimentos">Depoimentos</a></li>
+                    <li><a href="index.html#comunicacao">Comunicação</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="wa-offcanvas-social">
+                <h6 class="wa-offcanvas-social-title bs-h-1">we're on social media:</h6>
+                <div class="wa-offcanvas-social-flex d-flex flex-wrap">
+                    <a href="#" class="wa-offcanvas-social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="wa-offcanvas-social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="wa-offcanvas-social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wa-overly"></div>
+    <!-- offcanvas-end -->
+
+    <!-- back-to-top -->
+    <div class="wa-back-to-top">
+        <span class="wa-back-to-top-text">Top</span>
+    </div>
+
+</div><!-- .main-wrapper -->
+
+<!-- JS -->
+<script src="assets/js/jquery-3.7.1.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/wow.js"></script>
+<script src="assets/js/magiccursor.js"></script>
+<script src="assets/js/nice-select.min.js"></script>
+<script src="assets/js/marquee.min.js"></script>
+<script src="assets/js/magnific-popup.min.js"></script>
+<script src="assets/js/SplitText.min.js"></script>
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/CustomEase.min.js"></script>
+<script src="assets/js/counterup.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<script src="assets/js/lenis.min.js"></script>
+<script src="assets/js/ScrollTrigger.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script>
+(function () {
+
+    /* ── Hero Swiper ── */
+    var heroSwiper = new Swiper('.cca-hero-swiper', {
+        loop: true,
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        speed: 900,
+        pagination: {
+            el: '.cca-hero-bg-swiper .swiper-pagination',
+            clickable: true
+        }
+    });
+
+    /* ── Form AJAX submit ── */
+    var form     = document.getElementById('ccaForm');
+    var feedback = document.getElementById('ccaFormFeedback');
+
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var data = new FormData(form);
+            /* combine first + last name into 'name' field for contact.php */
+            data.set('name', (data.get('first_name') + ' ' + data.get('last_name')).trim());
+
+            fetch('contact.php', { method: 'POST', body: data })
+                .then(function (r) {
+                    feedback.style.display = 'block';
+                    if (r.ok) {
+                        feedback.className = 'cca-form-feedback success';
+                        feedback.textContent = 'Mensagem enviada com sucesso. Entraremos em contacto brevemente.';
+                        form.reset();
+                    } else {
+                        feedback.className = 'cca-form-feedback error';
+                        feedback.textContent = 'Ocorreu um erro ao enviar. Por favor tente novamente.';
+                    }
+                })
+                .catch(function () {
+                    feedback.style.display = 'block';
+                    feedback.className = 'cca-form-feedback error';
+                    feedback.textContent = 'Não foi possível enviar. Verifique a sua ligação e tente novamente.';
+                });
+        });
+    }
+
+})();
+</script>
+
+<script>
+(function () {
+    /* GSAP + ScrollTrigger já carregados pelos scripts acima */
+    gsap.registerPlugin(ScrollTrigger);
+
+    var info = document.getElementById('ccaContactInfo');
+    if (!info) return;
+
+    var label  = info.querySelector('.cca-contact-info-label');
+    var title  = info.querySelector('.cca-contact-info-title');
+    var intro  = info.querySelector('.cca-contact-info-intro');
+    var items  = info.querySelectorAll('.cca-contact-info-item');
+    var form   = document.getElementById('ccaContactForm');
+
+    /* 1 — Label pill */
+    if (label) {
+        gsap.from(label, {
+            opacity: 0, y: 20, duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: label, start: 'top 80%', once: true }
+        });
+    }
+
+    /* 2 — Título */
+    if (title) {
+        gsap.from(title, {
+            opacity: 0, y: 40, duration: 0.8, delay: 0.15,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: label || title, start: 'top 80%', once: true }
+        });
+    }
+
+    /* 3 — Parágrafo intro */
+    if (intro) {
+        gsap.from(intro, {
+            opacity: 0, y: 25, duration: 0.7, delay: 0.4,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: label || intro, start: 'top 80%', once: true }
+        });
+    }
+
+    /* 4 — Itens de informação (stagger) */
+    if (items.length) {
+        gsap.from(items, {
+            opacity: 0, y: 30, duration: 0.6,
+            stagger: 0.15,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: items[0], start: 'top 80%', once: true }
+        });
+    }
+
+    /* 5 — Formulário */
+    if (form) {
+        gsap.from(form, {
+            opacity: 0, duration: 1,
+            ease: 'power1.out',
+            scrollTrigger: { trigger: form, start: 'top 75%', once: true }
+        });
+    }
+})();
+</script>
+
+</body>
+</html>
