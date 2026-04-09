@@ -114,7 +114,7 @@
             font-size: 16px;
             color: #4a4a4a;
             line-height: 1.8;
-            margin-bottom: 44px;
+            margin-bottom: 28px;
         }
         .cca-contact-info-list {
             list-style: none;
@@ -122,32 +122,39 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 0;
         }
         .cca-contact-info-item {
             display: flex;
             align-items: flex-start;
             gap: 16px;
+            padding: 18px 0;
+            border-bottom: 1px solid #f0ebe9;
         }
+        .cca-contact-info-item:last-child { border-bottom: none; }
         .cca-contact-info-icon {
             flex-shrink: 0;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: rgba(154,49,34,0.08);
             display: flex;
             align-items: center;
             justify-content: center;
             color: #9A3122;
-            font-size: 15px;
+            font-size: 14px;
             margin-top: 2px;
         }
+        .cca-contact-info-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
         .cca-contact-info-text strong {
-            display: block;
             font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: #9A3122;
             margin-bottom: 4px;
@@ -155,7 +162,7 @@
         .cca-contact-info-text span,
         .cca-contact-info-text a {
             font-family: 'Inter', sans-serif;
-            font-size: 15px;
+            font-size: 14.5px;
             color: #2a2a2a;
             text-decoration: none;
             line-height: 1.6;
@@ -441,7 +448,7 @@
 
                     <ul class="cca-contact-info-list">
 
-                        <!-- Sede Fafe -->
+                        <!-- Sede — Fafe -->
                         <li class="cca-contact-info-item">
                             <div class="cca-contact-info-icon">
                                 <i class="fa-solid fa-location-dot"></i>
@@ -449,21 +456,13 @@
                             <div class="cca-contact-info-text">
                                 <strong>Sede — Fafe</strong>
                                 <span>Rua Montenegro, n.º 105<br>4820-280 Fafe</span>
+                                <a href="tel:+351253493517">+351 253 493 517</a>
+                                <a href="tel:+351253493207">+351 253 493 207</a>
+                                <a href="mailto:geral@ccadvogados.com">geral@ccadvogados.com</a>
                             </div>
                         </li>
 
-                        <!-- Porto -->
-                        <li class="cca-contact-info-item">
-                            <div class="cca-contact-info-icon">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div class="cca-contact-info-text">
-                                <strong>Filial — Porto / Vila Nova de Gaia</strong>
-                                <span>Lake Towers – Ed. D, Rua Daciano Baptista Marques,<br>n.º 245, 2.º Piso, Sala 214<br>4400-617 Vila Nova de Gaia</span>
-                            </div>
-                        </li>
-
-                        <!-- Braga -->
+                        <!-- Filial — Braga -->
                         <li class="cca-contact-info-item">
                             <div class="cca-contact-info-icon">
                                 <i class="fa-solid fa-location-dot"></i>
@@ -471,28 +470,34 @@
                             <div class="cca-contact-info-text">
                                 <strong>Filial — Braga</strong>
                                 <span>Rua do Raio, n.º 301 – Edif. do Rechicho,<br>3.º, Sala 33<br>4710-922 Braga</span>
+                                <a href="tel:+351253614112">+351 253 614 112</a>
+                                <a href="mailto:geral@ccadvogados.com">geral@ccadvogados.com</a>
                             </div>
                         </li>
 
-                        <!-- Telefone -->
+                        <!-- Filial — Porto / Vila Nova de Gaia -->
                         <li class="cca-contact-info-item">
                             <div class="cca-contact-info-icon">
-                                <i class="fa-solid fa-phone"></i>
+                                <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div class="cca-contact-info-text">
-                                <strong>Telefone</strong>
-                                <a href="tel:+351253493517">+351 253 493 517</a><br>
+                                <strong>Filial — Porto / Vila Nova de Gaia</strong>
+                                <span>Lake Towers – Ed. D, Rua Daciano Baptista Marques,<br>n.º 245, 2.º Piso, Sala 214<br>4400-617 Vila Nova de Gaia</span>
+                                <a href="tel:+351221202255">+351 221 202 255</a>
+                                <a href="mailto:geral@ccadvogados.com">geral@ccadvogados.com</a>
+                            </div>
+                        </li>
+
+                        <!-- Filial — Mondim de Basto -->
+                        <li class="cca-contact-info-item">
+                            <div class="cca-contact-info-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="cca-contact-info-text">
+                                <strong>Filial — Mondim de Basto</strong>
+                                <span>Av. da Igreja, n.º 16, 1.º<br>4880-231 Mondim de Basto</span>
+                                <a href="tel:+351253493517">+351 253 493 517</a>
                                 <a href="tel:+351253493207">+351 253 493 207</a>
-                            </div>
-                        </li>
-
-                        <!-- Email -->
-                        <li class="cca-contact-info-item">
-                            <div class="cca-contact-info-icon">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div class="cca-contact-info-text">
-                                <strong>Email</strong>
                                 <a href="mailto:geral@ccadvogados.com">geral@ccadvogados.com</a>
                             </div>
                         </li>
