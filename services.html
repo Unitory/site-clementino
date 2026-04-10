@@ -20,11 +20,6 @@
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/main.css">
     <style>
-        /* breadcrumb separator → cor primária */
-        .breadcrumb-list a::after {
-            color: #9A3122 !important;
-            border-color: #9A3122 !important;
-        }
         /* botão header pill */
         .header-btn,
         .header-btn::before,
@@ -166,138 +161,250 @@
         }
 
         /* === Grid de áreas — services.html === */
-        .cc-areas-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            padding: 60px 0;
-        }
-        .area-card {
-            position: relative; display: block; overflow: hidden;
-            border-radius: 8px; min-height: 260px;
-            background-size: cover; background-position: center;
-            text-decoration: none;
-        }
-        .area-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(180deg, rgba(41,45,41,0.25) 0%, rgba(107,31,20,0.82) 100%);
-            transition: background 0.3s;
-        }
-        .area-card:hover .area-overlay {
-            background: linear-gradient(180deg, rgba(41,45,41,0.35) 0%, rgba(107,31,20,0.94) 100%);
-        }
-        .area-content {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            padding: 20px 20px 22px;
-        }
-        .area-content h3 {
-            font-family: 'Lora', serif; font-size: 16px; font-weight: 600;
-            color: #ffffff; margin: 0 0 10px; line-height: 1.4;
-        }
-        .cca-area-cta {
-            display: inline-flex; align-items: center; gap: 6px;
-            font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500;
-            color: rgba(255,255,255,0.85); letter-spacing: 0.04em;
-            transition: color 0.2s, gap 0.2s;
-        }
-        .area-card:hover .cca-area-cta { color: #ffffff; gap: 9px; }
-        @media (max-width: 1199px) { .cc-areas-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 767px)  { .cc-areas-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 480px)  { .cc-areas-grid { grid-template-columns: 1fr; } }
 
-        /* ── Hero de texto (services.html) ── */
-        .services-hero {
-            text-align: center;
-            padding: 100px 60px 60px;
-            max-width: 760px;
+        /* Seção wrapper */
+        .areas-atuacao-page {
+            background-color: #ffffff;
+            padding: 60px 48px;
+        }
+
+        /* Bloco editorial acima da grid */
+        .areas-editorial-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+            padding: 72px 64px 56px;
+            max-width: 1600px;
             margin: 0 auto;
         }
-        .services-hero-label {
+        .areas-editorial-inner {
+            flex: 0 0 auto;
+            max-width: 600px;
+        }
+        .areas-editorial-label {
+            display: inline-block;
             font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
+            font-size: 0.72rem;
+            font-weight: 500;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 20px;
+            color: #9A3122;
+            margin-bottom: 18px;
         }
-        .services-hero-title {
+        .areas-editorial-title {
             font-family: 'Lora', serif;
-            font-style: italic;
-            font-size: clamp(2.2rem, 5vw, 3.4rem);
-            color: #fff;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 600;
+            color: #292D29;
             line-height: 1.2;
-            margin-bottom: 24px;
+            margin: 0;
         }
-        .services-hero-sub {
+        .areas-editorial-title em {
+            font-style: italic;
+            color: #9A3122;
+        }
+        .areas-editorial-desc {
             font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: rgba(255,255,255,0.75);
-            line-height: 1.7;
+            font-size: clamp(0.88rem, 1.2vw, 0.98rem);
+            font-weight: 300;
+            color: #5a5a5a;
+            line-height: 1.75;
+            max-width: 400px;
+            margin: 0;
+            text-align: right;
         }
 
-        /* ── Secção Áreas de Actuação (services.html) ── */
-        .areas-atuacao-page {
-            background-color: #9A3122;
-            padding: 80px 60px;
-        }
-        .areas-titulo {
-            font-family: 'Lora', serif;
-            font-style: italic;
-            color: #fff;
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 60px;
-        }
+        /* Masonry — CSS columns */
         .svc-areas-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            columns: 4;
+            column-gap: 3px;
+            background-color: #ffffff;
         }
+
         .svc-area-card {
             position: relative;
-            border-radius: 12px;
             overflow: hidden;
-            height: 380px;
+            border-radius: 0;
+            break-inside: avoid;
+            margin-bottom: 3px;
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            cursor: pointer;
+            height: 300px;
+        }
+
+        /* Alturas variadas por card — cria o efeito masonry orgânico */
+        .svc-area-card:nth-child(1)  { height: 420px; }
+        .svc-area-card:nth-child(2)  { height: 260px; }
+        .svc-area-card:nth-child(3)  { height: 350px; }
+        .svc-area-card:nth-child(4)  { height: 300px; }
+        .svc-area-card:nth-child(5)  { height: 260px; }
+        .svc-area-card:nth-child(6)  { height: 420px; }
+        .svc-area-card:nth-child(7)  { height: 310px; }
+        .svc-area-card:nth-child(8)  { height: 260px; }
+        .svc-area-card:nth-child(9)  { height: 380px; }
+        .svc-area-card:nth-child(10) { height: 260px; }
+        .svc-area-card:nth-child(11) { height: 420px; }
+        .svc-area-card:nth-child(12) { height: 310px; }
+        .svc-area-card:nth-child(13) { height: 370px; }
+        .svc-area-card:nth-child(14) { height: 260px; }
+        .svc-area-card:nth-child(15) { height: 310px; }
+        .svc-area-card:nth-child(16) { height: 420px; }
+        .svc-area-card:nth-child(17) { height: 260px; }
+        .svc-area-card:nth-child(18) { height: 380px; }
+        .svc-area-bg {
+            position: absolute;
+            inset: 0;
             background-size: cover;
             background-position: center;
+            transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        filter 0.55s ease;
+            filter: grayscale(100%);
+            z-index: 0;
         }
+        .svc-area-card:hover .svc-area-bg {
+            transform: scale(1.07);
+            filter: grayscale(0%);
+        }
+        /* Cards grandes: título ainda maior */
+        /* Cards grandes: título ainda maior — regra já aplicada com 7n+1 acima */
+
+        /* Overlay — degradê vermelho permanente, escurece no hover */
         .svc-area-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(106, 31, 20, 0.65);
+            background: linear-gradient(
+                180deg,
+                rgba(41, 45, 41, 0.08) 0%,
+                rgba(107, 31, 20, 0.70) 60%,
+                rgba(107, 31, 20, 0.90) 100%
+            );
+            transition: background 0.45s ease;
         }
+        .svc-area-card:hover .svc-area-overlay {
+            background: linear-gradient(
+                180deg,
+                rgba(41, 45, 41, 0.2) 0%,
+                rgba(107, 31, 20, 0.88) 50%,
+                rgba(107, 31, 20, 0.97) 100%
+            );
+        }
+
+        /* Conteúdo fixado no fundo do card */
         .svc-area-content {
             position: absolute;
             bottom: 0; left: 0; right: 0;
-            padding: 24px;
+            padding: 32px 32px 36px;
             color: #fff;
             z-index: 1;
         }
+
+        /* Linha branca — expande no hover */
         .svc-area-line {
-            width: 32px; height: 2px;
-            background: #fff;
+            width: 28px;
+            height: 2px;
+            background: rgba(255,255,255,0.6);
             margin-bottom: 12px;
+            transition: width 0.35s ease, background 0.35s ease;
         }
+        .svc-area-card:hover .svc-area-line {
+            width: 48px;
+            background: #fff;
+        }
+
+        /* Título — Lora, grande, sempre visível */
         .svc-area-content h3 {
             font-family: 'Lora', serif;
-            font-size: 1rem; font-weight: 600;
-            margin-bottom: 10px; line-height: 1.4;
+            font-size: clamp(1.2rem, 1.7vw, 1.55rem);
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.35;
+            transition: margin-bottom 0.35s ease;
         }
+        .svc-area-card:hover .svc-area-content h3 {
+            margin-bottom: 12px;
+        }
+
+        /* Cards grandes: título ainda maior — regra já aplicada com 7n+1 acima */
+
+        /* Descrição — oculta por padrão, revela no hover */
         .svc-area-content p {
             font-family: 'Inter', sans-serif;
-            font-size: 0.82rem; opacity: 0.85;
-            line-height: 1.5; margin-bottom: 16px;
+            font-size: 0.83rem;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.65;
+            margin: 0 0 16px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: max-height 0.4s ease, opacity 0.32s ease 0.06s, transform 0.32s ease 0.06s;
         }
+        .svc-area-card:hover .svc-area-content p {
+            max-height: 100px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Botão pill — oculto por padrão, revela no hover */
         .svc-area-link {
+            display: inline-block;
             font-family: 'Inter', sans-serif;
-            font-size: 0.82rem; color: #fff;
+            font-size: 0.76rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: #6B1F14;
+            background: #F5F0EA;
+            padding: 8px 20px;
+            border-radius: 50px;
             text-decoration: none;
-            display: inline-flex; align-items: center; gap: 6px;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s, background 0.2s;
         }
-        @media (max-width: 1024px) { .svc-areas-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) {
-            .svc-areas-grid { grid-template-columns: 1fr; }
-            .areas-atuacao-page { padding: 40px 20px; }
+        .svc-area-card:hover .svc-area-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .svc-area-link:hover {
+            background: #ffffff;
+            color: #6B1F14;
+        }
+
+        /* Responsivo */
+        @media (max-width: 1199px) {
+            .svc-areas-grid { columns: 3; }
+            .areas-editorial-header { padding: 56px 40px 44px; }
+        }
+        @media (max-width: 991px) {
+            .areas-editorial-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding: 48px 32px 36px;
+            }
+            .areas-editorial-desc { text-align: left; max-width: 100%; }
+        }
+        @media (max-width: 767px) {
+            .svc-areas-grid { columns: 2; }
+            .areas-editorial-header { padding: 40px 20px 28px; }
+            .svc-area-card:nth-child(n) { height: 260px; }
+        }
+        @media (max-width: 480px) {
+            .svc-areas-grid { columns: 1; }
+            .svc-area-card:nth-child(n) { height: 240px; }
+        }
+
+        /* seta breadcrumb — mantém estilo original do tema */
+
+        /* estado :active no botão pill dos cards */
+        .svc-area-link:active {
+            background: #c9513e;
+            color: #ffffff;
+            transform: scale(0.97);
         }
     </style>
     </head>
@@ -316,35 +423,40 @@
             <!-- end preloader -->
 
 <!-- header-start -->
-<header class="bs-header-1-area ">
-    <div class="bs-header-1-row d-flex align-items-center justify-content-between">
+    <header class="bs-header-5-area">
+        <div class="container bs-container-2">
+            <div class="bs-header-5-row d-flex align-items-center justify-content-between">
 
-        <!-- logo -->
-        <a href="index.html" aria-label="name" class="bs-header-logo-1">
-            <img src="assets/img/logo/logo-1.svg" alt="">
-        </a>
+                <a href="index.html" aria-label="Início" class="bs-header-5-logo">
+                    <img src="assets/img/Logo-preto-vermelho@2x.png" alt="Clementino Cunha Advogados">
+                </a>
 
-        <!-- action-link -->
-        <div class="bs-header-1-action-link d-flex align-items-center ">
+                <nav class="bs-main-navigation d-none d-lg-block">
+                    <ul id="main-nav" class="nav navbar-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">Sobre Nós</a></li>
+                        <li><a href="index.html#equipa">Equipa</a></li>
+                        <li class="active"><a href="services.html">Actuação</a></li>
+                        <li><a href="index.html#depoimentos">Depoimentos</a></li>
+                        <li><a href="index.html#comunicacao">Comunicação</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </nav>
 
-            <!-- pr-btn -->
-            <a href="contacto.html" aria-label="name" class="bs-btn-1 header-btn" style="border-radius:50px;overflow:hidden;">
-                <span class="text">
-                    Fale Connosco
-                </span>
-                <span class="shape"></span>
-            </a>
-
-            <!-- offcanvas-btn -->
-            <button type="button" aria-label="name" class="bs-offcanvas-btn-1 btn-span offcanvas_toggle">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="shape"></span>
-            </button>
-
+                <div class="bs-header-5-action-link d-flex align-items-center">
+                    <a href="contacto.html" aria-label="Fale Connosco" class="bs-pr-btn-3">
+                        <span class="text">Fale connosco</span>
+                        <span class="text">Fale connosco</span>
+                    </a>
+                    <button type="button" aria-label="Menu" class="bs-offcanvas-btn-1 offcanvas_toggle">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 <!-- header-end -->
 
 <!-- breadcrumb-start -->
@@ -352,16 +464,14 @@
     <div class="breadcrumb-bg-img wa-fix wa-img-cover">
         <img class="wa-parallax-img" src="assets/img/equipe.jpg" alt="">
     </div>
-
     <div class="container bs-container-1">
         <div class="breadcrumb-wrap">
-            <h1 class="breadcrumb-title wa-split-right wa-capitalize" data-split-delay="1.1s">Áreas de Actuação</h1>
-
+            <h1 class="breadcrumb-title wa-split-right wa-capitalize"
+                data-split-delay="1.1s">Áreas de Actuação</h1>
             <div class="breadcrumb-list">
                 <a href="index.html">Home</a>
                 <span>Áreas de Actuação</span>
             </div>
-
         </div>
     </div>
 </section>
@@ -369,198 +479,271 @@
 
             <!-- areas-start -->
             <section class="areas-atuacao-page">
-                <div class="areas-container">
-                    <div class="services-hero">
-                        <p class="services-hero-label">Áreas de Actuação</p>
-                        <h1 class="services-hero-title">O direito certo,<br>para cada desafio.</h1>
-                        <p class="services-hero-sub">Da família à empresa, do digital ao desporto — cada área com a profundidade que o seu caso merece.</p>
-                    </div>
-                    <div class="svc-areas-grid">
+    <div class="svc-areas-grid">
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Familia.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Direito Civil, Família e Sucessões</h3>
-                                <p>Apoio em contratos, família, sucessões e contencioso civil, com acompanhamento personalizado.</p>
-                                <a href="area-civil.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Familia.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Direito Civil, Família e Sucessões</h3>
+                <p>Apoio em contratos, família, sucessões e contencioso civil, com acompanhamento personalizado.</p>
+                <a href="services-details.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Administrativo.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Direito Público, Administrativo e Contratação Pública</h3>
-                                <p>Assessoria em procedimentos administrativos, concursos públicos e contencioso.</p>
-                                <a href="area-publico.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Administrativo.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Direito Público, Administrativo e Contratação Pública</h3>
+                <p>Assessoria em procedimentos administrativos, concursos públicos e contencioso.</p>
+                <a href="area-publico.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Cibersegurança.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Proteção de Dados, Privacidade e Cibersegurança</h3>
-                                <p>Conformidade com o RGPD, políticas de privacidade e compliance digital.</p>
-                                <a href="area-dados.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Cibersegurança.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Proteção de Dados, Privacidade e Cibersegurança</h3>
+                <p>Conformidade com o RGPD, políticas de privacidade e compliance digital.</p>
+                <a href="area-dados.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Penal.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Penal, Contra-Ordenações e White Collar Crime</h3>
-                                <p>Defesa em processos penais, económicos e programas de compliance.</p>
-                                <a href="area-penal.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Penal.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Penal, Contra-Ordenações e White Collar Crime</h3>
+                <p>Defesa em processos penais, económicos e programas de compliance.</p>
+                <a href="area-penal.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Digital.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Direito Digital</h3>
-                                <p>Proteção de direitos online, cibercrime e conformidade legal de plataformas digitais.</p>
-                                <a href="area-digital.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Digital.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Direito Digital</h3>
+                <p>Proteção de direitos online, cibercrime e conformidade legal de plataformas digitais.</p>
+                <a href="area-digital.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Moda.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Direito da Moda</h3>
-                                <p>Assessoria a marcas e startups na proteção de ativos, contratos e internacionalização.</p>
-                                <a href="area-moda.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Moda.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Direito da Moda</h3>
+                <p>Assessoria a marcas e startups na proteção de ativos, contratos e internacionalização.</p>
+                <a href="area-moda.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Consumidor.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Direito do Consumidor</h3>
-                                <p>Contratos de consumo, e-commerce e conformidade com normas de proteção do consumidor.</p>
-                                <a href="area-consumidor.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Consumidor.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Direito do Consumidor</h3>
+                <p>Contratos de consumo, e-commerce e conformidade com normas de proteção do consumidor.</p>
+                <a href="area-consumidor.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Ambiente.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Direito do Ambiente</h3>
-                                <p>Licenciamento ambiental, compliance regulatório e contencioso ambiental.</p>
-                                <a href="area-ambiente.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Ambiente.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Direito do Ambiente</h3>
+                <p>Licenciamento ambiental, compliance regulatório e contencioso ambiental.</p>
+                <a href="area-ambiente.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Comercial.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Societário, Comercial, Recuperação de Crédito e Insolvência</h3>
-                                <p>Constituição, reestruturação, cobranças e processos de insolvência.</p>
-                                <a href="area-societario.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Comercial.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Societário, Comercial, Recuperação de Crédito e Insolvência</h3>
+                <p>Constituição, reestruturação, cobranças e processos de insolvência.</p>
+                <a href="area-societario.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Social.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Laboral e Segurança Social</h3>
-                                <p>Gestão laboral, despedimentos, reestruturações e contencioso de trabalho.</p>
-                                <a href="area-laboral.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Social.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Laboral e Segurança Social</h3>
+                <p>Gestão laboral, despedimentos, reestruturações e contencioso de trabalho.</p>
+                <a href="area-laboral.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Seguros.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Seguros</h3>
-                                <p>Aconselhamento em contratos de seguro, sinistros e contencioso na área seguradora.</p>
-                                <a href="area-seguros.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Seguros.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Seguros</h3>
+                <p>Aconselhamento em contratos de seguro, sinistros e contencioso na área seguradora.</p>
+                <a href="area-seguros.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Fiscal.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Fiscal</h3>
-                                <p>Planeamento fiscal, otimização de operações e contencioso tributário.</p>
-                                <a href="area-fiscal.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Fiscal.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Fiscal</h3>
+                <p>Planeamento fiscal, otimização de operações e contencioso tributário.</p>
+                <a href="area-fiscal.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Bancário.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Direito Bancário e Produtos Financeiros</h3>
-                                <p>Estruturação de operações bancárias, financiamentos e contencioso financeiro.</p>
-                                <a href="area-bancario.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Bancário.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Direito Bancário e Produtos Financeiros</h3>
+                <p>Estruturação de operações bancárias, financiamentos e contencioso financeiro.</p>
+                <a href="area-bancario.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Construção.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Imobiliário, Construção Civil e Turismo</h3>
-                                <p>Aquisição, gestão de imóveis, contratos e projetos turísticos.</p>
-                                <a href="area-imobiliario.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Construção.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Imobiliário, Construção Civil e Turismo</h3>
+                <p>Aquisição, gestão de imóveis, contratos e projetos turísticos.</p>
+                <a href="area-imobiliario.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Europeu.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Direito Europeu e da Concorrência</h3>
-                                <p>Litígios, procedimentos cautelares e assessoria estratégica em direito europeu.</p>
-                                <a href="area-europeu.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Europeu.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Direito Europeu e da Concorrência</h3>
+                <p>Litígios, procedimentos cautelares e assessoria estratégica em direito europeu.</p>
+                <a href="area-europeu.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Intelectual.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Propriedade Intelectual</h3>
-                                <p>Marcas, patentes, direitos de autor e defesa contra concorrência desleal.</p>
-                                <a href="area-propriedade.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Intelectual.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Propriedade Intelectual</h3>
+                <p>Marcas, patentes, direitos de autor e defesa contra concorrência desleal.</p>
+                <a href="area-propriedade.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Desporto.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Direito do Desporto</h3>
-                                <p>Contratos desportivos, estatutos e contencioso para atletas e clubes.</p>
-                                <a href="area-desporto.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Desporto.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Direito do Desporto</h3>
+                <p>Contratos desportivos, estatutos e contencioso para atletas e clubes.</p>
+                <a href="area-desporto.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                        <div class="svc-area-card" style="background-image: url('assets/img/Actuação/Procuradoria.jpg')">
-                            <div class="svc-area-overlay"></div>
-                            <div class="svc-area-content">
-                                <div class="svc-area-line"></div>
-                                <h3>Procuradoria</h3>
-                                <p>Representação em conservatórias, serviços públicos e actos notariais autorizados por lei.</p>
-                                <a href="area-procuradoria.html" class="svc-area-link">Saber mais →</a>
-                            </div>
-                        </div>
+        <div class="svc-area-card">
+            <div class="svc-area-bg" style="background-image: url('assets/img/Actuação/Procuradoria.jpg')"></div>
+            <div class="svc-area-overlay"></div>
+            <div class="svc-area-content">
+                <div class="svc-area-line"></div>
+                <h3>Procuradoria</h3>
+                <p>Representação em conservatórias, serviços públicos e actos notariais autorizados por lei.</p>
+                <a href="area-procuradoria.html" class="svc-area-link">Saber mais</a>
+            </div>
+        </div>
 
-                    </div>
-                </div>
+    </div>
+<script>
+(function () {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    var cards = document.querySelectorAll('.svc-area-card');
+
+    cards.forEach(function(card, i) {
+        var isEven = i % 2 === 0;
+        var isThird = i % 3 === 0;
+
+        if (isThird) {
+            /* clip-path reveal — abre de baixo para cima */
+            gsap.set(card, {
+                clipPath: 'inset(100% 0% 0% 0%)',
+                opacity: 1
+            });
+            gsap.to(card, {
+                clipPath: 'inset(0% 0% 0% 0%)',
+                duration: 0.85,
+                ease: 'power4.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 92%',
+                    once: true
+                },
+                delay: (i % 4) * 0.07
+            });
+        } else if (isEven) {
+            /* slide up com fade */
+            gsap.set(card, { y: 55, opacity: 0, scale: 1 });
+            gsap.to(card, {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 93%',
+                    once: true
+                },
+                delay: (i % 4) * 0.06
+            });
+        } else {
+            /* fade simples com leve escala */
+            gsap.set(card, { opacity: 0, scale: 0.96 });
+            gsap.to(card, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.75,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 94%',
+                    once: true
+                },
+                delay: (i % 4) * 0.05
+            });
+        }
+    });
+})();
+</script>
             </section>
-            <!-- areas-end -->            
+            <!-- areas-end -->
 
             
 
@@ -671,85 +854,14 @@
 
                     <!-- mobile-menu-list -->
                     <nav class="mobile-main-navigation mb-50">
-                        <ul  class="navbar-nav">
-                            <li class="dropdown">
-                                <a href="#">home</a>
-                                <ul class="dropdown-menu clearfix">
-                                    <li><a href="index.html">home One</a></li>
-                                    <li><a href="index-2.html">home Two</a></li>
-                                    <li><a href="index-3.html">home three</a></li>
-                                    <li><a href="index-4.html">home four</a></li>
-                                    <li><a href="index-5.html">home five</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a href="about.html">about me</a></li>
-
-                            <li class="dropdown">
-                                <a href="projects.html">project</a>
-                                <ul class="dropdown-menu clearfix">
-                                    <li><a href="projects.html">projects one</a></li>
-                                    <li><a href="projects-2.html">projects two</a></li>
-                                    <li><a href="projects-3.html">projects three</a></li>
-                                    <li><a href="project-details.html">project details</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="#">pages</a>
-                                <ul class="dropdown-menu clearfix">
-
-                                    <li class="dropdown">
-                                        <a href="services.html">services</a>
-                                        <ul class="dropdown-menu clearfix">
-                                            <li><a href="services.html">services one</a></li>
-                                            <li><a href="services-2.html">services two</a></li>
-                                            <li><a href="services-3.html">services three</a></li>
-                                            <li><a href="services-4.html">services four</a></li>
-                                            <li><a href="services-details.html">service details</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="dropdown">
-                                        <a href="team.html">team</a>
-                                        <ul class="dropdown-menu clearfix">
-                                            <li><a href="team.html">team one</a></li>
-                                            <li><a href="team-2.html">team two</a></li>
-                                            <li><a href="team-3.html">team three</a></li>
-                                            <li><a href="team-4.html">team four</a></li>
-                                            <li><a href="team-details.html">team details</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="dropdown">
-                                        <a href="career-page.html">career page</a>
-                                        <ul class="dropdown-menu clearfix">
-                                            <li><a href="career-page.html">career page</a></li>
-                                            <li><a href="career-single.html">career single</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="price.html">price page</a></li>
-                                    <li><a href="choose-us.html">choose us</a></li>
-                                    <li><a href="testimonial.html">testimonial</a></li>
-                                    <li><a href="work-process.html">work process</a></li>
-                                    <li><a href="faqs.html">FAQs page</a></li>
-                                    <li><a href="404.html">404</a></li>
-                                   
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="blog.html">news</a>
-                                <ul class="dropdown-menu clearfix">
-                                    <li><a href="blog.html">blog one</a></li>
-                                    <li><a href="blog-2.html">blog two</a></li>
-                                    <li><a href="blog-3.html">blog three</a></li>
-                                    <li><a href="blog-details.html">blog details</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a href="contact-us.html">Contact </a></li>
+                        <ul class="navbar-nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="sobre-nos.html">Sobre Nós</a></li>
+                            <li><a href="equipa.html">Equipa</a></li>
+                            <li><a href="services.html">Actuação</a></li>
+                            <li><a href="depoimentos.html">Depoimentos</a></li>
+                            <li><a href="comunicacao.html">Comunicação</a></li>
+                            <li><a href="contacto.html">Contacto</a></li>
                         </ul>
                     </nav>
 
