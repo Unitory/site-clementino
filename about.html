@@ -20,22 +20,6 @@
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/main.css">
     <style>
-        /* navbar social icons */
-        .cca-about-header-social {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-right: 20px;
-        }
-        .cca-about-header-social a {
-            color: #fff;
-            font-size: 15px;
-            text-decoration: none;
-            opacity: 0.85;
-            transition: opacity 0.2s ease;
-        }
-        .cca-about-header-social a:hover { opacity: 1; }
-
         /* separador curto após história — igual à linha dos cards de Actuação */
         .cca-historia-sep {
             width: 40px;
@@ -165,39 +149,37 @@
             <!-- end preloader -->
 
             <!-- header-start -->
-            <header class="bs-header-1-area ">
-                <div class="bs-header-1-row d-flex align-items-center justify-content-between">
+            <header class="bs-header-5-area">
+                <div class="container bs-container-2">
+                    <div class="bs-header-5-row d-flex align-items-center justify-content-between">
 
-                    <!-- logo -->
-                    <a href="index.html" aria-label="name" class="bs-header-logo-1">
-                        <img src="assets/img/logo/logo-1.svg" alt="">
-                    </a>
-
-                    <!-- action-link -->
-                    <div class="bs-header-1-action-link d-flex align-items-center ">
-
-                        <!-- social icons -->
-                        <div class="cca-about-header-social">
-                            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        </div>
-
-                        <!-- pr-btn -->
-                        <a href="#" aria-label="name" class="bs-btn-1 header-btn" style="border-radius: 50px;">
-                            <span class="text">
-                                Fale Connosco
-                            </span>
-                            <span class="shape"></span>
+                        <a href="index.html" aria-label="name" class="bs-header-5-logo">
+                            <img src="assets/img/Logo-preto-vermelho@2x.png" alt="">
                         </a>
-                        
-                        <!-- offcanvas-btn -->
-                        <button type="button" aria-label="name" class="bs-offcanvas-btn-1 btn-span offcanvas_toggle">
-                            <span class="line"></span>
-                            <span class="line"></span>
-                            <span class="shape"></span>
-                        </button>
 
+                        <nav class="bs-main-navigation d-none d-lg-block">
+                            <ul id="main-nav" class="nav navbar-nav">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">Sobre Nós</a></li>
+                                <li><a href="index.html#equipa">Equipa</a></li>
+                                <li><a href="services.html">Actuação</a></li>
+                                <li><a href="index.html#depoimentos">Depoimentos</a></li>
+                                <li><a href="index.html#comunicacao">Comunicação</a></li>
+                                <li><a href="contacto.html">Contacto</a></li>
+                            </ul>
+                        </nav>
+
+                        <div class="bs-header-5-action-link d-flex align-items-center">
+                            <a href="contacto.html" aria-label="name" class="bs-pr-btn-3">
+                                <span class="text">Fale connosco</span>
+                                <span class="text">Fale connosco</span>
+                            </a>
+                            <button type="button" aria-label="name" class="bs-offcanvas-btn-1 offcanvas_toggle">
+                                <span class="line"></span>
+                                <span class="line"></span>
+                                <span class="line"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -519,24 +501,175 @@
 
             <!-- sub-bloco 2: texto dos valores -->
             <section class="cca-valores-texto-area">
-                <!-- elemento decorativo de fundo -->
-                <div class="cca-valores-deco" aria-hidden="true">
-                    <img src="assets/img/elemento.png" alt="">
-                </div>
+                <style>
+                    .cca-valores-texto-area .bs-about-1-item {
+                        height: 420px;
+                        overflow: hidden;
+                    }
+                    .cca-valores-texto-area .bs-about-1-item img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
+                    }
+                </style>
                 <div class="container bs-container-1">
                     <div class="cca-historia-inner">
 
-                        <h2 class="cca-section-title cca-section-title--dark cca-reveal-h anim-ready" id="ccaTitleValores" style="margin-bottom:48px;">Os Nossos Valores</h2>
+                        <h2 class="cca-section-title cca-section-title--dark cca-valores-title-anim" id="ccaTitleValores" style="margin-bottom:48px;">Os Nossos Valores</h2>
+
+                        <!-- carrossel de valores -->
+                        <div class="bs-about-1-slider mb-40 wa-p-relative">
+                            <div class="swiper-container wa-fix bs-a1-active">
+                                <div class="swiper-wrapper">
+
+                                    <!-- single-slide -->
+                                    <div class="swiper-slide">
+                                        <div class="bs-about-1-item wa-fix">
+                                            <img src="assets/img/atuacao.jpg" alt="">
+                                        </div>
+                                    </div>
+
+                                    <!-- single-slide -->
+                                    <div class="swiper-slide">
+                                        <div class="bs-about-1-item wa-fix">
+                                            <img src="assets/img/equipe.jpg" alt="">
+                                        </div>
+                                    </div>
+
+                                    <!-- single-slide -->
+                                    <div class="swiper-slide">
+                                        <div class="bs-about-1-item wa-fix">
+                                            <img src="assets/img/Braga.jpg" alt="">
+                                        </div>
+                                    </div>
+
+                                    <!-- single-slide -->
+                                    <div class="swiper-slide">
+                                        <div class="bs-about-1-item wa-fix">
+                                            <img src="assets/img/Porto.jpg" alt="">
+                                        </div>
+                                    </div>
+
+                                    <!-- single-slide -->
+                                    <div class="swiper-slide">
+                                        <div class="bs-about-1-item wa-fix">
+                                            <img src="assets/img/fafe.webp" alt="">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="bs-about-1-slider-drag bs-p-1"></div>
+
+                            <button class="bs-a1-prev" aria-label="Anterior">&#8592;</button>
+                            <button class="bs-a1-next" aria-label="Seguinte">&#8594;</button>
+                        </div>
 
                         <div class="cca-historia-body" id="ccaBodyValores">
-                            <p>Na Clementino Cunha Advogados, a proximidade ao cliente é um valor essencial. Conhecer em profundidade cada cliente, a sua realidade e os seus objetivos permite-nos construir relações duradouras, assentes na confiança, na lealdade e na cumplicidade profissional.</p>
-                            <p>Trabalhamos de forma integrada e especializada, com um acompanhamento personalizado e soluções jurídicas ajustadas a cada caso, sempre orientados pela ética, pelo rigor e pela defesa intransigente dos interesses que nos são confiados.</p>
-                            <p>Acreditamos numa advocacia exigente e evolutiva, sustentada na formação contínua, no trabalho em equipa e na procura permanente das melhores soluções. Caminhamos lado a lado com os nossos clientes, com segurança, responsabilidade e compromisso, transformando o conhecimento jurídico em valor e confiança duradoura.</p>
+                            <p class="cca-valores-para-anim">Na Clementino Cunha Advogados, a proximidade ao cliente é um valor essencial. Conhecer em profundidade cada cliente, a sua realidade e os seus objetivos permite-nos construir relações duradouras, assentes na confiança, na lealdade e na cumplicidade profissional.</p>
+                            <p class="cca-valores-para-anim">Trabalhamos de forma integrada e especializada, com um acompanhamento personalizado e soluções jurídicas ajustadas a cada caso, sempre orientados pela ética, pelo rigor e pela defesa intransigente dos interesses que nos são confiados.</p>
+                            <p class="cca-valores-para-anim">Acreditamos numa advocacia exigente e evolutiva, sustentada na formação contínua, no trabalho em equipa e na procura permanente das melhores soluções. Caminhamos lado a lado com os nossos clientes, com segurança, responsabilidade e compromisso, transformando o conhecimento jurídico em valor e confiança duradoura.</p>
+                        </div>
+
+                        <div class="cca-valores-cta-wrap">
+                            <a href="contacto.html" class="cca-valores-cta-btn">
+                                Conte-nos o seu caso
+                            </a>
                         </div>
 
                     </div>
                 </div>
             </section>
+            <style>
+                .cca-valores-title-anim {
+                    opacity: 0;
+                    transform: translateY(48px);
+                    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+                }
+                .cca-valores-title-anim.cca-val-visible {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                .cca-valores-para-anim {
+                    opacity: 0;
+                    transform: translateY(32px);
+                    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+                }
+                .cca-valores-para-anim.cca-val-visible {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                .cca-valores-cta-wrap {
+                    margin-top: 56px;
+                }
+                .cca-valores-cta-btn {
+                    display: inline-block;
+                    background: #9A3122;
+                    color: #ffffff;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 15px;
+                    font-weight: 500;
+                    letter-spacing: 0.02em;
+                    padding: 14px 36px;
+                    border-radius: 50px;
+                    text-decoration: none;
+                    transition: background 0.3s ease, transform 0.3s ease, opacity 0.7s ease-out;
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                .cca-valores-cta-btn:hover {
+                    background: #c24535;
+                    color: #ffffff;
+                }
+                .cca-valores-cta-btn.cca-val-visible {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            </style>
+            <script>
+            (function () {
+                var title = document.getElementById('ccaTitleValores');
+                if (title) {
+                    var obsT = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (e) {
+                            if (!e.isIntersecting) return;
+                            title.classList.add('cca-val-visible');
+                            obsT.unobserve(e.target);
+                        });
+                    }, { threshold: 0.3 });
+                    obsT.observe(title);
+                }
+
+                var paras = document.querySelectorAll('.cca-valores-para-anim');
+                paras.forEach(function (p, i) {
+                    p.style.transitionDelay = (0.15 + i * 0.18) + 's';
+                    var obsP = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (e) {
+                            if (!e.isIntersecting) return;
+                            e.target.classList.add('cca-val-visible');
+                            obsP.unobserve(e.target);
+                        });
+                    }, { threshold: 0.25 });
+                    obsP.observe(p);
+                });
+
+                var ctaBtn = document.querySelector('.cca-valores-cta-btn');
+                if (ctaBtn) {
+                    ctaBtn.style.transitionDelay = '0.6s';
+                    var obsBtn = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (e) {
+                            if (!e.isIntersecting) return;
+                            e.target.classList.add('cca-val-visible');
+                            obsBtn.unobserve(e.target);
+                        });
+                    }, { threshold: 0.4 });
+                    obsBtn.observe(ctaBtn);
+                }
+            })();
+            </script>
             <style>
                 .cca-valores-icons-area {
                     background-color: #ffffff;
@@ -553,22 +686,6 @@
                     padding: 100px 0;
                     position: relative;
                     overflow: hidden;
-                }
-                .cca-valores-deco {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    width: 100%;
-                    pointer-events: none;
-                    z-index: 0;
-                }
-                .cca-valores-deco img {
-                    display: block;
-                    width: 100%;
-                    object-fit: cover;
-                    opacity: 0.07;
-                    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #FAF7F2 80%);
-                    mask-image: linear-gradient(to bottom, transparent 0%, #FAF7F2 80%);
                 }
                 .cca-valores-texto-area .container {
                     position: relative;
@@ -730,7 +847,6 @@
     }
 
     animateSection('ccaTitleHistoria', 'ccaBodyHistoria');
-    animateSection('ccaTitleValores',  'ccaBodyValores');
 
     /* ── Ícones stagger ── */
     var iconsWrap = document.getElementById('ccaIconsWrap');
@@ -911,137 +1027,71 @@
             <!-- footer-end -->
 
             <!-- offcanvas-start -->
-            <div class="wa-offcanvas-area  offcanvas_box_active lenis lenis-smooth">
-                <div class="wa-offcanvas-wrap ">
+            <div class="wa-offcanvas-area has-home-2 offcanvas_box_active lenis lenis-smooth">
+                <div class="wa-offcanvas-wrap">
 
-                    <!-- top -->
                     <div class="wa-offcanvas-top">
-
-                        <!-- logo -->
                         <a href="index.html" aria-label="name" class="wa-offcanvas-top-logo">
                             <img src="assets/img/logo/logo-2.svg" alt="">
                         </a>
-
-                        <!-- close-btn -->
-                        <button class="wa-offcanvas-close offcanvas_box_close" aria-label="name" >
+                        <button class="wa-offcanvas-close offcanvas_box_close" aria-label="name">
                             <span></span>
                             <span></span>
                         </button>
-
                     </div>
 
-
-                    <!-- mobile-menu-list -->
-                    <nav class="mobile-main-navigation mb-50">
-                        <ul  class="navbar-nav">
-                            <li class="dropdown">
-                                <a href="#">home</a>
-                                <ul class="dropdown-menu clearfix">
-                                    <li><a href="index.html">home One</a></li>
-                                    <li><a href="index-2.html">home Two</a></li>
-                                    <li><a href="index-3.html">home three</a></li>
-                                    <li><a href="index-4.html">home four</a></li>
-                                    <li><a href="index-5.html">home five</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a href="about.html">about me</a></li>
-
-                            <li class="dropdown">
-                                <a href="projects.html">project</a>
-                                <ul class="dropdown-menu clearfix">
-                                    <li><a href="projects.html">projects one</a></li>
-                                    <li><a href="projects-2.html">projects two</a></li>
-                                    <li><a href="projects-3.html">projects three</a></li>
-                                    <li><a href="project-details.html">project details</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="#">pages</a>
-                                <ul class="dropdown-menu clearfix">
-
-                                    <li class="dropdown">
-                                        <a href="services.html">services</a>
-                                        <ul class="dropdown-menu clearfix">
-                                            <li><a href="services.html">services one</a></li>
-                                            <li><a href="services-2.html">services two</a></li>
-                                            <li><a href="services-3.html">services three</a></li>
-                                            <li><a href="services-4.html">services four</a></li>
-                                            <li><a href="services-details.html">service details</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="dropdown">
-                                        <a href="team.html">team</a>
-                                        <ul class="dropdown-menu clearfix">
-                                            <li><a href="team.html">team one</a></li>
-                                            <li><a href="team-2.html">team two</a></li>
-                                            <li><a href="team-3.html">team three</a></li>
-                                            <li><a href="team-4.html">team four</a></li>
-                                            <li><a href="team-details.html">team details</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="dropdown">
-                                        <a href="career-page.html">career page</a>
-                                        <ul class="dropdown-menu clearfix">
-                                            <li><a href="career-page.html">career page</a></li>
-                                            <li><a href="career-single.html">career single</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="price.html">price page</a></li>
-                                    <li><a href="choose-us.html">choose us</a></li>
-                                    <li><a href="testimonial.html">testimonial</a></li>
-                                    <li><a href="work-process.html">work process</a></li>
-                                    <li><a href="faqs.html">FAQs page</a></li>
-                                    <li><a href="404.html">404</a></li>
-                                   
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="blog.html">news</a>
-                                <ul class="dropdown-menu clearfix">
-                                    <li><a href="blog.html">blog one</a></li>
-                                    <li><a href="blog-2.html">blog two</a></li>
-                                    <li><a href="blog-3.html">blog three</a></li>
-                                    <li><a href="blog-details.html">blog details</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a href="contact-us.html">Contact </a></li>
+                    <nav class="mobile-main-navigation mb-50 d-block d-lg-none">
+                        <ul class="navbar-nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">Sobre Nós</a></li>
+                            <li><a href="index.html#equipa">Equipa</a></li>
+                            <li><a href="services.html">Actuação</a></li>
+                            <li><a href="index.html#depoimentos">Depoimentos</a></li>
+                            <li><a href="index.html#comunicacao">Comunicação</a></li>
+                            <li><a href="contacto.html">Contacto</a></li>
                         </ul>
                     </nav>
 
+                    <div class="wa-offcanvas-gallery">
+                        <h6 class="wa-offcanvas-gallery-title bs-h-1">Stay Inspired with Instagram</h6>
+                        <div class="wa-offcanvas-gallery-grid">
+                            <a href="assets/img/gallery/g2-img-1.png" aria-label="name" class="popup-img wa-offcanvas-gallery-item wa-img-cover wa-fix">
+                                <img src="assets/img/gallery/g2-img-1.png" alt="">
+                            </a>
+                            <a href="assets/img/gallery/g2-img-2.png" aria-label="name" class="popup-img wa-offcanvas-gallery-item wa-img-cover wa-fix">
+                                <img src="assets/img/gallery/g2-img-2.png" alt="">
+                            </a>
+                            <a href="assets/img/gallery/g2-img-3.png" aria-label="name" class="popup-img wa-offcanvas-gallery-item wa-img-cover wa-fix">
+                                <img src="assets/img/gallery/g2-img-3.png" alt="">
+                            </a>
+                            <a href="assets/img/gallery/g2-img-4.png" aria-label="name" class="popup-img wa-offcanvas-gallery-item wa-img-cover wa-fix">
+                                <img src="assets/img/gallery/g2-img-4.png" alt="">
+                            </a>
+                        </div>
+                    </div>
 
-                    <!-- social -->
                     <div class="wa-offcanvas-social">
-                        <h6 class="wa-offcanvas-social-title bs-h-1 ">we're on social media:</h6>
-
+                        <h6 class="wa-offcanvas-social-title bs-h-1">we're on social media:</h6>
                         <div class="wa-offcanvas-social-flex d-flex flex-wrap">
-                            <a href="#" class="wa-offcanvas-social-link " aria-label="name">
+                            <a href="#" class="wa-offcanvas-social-link" aria-label="name">
                                 <i class="fa-brands fa-linkedin-in"></i>
                             </a>
-                            <a href="#" class="wa-offcanvas-social-link " aria-label="name">
-                                <i class="fa-brands fa-facebook-f"></i> 
+                            <a href="#" class="wa-offcanvas-social-link" aria-label="name">
+                                <i class="fa-brands fa-facebook-f"></i>
                             </a>
-                            <a href="#" class="wa-offcanvas-social-link " aria-label="name">
+                            <a href="#" class="wa-offcanvas-social-link" aria-label="name">
                                 <i class="fa-brands fa-x-twitter"></i>
                             </a>
                             <a href="#" class="wa-offcanvas-social-link" aria-label="name">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </div>
-
                     </div>
 
                 </div>
-
             </div>
             <div class="wa-overly"></div>
-            <!-- offcanvas-start-end -->
+            <!-- offcanvas-end -->
 
             <!-- back-to-top-start -->
             <div class="wa-back-to-top ">

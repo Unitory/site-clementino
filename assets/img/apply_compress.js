@@ -1,0 +1,11 @@
+const fs = require('fs');
+fs.copyFileSync('assets\img\tmp_compress\fafe.webp', 'assets\img\fafe.webp');
+fs.copyFileSync('assets\img\tmp_compress\antigo.jpg', 'assets\img\antigo.jpg');
+fs.copyFileSync('assets\img\tmp_compress\reforma.JPG', 'assets\img\reforma.JPG');
+fs.copyFileSync('assets\img\tmp_compress\sobrenos1.jpg', 'assets\img\sobrenos1.jpg');
+fs.copyFileSync('assets\img\tmp_compress\sobrenos2.jpg', 'assets\img\sobrenos2.jpg');
+fs.copyFileSync('assets\img\tmp_compress\depoimentosimg.jpg', 'assets\img\depoimentosimg.jpg');
+fs.copyFileSync('assets\img\tmp_compress\predio.jpg', 'assets\img\predio.jpg');
+fs.rmdirSync('assets/img/tmp_compress', { recursive: true });
+require('fs').unlinkSync('assets/img/apply_compress.js');
+console.log('Aplicado com sucesso!');
