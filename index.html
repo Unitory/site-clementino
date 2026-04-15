@@ -20,6 +20,105 @@
 
 <!-- CSS PRINCIPAL (vamos refatorar depois) -->
 <link rel="stylesheet" href="assets/css/main.css">
+
+<style>
+.cca-area-slide {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 480px;
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.cca-area-slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(41, 45, 41, 0.08) 0%,
+        rgba(107, 31, 20, 0.72) 55%,
+        rgba(107, 31, 20, 0.92) 100%
+    );
+    transition: background 0.45s ease;
+}
+
+.cca-area-slide:hover .cca-area-slide-overlay {
+    background: linear-gradient(
+        180deg,
+        rgba(41, 45, 41, 0.18) 0%,
+        rgba(107, 31, 20, 0.88) 50%,
+        rgba(107, 31, 20, 0.97) 100%
+    );
+}
+
+.cca-area-slide-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 32px 36px 40px;
+    z-index: 1;
+}
+
+.cca-area-slide-line {
+    width: 28px;
+    height: 2px;
+    background: rgba(255,255,255,0.55);
+    margin-bottom: 14px;
+    transition: width 0.35s ease, background 0.35s ease;
+}
+
+.cca-area-slide:hover .cca-area-slide-line {
+    width: 48px;
+    background: #fff;
+}
+
+.cca-area-slide-content h3 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 18px;
+    line-height: 1.35;
+}
+
+.cca-area-slide-btn {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: #6B1F14;
+    background: #F5F0EA;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s, background 0.2s;
+    pointer-events: none;
+}
+
+.cca-area-slide:hover .cca-area-slide-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cca-area-slide:hover .cca-area-slide-btn:hover {
+    background: #ffffff;
+    color: #6B1F14;
+}
+
+.cca-areas-slider-wrap .swiper-container {
+    overflow: hidden;
+}
+
+.cca-areas-prev:hover,
+.cca-areas-next:hover {
+    background: rgba(255,255,255,0.28) !important;
+}
+</style>
 </head>
 
 <!-- header-start -->
@@ -293,65 +392,147 @@
             </div>
         </div>
 
-        <!-- cards grid -->
-        <div class="areas-grid">
+        <!-- areas-slider-start -->
+        <div class="cca-areas-slider-wrap" style="position: relative; margin-top: 60px;">
 
-            <a href="services-details.html" class="area-card" style="background-image: url('assets/img/Actuação/familia.jpg');">
-                <div class="area-overlay"></div>
-                <div class="area-content">
-                    <h3>Direito Civil, Família e Sucessões</h3>
-                    <span class="cca-area-cta">Ver mais <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                </div>
-            </a>
+            <div class="swiper-container cca-areas-swiper">
+                <div class="swiper-wrapper">
 
-            <a href="services-details-laboral.html" class="area-card" style="background-image: url('assets/img/Actuação/laboral.jpg');">
-                <div class="area-overlay"></div>
-                <div class="area-content">
-                    <h3>Laboral e Segurança Social</h3>
-                    <span class="cca-area-cta">Ver mais <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                </div>
-            </a>
+                    <div class="swiper-slide">
+                        <a href="services-details.html" class="cca-area-slide" style="background-image: url('assets/img/Actuação/familia.jpg');">
+                            <div class="cca-area-slide-overlay"></div>
+                            <div class="cca-area-slide-content">
+                                <div class="cca-area-slide-line"></div>
+                                <h3>Direito Civil, Família e Sucessões</h3>
+                                <span class="cca-area-slide-btn">Saiba mais</span>
+                            </div>
+                        </a>
+                    </div>
 
-            <a href="services-details-publico.html" class="area-card" style="background-image: url('assets/img/Actuação/publico.jpg');">
-                <div class="area-overlay"></div>
-                <div class="area-content">
-                    <h3>Direito Público, Administrativo&nbsp;e Contratação Pública</h3>
-                    <span class="cca-area-cta">Ver mais <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                </div>
-            </a>
+                    <div class="swiper-slide">
+                        <a href="services-details-laboral.html" class="cca-area-slide" style="background-image: url('assets/img/Actuação/laboral.jpg');">
+                            <div class="cca-area-slide-overlay"></div>
+                            <div class="cca-area-slide-content">
+                                <div class="cca-area-slide-line"></div>
+                                <h3>Laboral e Segurança Social</h3>
+                                <span class="cca-area-slide-btn">Saiba mais</span>
+                            </div>
+                        </a>
+                    </div>
 
-            <a href="services-details-societario.html" class="area-card" style="background-image: url('assets/img/Actuação/societario.jpg');">
-                <div class="area-overlay"></div>
-                <div class="area-content">
-                    <h3>Societário, Comercial e Recuperação de Crédito&nbsp;e Insolvência</h3>
-                    <span class="cca-area-cta">Ver mais <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <div class="swiper-slide">
+                        <a href="services-details-publico.html" class="cca-area-slide" style="background-image: url('assets/img/contratacao.jpg');">
+                            <div class="cca-area-slide-overlay"></div>
+                            <div class="cca-area-slide-content">
+                                <div class="cca-area-slide-line"></div>
+                                <h3>Direito Público, Administrativo e Contratação Pública</h3>
+                                <span class="cca-area-slide-btn">Saiba mais</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="services-details-societario.html" class="cca-area-slide" style="background-image: url('assets/img/judicial.jpg');">
+                            <div class="cca-area-slide-overlay"></div>
+                            <div class="cca-area-slide-content">
+                                <div class="cca-area-slide-line"></div>
+                                <h3>Societário, Comercial e Recuperação de Crédito e Insolvência</h3>
+                                <span class="cca-area-slide-btn">Saiba mais</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="services-details-penal.html" class="cca-area-slide" style="background-image: url('assets/img/Actuação/penal.jpg');">
+                            <div class="cca-area-slide-overlay"></div>
+                            <div class="cca-area-slide-content">
+                                <div class="cca-area-slide-line"></div>
+                                <h3>Penal, Contra-Ordenações e White Collar Crime</h3>
+                                <span class="cca-area-slide-btn">Saiba mais</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="services-details-fiscal.html" class="cca-area-slide" style="background-image: url('assets/img/Actuação/fiscal1.jpg');">
+                            <div class="cca-area-slide-overlay"></div>
+                            <div class="cca-area-slide-content">
+                                <div class="cca-area-slide-line"></div>
+                                <h3>Fiscal</h3>
+                                <span class="cca-area-slide-btn">Saiba mais</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="services-details-imobiliario.html" class="cca-area-slide" style="background-image: url('assets/img/Actuação/construcao.jpg');">
+                            <div class="cca-area-slide-overlay"></div>
+                            <div class="cca-area-slide-content">
+                                <div class="cca-area-slide-line"></div>
+                                <h3>Imobiliário, Construção Civil e Turismo</h3>
+                                <span class="cca-area-slide-btn">Saiba mais</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="services-details-dados.html" class="cca-area-slide" style="background-image: url('assets/img/Actuação/dados1.jpg');">
+                            <div class="cca-area-slide-overlay"></div>
+                            <div class="cca-area-slide-content">
+                                <div class="cca-area-slide-line"></div>
+                                <h3>Proteção de Dados, Privacidade e Cibersegurança</h3>
+                                <span class="cca-area-slide-btn">Saiba mais</span>
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
-            </a>
+            </div>
+
+            <!-- setas de navegação -->
+            <div class="cca-areas-prev" style="
+                position: absolute; left: -20px; top: 50%; transform: translateY(-50%);
+                width: 48px; height: 48px; border-radius: 50%;
+                background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+                display: flex; align-items: center; justify-content: center;
+                cursor: pointer; z-index: 10; transition: background 0.2s;
+                color: #fff; font-size: 18px;
+            ">&#8592;</div>
+            <div class="cca-areas-next" style="
+                position: absolute; right: -20px; top: 50%; transform: translateY(-50%);
+                width: 48px; height: 48px; border-radius: 50%;
+                background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+                display: flex; align-items: center; justify-content: center;
+                cursor: pointer; z-index: 10; transition: background 0.2s;
+                color: #fff; font-size: 18px;
+            ">&#8594;</div>
 
         </div>
 
-        <div class="bottom-line wa-clip-left-right" data-split-duration="3s" style="margin-top: 60px;"></div>
-
-        <div style="text-align: center; margin-top: 48px;">
+        <!-- link ver todas as áreas -->
+        <div style="text-align: center; margin-top: 40px;">
             <a href="services.html" style="
-                display: inline-block;
-                padding: 14px 40px;
-                border-radius: 999px;
-                border: 2px solid rgba(255,255,255,0.7);
-                color: #ffffff;
                 font-family: 'Inter', sans-serif;
-                font-size: 0.88rem;
-                font-weight: 500;
-                letter-spacing: 0.06em;
+                font-size: 0.82rem;
+                font-weight: 400;
+                letter-spacing: 0.12em;
                 text-transform: uppercase;
+                color: rgba(255,255,255,0.65);
                 text-decoration: none;
-                transition: background 0.25s ease, border-color 0.25s ease;
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                transition: color 0.2s ease;
             "
-            onmouseover="this.style.background='rgba(255,255,255,0.15)'; this.style.borderColor='#ffffff';"
-            onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,0.7)';">
+            onmouseover="this.style.color='#ffffff';"
+            onmouseout="this.style.color='rgba(255,255,255,0.65)';">
                 Ver todas as áreas
+                <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 6H18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </a>
         </div>
+        <!-- areas-slider-end -->
 
     </div>
 </section>
@@ -938,6 +1119,27 @@
     }, { passive: true });
   }
 
+})();
+</script>
+
+<script>
+(function() {
+    if (typeof Swiper === 'undefined') return;
+    new Swiper('.cca-areas-swiper', {
+        slidesPerView: 1.15,
+        spaceBetween: 12,
+        loop: true,
+        grabCursor: true,
+        navigation: {
+            nextEl: '.cca-areas-next',
+            prevEl: '.cca-areas-prev',
+        },
+        breakpoints: {
+            600: { slidesPerView: 2, spaceBetween: 12 },
+            992: { slidesPerView: 3, spaceBetween: 16 },
+            1400: { slidesPerView: 3.5, spaceBetween: 20 }
+        }
+    });
 })();
 </script>
 </body>
