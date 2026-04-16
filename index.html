@@ -27,10 +27,26 @@
     position: relative;
     width: 100%;
     height: 480px;
-    background-size: cover;
-    background-position: center;
+    background: none;
     text-decoration: none;
     overflow: hidden;
+}
+
+.cca-area-slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%);
+    transition: filter 0.55s ease, transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 0;
+}
+
+.cca-area-slide:hover::before {
+    filter: grayscale(0%);
+    transform: scale(1.07);
 }
 
 .cca-area-slide-overlay {
@@ -43,6 +59,7 @@
         rgba(107, 31, 20, 0.92) 100%
     );
     transition: background 0.45s ease;
+    z-index: 1;
 }
 
 .cca-area-slide:hover .cca-area-slide-overlay {
@@ -58,7 +75,7 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     padding: 32px 36px 40px;
-    z-index: 1;
+    z-index: 2;
 }
 
 .cca-area-slide-line {
@@ -117,6 +134,36 @@
 .cca-areas-prev:hover,
 .cca-areas-next:hover {
     background: rgba(255,255,255,0.28) !important;
+}
+
+/* "Ver todas as áreas" — botão pill + reveal clip-path */
+.cca-ver-todas-wrap {
+    text-align: center;
+    margin-top: 48px;
+}
+.cca-ver-todas-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6B1F14;
+    background: #ffffff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 14px 40px;
+    border-radius: 50px;
+    clip-path: inset(0 100% 0 0 round 50px);
+    transition: clip-path 0.9s cubic-bezier(0.77, 0, 0.18, 1) 0.25s,
+                background 0.25s ease,
+                color 0.25s ease;
+}
+.cca-ver-todas-link.cca-revealed {
+    clip-path: inset(0 0% 0 0 round 50px);
+}
+.cca-ver-todas-link:hover {
+    background: #6B1F14;
+    color: #ffffff;
 }
 </style>
 </head>
@@ -510,27 +557,8 @@
         </div>
 
         <!-- link ver todas as áreas -->
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="services.html" style="
-                font-family: 'Inter', sans-serif;
-                font-size: 0.82rem;
-                font-weight: 400;
-                letter-spacing: 0.12em;
-                text-transform: uppercase;
-                color: rgba(255,255,255,0.65);
-                text-decoration: none;
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-                transition: color 0.2s ease;
-            "
-            onmouseover="this.style.color='#ffffff';"
-            onmouseout="this.style.color='rgba(255,255,255,0.65)';">
-                Ver todas as áreas
-                <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 6H18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </a>
+        <div class="cca-ver-todas-wrap">
+            <a href="services.html" class="cca-ver-todas-link">Ver todas as áreas</a>
         </div>
         <!-- areas-slider-end -->
 
@@ -1119,6 +1147,45 @@
     }, { passive: true });
   }
 
+})();
+</script>
+
+<script>
+/* ── Área cards: slide-up + "Ver todas": reveal ── */
+(function() {
+    var swiper = document.querySelector('.cca-areas-swiper');
+    if (!swiper) return;
+
+    // Slides reais (excluindo duplicados criados pelo loop do Swiper)
+    var slides = swiper.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate) .cca-area-slide');
+    slides.forEach(function(el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(55px)';
+        el.style.transition = 'opacity 0.75s ease, transform 0.75s ease';
+    });
+
+    var cardObs = new IntersectionObserver(function(entries) {
+        if (!entries[0].isIntersecting) return;
+        slides.forEach(function(el, i) {
+            el.style.transitionDelay = (i * 0.1) + 's';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        });
+        cardObs.disconnect();
+    }, { threshold: 0.1 });
+    cardObs.observe(swiper);
+
+    // "Ver todas as áreas" — reveal clip-path
+    var verLink = document.querySelector('.cca-ver-todas-link');
+    var verWrap = document.querySelector('.cca-ver-todas-wrap');
+    if (verLink && verWrap) {
+        var verObs = new IntersectionObserver(function(entries) {
+            if (!entries[0].isIntersecting) return;
+            setTimeout(function() { verLink.classList.add('cca-revealed'); }, 250);
+            verObs.disconnect();
+        }, { threshold: 0 });
+        verObs.observe(verWrap);
+    }
 })();
 </script>
 
