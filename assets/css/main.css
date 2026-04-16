@@ -21428,3 +21428,15 @@ left:18%;
     left: 0;
 }
 
+/* ── Services-details sliders: grayscale → color on hover ── */
+.bs-services-details-slider-1-img img {
+    filter: grayscale(100%);
+    transition: filter 0.55s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.swiper-slide:hover .bs-services-details-slider-1-img img {
+    filter: grayscale(0%);
+}
+
