@@ -131,9 +131,43 @@
     overflow: hidden;
 }
 
+/* Setas: reposicionar em tablet, ocultar em mobile */
+@media (max-width: 1099px) {
+    .cca-areas-prev { left: 4px !important; }
+    .cca-areas-next { right: 4px !important; }
+}
+@media (max-width: 599px) {
+    .cca-areas-prev,
+    .cca-areas-next { display: none !important; }
+}
+
+/* Card height XL */
+@media (min-width: 1600px) {
+    .cca-area-slide { height: 540px; }
+}
+
 .cca-areas-prev:hover,
 .cca-areas-next:hover {
     background: rgba(255,255,255,0.28) !important;
+}
+
+/* Altura dos cards responsiva */
+@media (max-width: 575px) {
+    .cca-area-slide { height: 320px; }
+    .cca-area-slide-content { padding: 20px 20px 28px; }
+}
+@media (min-width: 576px) and (max-width: 991px) {
+    .cca-area-slide { height: 380px; }
+    .cca-area-slide-content { padding: 24px 24px 32px; }
+}
+
+/* Touch: sem hover — mostrar imagem a cores e botão sempre visível */
+@media (hover: none) {
+    .cca-area-slide::before { filter: grayscale(0%); }
+    .cca-area-slide-btn {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* "Ver todas as áreas" — botão pill + reveal clip-path */

@@ -395,7 +395,15 @@
         }
         @media (max-width: 480px) {
             .svc-areas-grid { columns: 1; }
-            .svc-area-card:nth-child(n) { height: 240px; }
+            .svc-area-card:nth-child(n) { height: 300px; }
+        }
+
+        /* Touch: hover não existe — mostrar conteúdo e imagem a cores sempre */
+        @media (hover: none) {
+            .svc-area-bg { filter: grayscale(0%); }
+            .svc-area-link { opacity: 1; transform: translateY(0); }
+            .svc-area-content h3 { margin-bottom: 12px; }
+            .svc-area-line { width: 48px; background: #fff; }
         }
 
         /* seta breadcrumb — mantém estilo original do tema */

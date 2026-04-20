@@ -45,7 +45,7 @@
 
         /* título grande abaixo da hero */
         .cca-about-title {
-            font-size: clamp(2.8rem, 5vw, 4.2rem) !important;
+            font-size: clamp(1.9rem, 5vw, 4.2rem) !important;
             text-transform: none !important;
             line-height: 1.2 !important;
             font-family: 'Lora', serif !important;
@@ -320,6 +320,12 @@
                     position: relative;
                     overflow: hidden;
                 }
+                @media (max-width: 767px) {
+                    .cca-historia-area { padding: 60px 0; }
+                }
+                @media (max-width: 480px) {
+                    .cca-historia-area { padding: 40px 0 !important; }
+                }
                 .cca-historia-circle {
                     position: absolute;
                     border-radius: 50%;
@@ -507,6 +513,12 @@
                         height: 420px;
                         overflow: hidden;
                     }
+                    @media (max-width: 767px) {
+                        .cca-valores-texto-area .bs-about-1-item { height: 300px; }
+                    }
+                    @media (max-width: 480px) {
+                        .cca-valores-texto-area .bs-about-1-item { height: 240px; }
+                    }
                     .cca-valores-texto-area .bs-about-1-item img {
                         width: 100%;
                         height: 100%;
@@ -582,7 +594,7 @@
 
                         <div class="cca-valores-cta-wrap">
                             <a href="contacto.html" class="cca-valores-cta-btn">
-                                Conte-nos
+                                Contacte-nos
                             </a>
                         </div>
 

@@ -15458,14 +15458,10 @@ Primary style
   gap: 40px;
   margin-bottom: 70px;
 }
+/* mobile: slider empilha em coluna única */
 @media (max-width: 767px) {
   .bs-services-details-slider {
     grid-template-columns: 1fr;
-  }
-}
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .bs-services-details-slider {
-    grid-template-columns: 2.3fr 1fr;
   }
 }
 .bs-services-details-slider-1-img {
@@ -15493,22 +15489,18 @@ Primary style
 }
 @media (max-width: 767px) {
   .bs-services-details-slider-1-img {
-    height: 350px;
+    height: 380px;
   }
 }
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+@media (max-width: 480px) {
   .bs-services-details-slider-1-img {
-    height: 400px;
+    height: 280px;
   }
 }
+/* slider secundário oculto em mobile */
 @media (max-width: 767px) {
   .bs-services-details-slider-2 {
     display: none;
-  }
-}
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .bs-services-details-slider-2 {
-    display: block;
   }
 }
 .bs-services-details-slider-btn-posi {
@@ -21438,5 +21430,9 @@ left:18%;
 }
 .swiper-slide:hover .bs-services-details-slider-1-img img {
     filter: grayscale(0%);
+}
+/* Touch: sem hover — imagem sempre a cores */
+@media (hover: none) {
+    .bs-services-details-slider-1-img img { filter: grayscale(0%); }
 }
 
