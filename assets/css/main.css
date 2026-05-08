@@ -15782,6 +15782,7 @@ Primary style
 */
 .bs-team-details-area {
   padding-top: 100px;
+  padding-bottom: 100px;
 }
 .bs-team-details-person {
   display: grid;
