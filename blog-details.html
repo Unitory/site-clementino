@@ -242,7 +242,6 @@
             /* Título do breadcrumb em Lora */
             .breadcrumb-title {
                 font-family: 'Lora', serif !important;
-                font-style: italic;
             }
 
             /* ── Footer vermelho (padrão CCA) ── */
@@ -265,6 +264,56 @@
             .cca-footer .cca-footer-office-tag {
                 background: rgba(255,255,255,0.18) !important;
                 color: #ffffff !important;
+            }
+
+            /* ── Header: fundo vermelho + botão branco ── */
+            header.bs-header-1-area {
+                background-color: #9A3122 !important;
+            }
+            header.bs-header-1-area .bs-btn-1.header-btn {
+                background-color: #ffffff !important;
+                color: #9A3122 !important;
+                border-color: #ffffff !important;
+                border-radius: 999px !important;
+                overflow: hidden;
+            }
+            header.bs-header-1-area .bs-btn-1.header-btn .shape {
+                background-color: #C4503F !important;
+            }
+            header.bs-header-1-area .bs-btn-1.header-btn:hover .text {
+                color: #ffffff !important;
+            }
+
+            /* ── Hero: reduzir espaço inferior ── */
+            .breadcrumb-area.has-2 .breadcrumb-wrap {
+                padding-bottom: 40px !important;
+            }
+
+            /* ── Meta: pill vermelho + data subtil ── */
+            .bs-blog-details-meta {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                background: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin-top: 18px;
+            }
+            #cca-meta-cat {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.68rem;
+                font-weight: 600;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: #fff;
+                background: #9A3122;
+                border-radius: 50px;
+                padding: 4px 14px;
+            }
+            #cca-meta-date {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.8rem;
+                color: rgba(41,45,41,0.45);
             }
         </style>
     </head>
@@ -315,11 +364,7 @@
             <!-- header-end -->
 
             <!-- breadcrumb-start -->
-            <section class="breadcrumb-area has-blog-details wa-p-relative">
-                <div class="breadcrumb-bg-img wa-fix wa-img-cover">
-                    <img class="wa-parallax-img" src="assets/img/escritorio/FAFE/054.jpg" alt="">
-                </div>
-
+            <section class="breadcrumb-area has-2 wa-p-relative">
                 <div class="container bs-container-1">
                     <div class="breadcrumb-wrap">
                         <a href="blog.html" aria-label="Voltar" class="breadcrumb-back-page-btn">
@@ -328,8 +373,11 @@
                         </a>
                         <h1 class="breadcrumb-title wa-split-right wa-capitalize" data-split-delay="1.1s">O Estado Português pode ficar com o seu terreno?</h1>
                         <div class="bs-blog-details-meta">
-                            <span class="meta-item bs-p-1" id="cca-meta-cat" style="display:none;"></span>
-                            <span class="meta-item bs-p-1" id="cca-meta-date">07 Mai 2026</span>
+                            <span id="cca-meta-cat"></span>
+                            <span id="cca-meta-date">07 Mai 2026</span>
+                        </div>
+                        <div class="breadcrumb-bg-shape">
+                            <img src="assets/img/work/w5-bg-img.png" alt="" style="opacity: 0.12;">
                         </div>
                     </div>
                 </div>
