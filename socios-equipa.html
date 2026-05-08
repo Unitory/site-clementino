@@ -1,0 +1,669 @@
+<!Doctype html>
+<html class="no-js" lang="pt">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Sócios e Equipa | Clementino Cunha Advogados</title>
+        <meta name="description" content="Conheça a equipa da Clementino Cunha Advogados.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+        <!-- all-CSS-link-here -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets/css/all.min.css">
+        <link rel="stylesheet" href="assets/css/flaticon_barsi.css">
+        <link rel="stylesheet" href="assets/css/nice-select.css">
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+
+        <style>
+            /* ── Breadcrumb ── */
+            .breadcrumb-title { font-family: 'Lora', serif !important; }
+
+            /* ── Separador de grupo ── */
+            .cca-group-sep {
+                display: flex;
+                align-items: center;
+                gap: 32px;
+                margin: 72px 0 48px;
+                overflow: hidden;
+            }
+            .cca-group-sep:first-child { margin-top: 0; }
+
+            .cca-group-sep-label {
+                font-family: 'Lora', serif;
+                font-size: clamp(1.4rem, 2.5vw, 2rem);
+                font-weight: 600;
+                font-style: italic;
+                color: #9A3122;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .cca-group-sep-line {
+                flex: 1;
+                height: 1px;
+                background: rgba(154,49,34,0.2);
+            }
+
+            .cca-group-sep-count {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.68rem;
+                color: rgba(154,49,34,0.5);
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            /* ── Cards de pessoa ── */
+            .cca-person-card {
+                position: relative; overflow: hidden;
+                break-inside: avoid; display: block;
+                width: 100%; cursor: pointer;
+                aspect-ratio: 3/4;
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+                will-change: opacity, transform;
+            }
+            .cca-person-card.cca-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .cca-person-card--admin { aspect-ratio: 3/4; }
+
+            .cca-person-bg {
+                position: absolute; inset: 0;
+                background-size: cover; background-position: top center;
+                filter: grayscale(100%);
+                transition: transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94),
+                            filter 0.55s ease;
+                will-change: transform, filter;
+            }
+            .cca-person-card:hover .cca-person-bg {
+                transform: scale(1.07); filter: grayscale(0%);
+            }
+            .cca-person-overlay {
+                position: absolute; inset: 0;
+                background: linear-gradient(180deg,
+                    rgba(41,45,41,0.0) 0%,
+                    rgba(107,31,20,0.0) 45%,
+                    rgba(107,31,20,0.65) 75%,
+                    rgba(107,31,20,0.88) 100%);
+                transition: background 0.45s ease;
+            }
+            .cca-person-card:hover .cca-person-overlay {
+                background: linear-gradient(180deg,
+                    rgba(41,45,41,0.0) 0%,
+                    rgba(107,31,20,0.0) 35%,
+                    rgba(107,31,20,0.82) 70%,
+                    rgba(107,31,20,0.97) 100%);
+            }
+            .cca-person-content {
+                position: absolute; bottom: 0; left: 0; right: 0;
+                padding: 28px 28px 32px; color: #fff; z-index: 1;
+            }
+            .cca-person-line {
+                width: 28px; height: 2px; background: rgba(255,255,255,0.6);
+                margin-bottom: 10px;
+                transition: width 0.35s ease, background 0.35s ease;
+            }
+            .cca-person-card:hover .cca-person-line { width: 48px; background: #fff; }
+            .cca-person-name {
+                font-family: 'Lora', serif; font-size: clamp(1.1rem,1.5vw,1.35rem);
+                font-weight: 600; color: #fff; margin: 0 0 4px; line-height: 1.3;
+                transition: margin-bottom 0.3s ease;
+            }
+            .cca-person-card:hover .cca-person-name { margin-bottom: 8px; }
+            .cca-person-role {
+                font-family: 'Inter', sans-serif; font-size: 0.68rem;
+                font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+                color: rgba(255,255,255,0.7); margin: 0;
+            }
+            .cca-person-bio {
+                font-family: 'Inter', sans-serif; font-size: 0.8rem;
+                color: rgba(255,255,255,0.82); line-height: 1.6;
+                margin: 8px 0 0; max-height: 0; overflow: hidden; opacity: 0;
+                transform: translateY(6px);
+                transition: max-height 0.4s ease, opacity 0.32s ease 0.06s,
+                            transform 0.32s ease 0.06s;
+            }
+            .cca-person-card:hover .cca-person-bio {
+                max-height: 80px; opacity: 1; transform: translateY(0);
+            }
+
+            /* Touch: mostrar tudo sempre */
+            @media (hover: none) {
+                .cca-person-bg { filter: grayscale(0%); }
+                .cca-person-line { width: 48px; background: #fff; }
+                .cca-person-bio { max-height: 80px; opacity: 1; transform: translateY(0); }
+            }
+
+            /* ── Grids ── */
+            .cca-grid-socios {
+                display: grid; grid-template-columns: repeat(4,1fr); gap: 3px;
+            }
+            .cca-grid-associados {
+                display: grid; grid-template-columns: repeat(4,1fr); gap: 3px;
+            }
+            .cca-grid-admin {
+                display: grid; grid-template-columns: repeat(4,1fr); gap: 3px;
+            }
+
+            /* Responsivo */
+            @media (max-width: 767px) {
+                .cca-grid-socios { grid-template-columns: repeat(2,1fr); }
+                .cca-grid-associados { grid-template-columns: repeat(2,1fr); }
+                .cca-grid-admin { grid-template-columns: repeat(2,1fr); }
+            }
+            @media (max-width: 480px) {
+                .cca-grid-socios { grid-template-columns: repeat(2,1fr); }
+                .cca-grid-associados { grid-template-columns: repeat(2,1fr); }
+                .cca-grid-admin { grid-template-columns: repeat(2,1fr); }
+            }
+
+            /* ── Footer vermelho ── */
+            .cca-footer { background-color: #9A3122 !important; }
+            .cca-footer, .cca-footer p, .cca-footer h5, .cca-footer span,
+            .cca-footer a, .cca-footer .cca-footer-office-name,
+            .cca-footer .cca-footer-office-tag, .cca-footer .cca-footer-office-address,
+            .cca-footer .cca-footer-bottom p, .cca-footer .cca-footer-bottom-links a {
+                color: #ffffff !important;
+            }
+            .cca-footer .cca-footer-social a,
+            .cca-footer .cca-footer-office-contacts a {
+                color: rgba(255,255,255,0.85) !important;
+            }
+            .cca-footer .cca-footer-social a:hover,
+            .cca-footer .cca-footer-office-contacts a:hover { color: #ffffff !important; }
+            .cca-footer .cca-footer-divider {
+                background: rgba(255,255,255,0.25) !important;
+                border-color: rgba(255,255,255,0.25) !important;
+            }
+            .cca-footer .cca-footer-bottom { border-top-color: rgba(255,255,255,0.2) !important; }
+            .cca-footer .cca-footer-bottom p,
+            .cca-footer .cca-footer-bottom-links a { opacity: 0.75; }
+            .cca-footer::before { border-color: rgba(107,31,20,0.5) !important; border-width: 2px !important; }
+            .cca-footer::after  { border-color: rgba(107,31,20,0.35) !important; border-width: 2px !important; }
+            .cca-footer .cca-footer-office-tag {
+                background: rgba(255,255,255,0.18) !important; color: #ffffff !important;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="main-wrapper wa-fix">
+
+            <!-- start preloader -->
+            <div class="lw-preloader">
+                <div class="lw-preloader-content">
+                    <div class="bs-preloader-logo">
+                        <img src="assets/img/logo/logo-2.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- end preloader -->
+
+            <!-- header-start -->
+            <header class="bs-header-5-area">
+                <div class="container bs-container-2">
+                    <div class="bs-header-5-row d-flex align-items-center justify-content-between">
+
+                        <a href="index.html" aria-label="Início" class="bs-header-5-logo">
+                            <img src="assets/img/Logo-preto-vermelho@2x.png" alt="Clementino Cunha Advogados">
+                        </a>
+
+                        <nav class="bs-main-navigation d-none d-lg-block">
+                            <ul id="main-nav" class="nav navbar-nav">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">Sobre Nós</a></li>
+                                <li class="active"><a href="socios-equipa.html">Equipa</a></li>
+                                <li><a href="services.html">Atuação</a></li>
+                                <li><a href="index.html#comunicacao">Comunicação</a></li>
+                                <li><a href="contacto.html">Contacto</a></li>
+                            </ul>
+                        </nav>
+
+                        <div class="bs-header-5-action-link d-flex align-items-center">
+                            <a href="contacto.html" aria-label="Fale Connosco" class="bs-pr-btn-3">
+                                <span class="text">Fale connosco</span>
+                                <span class="text">Fale connosco</span>
+                            </a>
+                            <button type="button" aria-label="Menu" class="bs-offcanvas-btn-1 offcanvas_toggle">
+                                <span class="line"></span>
+                                <span class="line"></span>
+                                <span class="line"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- header-end -->
+
+            <!-- breadcrumb-start -->
+            <section class="breadcrumb-area wa-p-relative">
+                <div class="breadcrumb-bg-img wa-fix wa-img-cover">
+                    <img class="wa-parallax-img" src="assets/img/escritorio/FAFE/Gabinete.JPG" alt="">
+                </div>
+                <div class="container bs-container-1">
+                    <div class="breadcrumb-wrap">
+                        <h1 class="breadcrumb-title wa-split-right wa-capitalize" data-split-delay="1.1s">Sócios e Equipa</h1>
+                        <div class="breadcrumb-list">
+                            <a href="index.html">Home</a>
+                            <span>Sócios e Equipa</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-end -->
+
+            <!-- team-start -->
+            <section class="pt-80 pb-120" style="background:#fff;">
+                <div class="container bs-container-2">
+
+                    <!-- SÓCIOS -->
+                    <div class="cca-group-sep">
+                        <span class="cca-group-sep-label">Sócios</span>
+                        <div class="cca-group-sep-line"></div>
+                        <span class="cca-group-sep-count">3</span>
+                    </div>
+
+                    <div class="cca-grid-socios">
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/CLEMENTINO CUNHA.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Clementino Cunha</p>
+                                <p class="cca-person-role">Sócio-Fundador</p>
+                                <p class="cca-person-bio">+40 anos de advocacia em todo o território nacional.</p>
+                            </div>
+                        </div>
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/PAULA CUNHA.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Paula Cunha</p>
+                                <p class="cca-person-role">Sócia</p>
+                                <p class="cca-person-bio">Societário, Fiscal, Bancário e Proteção de Dados.</p>
+                            </div>
+                        </div>
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/ANA CUNHA.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Ana Cunha</p>
+                                <p class="cca-person-role">Sócia</p>
+                                <p class="cca-person-bio">Direito Laboral, Administrativo e Proteção de Dados.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ASSOCIADOS -->
+                    <div class="cca-group-sep">
+                        <span class="cca-group-sep-label">Associados</span>
+                        <div class="cca-group-sep-line"></div>
+                        <span class="cca-group-sep-count">6</span>
+                    </div>
+
+                    <div class="cca-grid-associados">
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/JOAQUIM RODRIGUES.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Joaquim Rodrigues</p>
+                                <p class="cca-person-role">Associado</p>
+                                <p class="cca-person-bio">Penal, Família e Sucessório.</p>
+                            </div>
+                        </div>
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/MÁRIO MARTINS.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Mário Martins</p>
+                                <p class="cca-person-role">Associado</p>
+                                <p class="cca-person-bio">Direito Civil, Contratos e Contencioso.</p>
+                            </div>
+                        </div>
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/VITOR SILVA.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Vitor Silva</p>
+                                <p class="cca-person-role">Associado</p>
+                                <p class="cca-person-bio">Direito Civil e Direito Público.</p>
+                            </div>
+                        </div>
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/FRANCISCO RAMOS.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Francisco Ramos</p>
+                                <p class="cca-person-role">Associado</p>
+                                <p class="cca-person-bio">Responsabilidade Civil, Seguros e Contencioso.</p>
+                            </div>
+                        </div>
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/DANIEL SOUSA.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Daniel Sousa</p>
+                                <p class="cca-person-role">Associado</p>
+                                <p class="cca-person-bio">Civil, Administrativo, Executivo e Contencioso.</p>
+                            </div>
+                        </div>
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/ROSA CARIDADE.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Rosa Caridade</p>
+                                <p class="cca-person-role">Associada</p>
+                                <p class="cca-person-bio">Obrigações, Recuperação de Crédito e Seguros.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- APOIO ADMINISTRATIVO -->
+                    <div class="cca-group-sep">
+                        <span class="cca-group-sep-label">Apoio Administrativo</span>
+                        <div class="cca-group-sep-line"></div>
+                        <span class="cca-group-sep-count">6</span>
+                    </div>
+
+                    <div class="cca-grid-admin">
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/MÁRIO ALVES.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Mário Alves</p>
+                                <p class="cca-person-role">Assistente Administrativo</p>
+                            </div>
+                        </div>
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/ORLANDO CUNHA.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Orlando Cunha</p>
+                                <p class="cca-person-role">Assistente Administrativo</p>
+                            </div>
+                        </div>
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/MICAEL PEREIRA.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Micael Pereira</p>
+                                <p class="cca-person-role">Assistente Administrativo</p>
+                            </div>
+                        </div>
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/TIAGO FERNANDES.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Tiago Fernandes</p>
+                                <p class="cca-person-role">Rececionista</p>
+                            </div>
+                        </div>
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/JOÃO BENTO.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">João Bento</p>
+                                <p class="cca-person-role">Assistente Administrativo</p>
+                            </div>
+                        </div>
+
+                        <div class="cca-person-card">
+                            <div class="cca-person-bg" style="background-image:url('assets/img/socios/CRISTINA LOPES.jpg')"></div>
+                            <div class="cca-person-overlay"></div>
+                            <div class="cca-person-content">
+                                <div class="cca-person-line"></div>
+                                <p class="cca-person-name">Cristina Lopes</p>
+                                <p class="cca-person-role">Assistente Administrativa</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- GSAP scroll animation -->
+                    <script>
+(function() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Títulos dos separadores — slide da esquerda */
+  document.querySelectorAll('.cca-group-sep-label').forEach(function(label) {
+    gsap.set(label, { x: -60, opacity: 0 });
+    ScrollTrigger.create({
+      trigger: label,
+      start: 'top 90%',
+      once: true,
+      onEnter: function() {
+        gsap.to(label, {
+          x: 0, opacity: 1,
+          duration: 1.0,
+          ease: 'power3.out'
+        });
+      }
+    });
+  });
+
+  /* Linha do separador — expande da esquerda */
+  document.querySelectorAll('.cca-group-sep-line').forEach(function(line) {
+    gsap.set(line, { scaleX: 0, transformOrigin: 'left center' });
+    ScrollTrigger.create({
+      trigger: line,
+      start: 'top 90%',
+      once: true,
+      onEnter: function() {
+        gsap.to(line, {
+          scaleX: 1,
+          duration: 1.2,
+          ease: 'power3.out',
+          delay: 0.2
+        });
+      }
+    });
+  });
+
+})();
+                    </script>
+
+                </div>
+            </section>
+            <!-- team-end -->
+
+            <!-- footer-start -->
+            <footer class="bs-footer-5-area cca-footer hero-content-custom">
+
+                <div class="cca-footer-circle cca-footer-circle-1"></div>
+                <div class="cca-footer-circle cca-footer-circle-2"></div>
+
+                <div class="container bs-container-2">
+                    <div class="cca-footer-wrap">
+
+                        <div class="cca-footer-top">
+                            <a href="index.html" class="cca-footer-logo">
+                                <img src="assets/img/Logo-branco.png" alt="Clementino Cunha Advogados">
+                            </a>
+                            <div class="cca-footer-social">
+                                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="cca-footer-offices">
+
+                            <div class="cca-footer-office">
+                                <h5 class="cca-footer-office-name">Fafe</h5>
+                                <span class="cca-footer-office-tag">Sede</span>
+                                <p class="cca-footer-office-address">Rua Montenegro, n.º 105<br>4820-280 Fafe</p>
+                                <div class="cca-footer-office-contacts">
+                                    <a href="tel:+351253493517"><i class="fa-solid fa-phone"></i> +351 253 493 517</a>
+                                    <a href="tel:+351253493207"><i class="fa-solid fa-phone"></i> +351 253 493 207</a>
+                                    <a href="mailto:geral@ccadvogados.com"><i class="fa-solid fa-envelope"></i> geral@ccadvogados.com</a>
+                                </div>
+                            </div>
+
+                            <div class="cca-footer-office">
+                                <h5 class="cca-footer-office-name">Braga</h5>
+                                <span class="cca-footer-office-tag">Filial</span>
+                                <p class="cca-footer-office-address">Rua do Raio, n.º 301 – Edif. do Rechicho, 3.º, Sala 33<br>4710-922 Braga</p>
+                                <div class="cca-footer-office-contacts">
+                                    <a href="tel:+351253614112"><i class="fa-solid fa-phone"></i> +351 253 614 112</a>
+                                    <a href="mailto:geral@ccadvogados.com"><i class="fa-solid fa-envelope"></i> geral@ccadvogados.com</a>
+                                </div>
+                            </div>
+
+                            <div class="cca-footer-office">
+                                <h5 class="cca-footer-office-name">Porto – Vila Nova de Gaia</h5>
+                                <span class="cca-footer-office-tag">Filial</span>
+                                <p class="cca-footer-office-address">Lake Towers – Ed. D, Rua Daciano Baptista Marques, n.º 245, 2.º Piso, Sala 214<br>4400-617 Vila Nova de Gaia</p>
+                                <div class="cca-footer-office-contacts">
+                                    <a href="tel:+351221202255"><i class="fa-solid fa-phone"></i> +351 221 202 255</a>
+                                    <a href="mailto:geral@ccadvogados.com"><i class="fa-solid fa-envelope"></i> geral@ccadvogados.com</a>
+                                </div>
+                            </div>
+
+                            <div class="cca-footer-office">
+                                <h5 class="cca-footer-office-name">Mondim de Basto</h5>
+                                <span class="cca-footer-office-tag">Filial</span>
+                                <p class="cca-footer-office-address">Av. da Igreja, n.º 16, 1.º<br>4880-231 Mondim de Basto</p>
+                                <div class="cca-footer-office-contacts">
+                                    <a href="tel:+351253493517"><i class="fa-solid fa-phone"></i> +351 253 493 517</a>
+                                    <a href="tel:+351253493207"><i class="fa-solid fa-phone"></i> +351 253 493 207</a>
+                                    <a href="mailto:geral@ccadvogados.com"><i class="fa-solid fa-envelope"></i> geral@ccadvogados.com</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="cca-footer-divider"></div>
+
+                        <div class="cca-footer-bottom">
+                            <p>© 2026 Clementino Cunha Advogados. Todos os direitos reservados.</p>
+                            <div class="cca-footer-bottom-links">
+                                <a href="#">Política de Privacidade</a>
+                                <a href="#">Termos Legais</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </footer>
+            <!-- footer-end -->
+
+            <!-- offcanvas-start -->
+            <div class="wa-offcanvas-area offcanvas_box_active lenis lenis-smooth">
+                <div class="wa-offcanvas-wrap">
+
+                    <div class="wa-offcanvas-top">
+                        <a href="#" aria-label="name" class="wa-offcanvas-top-logo">
+                            <img src="assets/img/logo/logo-2.svg" alt="">
+                        </a>
+                        <button class="wa-offcanvas-close offcanvas_box_close" aria-label="name">
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+
+                    <nav class="mobile-main-navigation mb-50">
+                        <ul class="navbar-nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">Sobre Nós</a></li>
+                            <li><a href="socios-equipa.html">Equipa</a></li>
+                            <li><a href="services.html">Atuação</a></li>
+                            <li><a href="index.html#comunicacao">Comunicação</a></li>
+                            <li><a href="contacto.html">Contacto</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="wa-offcanvas-social">
+                        <h6 class="wa-offcanvas-social-title bs-h-1">we're on social media:</h6>
+                        <div class="wa-offcanvas-social-flex d-flex flex-wrap">
+                            <a href="#" class="wa-offcanvas-social-link" aria-label="name"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="wa-offcanvas-social-link" aria-label="name"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="wa-offcanvas-social-link" aria-label="name"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#" class="wa-offcanvas-social-link" aria-label="name"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="wa-overly"></div>
+            <!-- offcanvas-end -->
+
+            <!-- back-to-top-button-start -->
+            <div class="wa-back-to-top">
+                <span class="wa-back-to-top-text">Top</span>
+            </div>
+            <!-- back-to-top-button-end -->
+
+        </div>
+
+        <!-- all-JS-link-here -->
+        <script src="assets/js/jquery-3.7.1.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <script src="assets/js/wow.js"></script>
+        <script src="assets/js/magiccursor.js"></script>
+        <script src="assets/js/nice-select.min.js"></script>
+        <script src="assets/js/marquee.min.js"></script>
+        <script src="assets/js/magnific-popup.min.js"></script>
+        <script src="assets/js/SplitText.min.js"></script>
+        <script src="assets/js/gsap.min.js"></script>
+        <script src="assets/js/CustomEase.min.js"></script>
+        <script src="assets/js/counterup.min.js"></script>
+        <script src="assets/js/waypoints.min.js"></script>
+        <script src="assets/js/lenis.min.js"></script>
+        <script src="assets/js/ScrollTrigger.min.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script>
+        (function() {
+            var io = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('cca-visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            document.querySelectorAll('.cca-person-card').forEach(function(card) {
+                io.observe(card);
+            });
+        })();
+        </script>
+
+    </body>
+</html>
