@@ -20,6 +20,9 @@
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/main.css">
     <style>
+        /* hero — enquadramento */
+        .breadcrumb-bg-img img { object-position: center 60%; }
+
         /* botão header pill */
         .header-btn,
         .header-btn::before,
@@ -414,6 +417,26 @@
             color: #ffffff;
             transform: scale(0.97);
         }
+
+        /* imagem de destaque — receção CC Fafe */
+        .cca-areas-destaque {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 3px;
+        }
+        .cca-areas-destaque-img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            object-position: center 38%;
+            display: block;
+        }
+        @media (max-width: 991px) {
+            .cca-areas-destaque-img { height: 380px; }
+        }
+        @media (max-width: 767px) {
+            .cca-areas-destaque-img { height: 260px; }
+        }
     </style>
     </head>
 
@@ -447,7 +470,7 @@
                         <li class="active"><a href="services.html">Atuação</a></li>
 
                         <li><a href="blog.html">Comunicação</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="contacto.html">Contactos</a></li>
                     </ul>
                 </nav>
 
@@ -470,7 +493,7 @@
 <!-- breadcrumb-start -->
 <section class="breadcrumb-area wa-p-relative">
     <div class="breadcrumb-bg-img wa-fix wa-img-cover">
-        <img class="wa-parallax-img" src="assets/img/escritorio/FAFE/066.jpg" alt="">
+        <img class="wa-parallax-img" src="assets/img/escritorio/cc-fafe-06.jpg" alt="">
     </div>
     <div class="container bs-container-1">
         <div class="breadcrumb-wrap">
@@ -487,6 +510,7 @@
 
             <!-- areas-start -->
             <section class="areas-atuacao-page">
+
     <div class="svc-areas-grid">
 
         <div class="svc-area-card">
@@ -868,7 +892,7 @@
                             <li><a href="services.html">Atuação</a></li>
 
                             <li><a href="blog.html">Comunicação</a></li>
-                            <li><a href="contacto.html">Contacto</a></li>
+                            <li><a href="contacto.html">Contactos</a></li>
                         </ul>
                     </nav>
 
