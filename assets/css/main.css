@@ -20820,7 +20820,7 @@ left:18%;
     z-index: 0;
     pointer-events: none;
     will-change: clip-path, transform;
-    clip-path: inset(0 0 0 50%);
+    clip-path: inset(0) !important;
     transform: scale(1);
     transform-origin: center center;
     transition: none;
@@ -20840,9 +20840,9 @@ left:18%;
     position: absolute;
     top: 0;
     left: 0;
-    width: 50%;
+    width: 0;
     height: 100%;
-    background: linear-gradient(160deg, #9A3324 0%, #6B1F14 100%);
+    background: transparent;
     z-index: 2;
     will-change: width;
     transform-origin: left center;
@@ -20862,6 +20862,7 @@ left:18%;
     top: -180px;
     left: -120px;
     opacity: 0.48;
+    display: none;
 }
 .cca-hero-deco-circle--2 {
     width: 320px;
@@ -20869,6 +20870,7 @@ left:18%;
     top: -80px;
     left: 60px;
     opacity: 0.30;
+    display: none;
 }
 
 /* ── Linha divisória ─────────────────────────────────────── */
