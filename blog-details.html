@@ -943,33 +943,43 @@
 
   var API     = CCA_WP_API;
 
-  function ccaLimparConteudo(html) {
-    /* 1. Remove o primeiro <h1> (título duplicado) */
-    html = html.replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, '');
+  function ccaLimparConteudo(html, titleRaw) {
+    /* 1. Remove TODOS os <h1> — WordPress pode injectar mais de um */
+    html = html.replace(/<h1[^>]*>[\s\S]*?<\/h1>/gi, '');
 
-    /* 2. Remove shortcodes WordPress [exemplo] ou [/exemplo] */
+    /* 2. Remove bloco Gutenberg wp-block-post-title (título em qualquer tag) */
+    html = html.replace(/<[^>]+class="[^"]*wp-block-post-title[^"]*"[^>]*>[\s\S]*?<\/[^>]+>/gi, '');
+
+    /* 3. Se o título for fornecido, remove qualquer heading h1-h6 cujo texto seja idêntico */
+    if (titleRaw) {
+      var titleText = titleRaw.replace(/<[^>]+>/g, '').trim();
+      if (titleText) {
+        html = html.replace(/<h[1-6][^>]*>([\s\S]*?)<\/h[1-6]>/gi, function(match, inner) {
+          return inner.replace(/<[^>]+>/g, '').trim() === titleText ? '' : match;
+        });
+      }
+    }
+
+    /* 4. Remove shortcodes WordPress [exemplo] ou [/exemplo] */
     html = html.replace(/\[\/?\w[^\]]*\]/g, '');
 
-    /* 3. Remove títulos de "Artigos Relacionados" injectados pelo WordPress */
+    /* 5. Remove títulos de "Artigos Relacionados" injectados pelo WordPress */
     html = html.replace(/<h[1-6][^>]*>\s*artigos\s+relacionados\s*<\/h[1-6]>/gi, '');
 
-    /* 4. Remove blocos de assinatura do WordPress (figura com imagem no final) */
+    /* 6. Remove blocos de assinatura do WordPress (figura com imagem no final) */
     html = html.replace(/<figure[^>]*class="[^"]*wp-block-image[^"]*"[^>]*>[\s\S]*?<\/figure>/gi, '');
 
-    /* 5. Remove parágrafos com apenas imagens de assinatura */
+    /* 7. Remove parágrafos com apenas imagens de assinatura */
     html = html.replace(/<p[^>]*>\s*<img[^>]*(assinatura|signature|clementino)[^>]*>\s*<\/p>/gi, '');
 
-    /* 6. Remove divs de assinatura do WordPress */
+    /* 8. Remove divs wp-block-image / wp-block-media */
     html = html.replace(/<div[^>]*class="[^"]*wp-block-(image|media)[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
 
-    /* 7. Remove parágrafos vazios no início e no fim */
+    /* 9. Remove parágrafos vazios no início e no fim */
     html = html.replace(/^(\s*<p[^>]*>\s*<\/p>\s*)+/, '');
     html = html.replace(/(\s*<p[^>]*>\s*<\/p>\s*)+$/, '');
 
-    /* 8. Remove espaços em branco excessivos */
-    html = html.trim();
-
-    return html;
+    return html.trim();
   }
 
   var slug    = new URLSearchParams(window.location.search).get('slug');
@@ -1070,7 +1080,7 @@
           '" class="cca-post-featured-img" loading="eager">'
         : '';
 
-      var rawContent = ccaLimparConteudo(post.content.rendered);
+      var rawContent = ccaLimparConteudo(post.content.rendered, title);
 
       /* Mid-article: imagem + overlay + botão sobreposto (fixo em todos os artigos) */
       var midArticle =
