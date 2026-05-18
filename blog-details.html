@@ -1117,20 +1117,25 @@
           '<span class="cca-meta-date">' + date + '</span>' +
         '</div>';
 
-      /* Dividir corpo do artigo a meio (ponto médio → </p> mais próximo) */
+      /* Inserir imagem sempre a meio do artigo (parágrafo mais próximo de 50%) */
       var bodyHtml;
-      var midPoint = Math.floor(rawContent.length / 2);
-      var splitIdx = rawContent.indexOf('</p>', midPoint);
-      if (splitIdx !== -1) {
-        splitIdx += 4; /* inclui o </p> na primeira parte */
-        var part1 = rawContent.substring(0, splitIdx);
-        var part2 = rawContent.substring(splitIdx);
+      var pEnds = [], pRe = /<\/p>/gi, pM;
+      while ((pM = pRe.exec(rawContent)) !== null) pEnds.push(pM.index + 4);
+      if (pEnds.length >= 1) {
+        var mid = rawContent.length / 2;
+        var splitAt = pEnds.reduce(function(best, pos) {
+          return Math.abs(pos - mid) < Math.abs(best - mid) ? pos : best;
+        });
         bodyHtml =
-          '<div class="cca-post-body">' + part1 + '</div>' +
+          '<div class="cca-post-body">' + rawContent.substring(0, splitAt) + '</div>' +
           midArticle +
-          '<div class="cca-post-body">' + part2 + '</div>';
+          '<div class="cca-post-body">' + rawContent.substring(splitAt) + '</div>';
       } else {
-        bodyHtml = '<div class="cca-post-body">' + rawContent + '</div>' + midArticle;
+        var half = Math.floor(rawContent.length / 2);
+        bodyHtml =
+          '<div class="cca-post-body">' + rawContent.substring(0, half) + '</div>' +
+          midArticle +
+          '<div class="cca-post-body">' + rawContent.substring(half) + '</div>';
       }
 
       content.innerHTML = imgHtml +
