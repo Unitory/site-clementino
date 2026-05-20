@@ -62,8 +62,49 @@
                 padding-left: 1.5rem;
                 margin: 0 0 1.4rem;
             }
-            .cca-post-body li { margin-bottom: 0.5rem; }
+            .cca-post-body li {
+                margin-bottom: 0.5rem;
+                display: list-item !important;
+                float: none !important;
+            }
             .cca-post-body a { color: #9A3122; }
+
+            /* ── Tabelas do WordPress ── */
+            .cca-post-body table,
+            .cca-post-body .wp-block-table table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 0 0 1.4rem;
+                font-size: 0.92rem;
+            }
+            .cca-post-body td,
+            .cca-post-body th {
+                padding: 10px 14px;
+                border: 1px solid rgba(41,45,41,0.12);
+                vertical-align: top;
+                text-align: left;
+            }
+            .cca-post-body th { font-weight: 600; background: rgba(41,45,41,0.04); }
+            .cca-post-body figure.wp-block-table { margin: 0 0 1.4rem; overflow-x: auto; }
+
+            /* ── Listas de definição (dl/dt/dd) ── */
+            .cca-post-body dl { margin: 0 0 1.4rem; }
+            .cca-post-body dt {
+                font-weight: 600;
+                margin-top: 1rem;
+                margin-bottom: 0.2rem;
+            }
+            .cca-post-body dd { margin: 0 0 0.8rem 1.5rem; }
+
+            /* ── Colunas Gutenberg — forçar uma coluna ── */
+            .cca-post-body .wp-block-columns {
+                display: block !important;
+            }
+            .cca-post-body .wp-block-column {
+                display: block !important;
+                width: 100% !important;
+                margin-bottom: 1rem;
+            }
             .cca-post-body img {
                 max-width: 100%; height: auto;
                 border-radius: 4px; margin: 1.6rem 0;
