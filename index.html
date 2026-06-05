@@ -152,13 +152,39 @@
 }
 
 /* Altura dos cards responsiva */
+/* Grid mobile de 3 cards (escondido em desktop) */
+.cca-areas-mobile-cards {
+    display: none;
+}
+
 @media (max-width: 575px) {
-    .cca-area-slide { height: 320px; }
+    /* Esconde o slider, mostra os 3 cards estáticos */
+    .cca-areas-slider-wrap { display: none !important; }
+    .cca-areas-mobile-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+
+    .cca-area-slide { height: 260px; }
     .cca-area-slide-content { padding: 20px 20px 28px; }
+
+    /* Reduzir padding vertical da secção vermelha em mobile */
+    .bs-services-5-area {
+        padding-top: 52px !important;
+        padding-bottom: 52px !important;
+    }
+    .cca-ver-todas-wrap {
+        margin-top: 28px;
+    }
 }
 @media (min-width: 576px) and (max-width: 991px) {
     .cca-area-slide { height: 380px; }
     .cca-area-slide-content { padding: 24px 24px 32px; }
+
+    .bs-services-5-area {
+        padding-top: 72px !important;
+        padding-bottom: 72px !important;
+    }
+    .cca-areas-slider-wrap {
+        margin-top: 40px !important;
+    }
 }
 
 /* Touch: sem hover — mostrar imagem a cores e botão sempre visível */
@@ -242,6 +268,96 @@
     color: inherit;
 }
 .cca-home-post-link:hover { color: inherit; }
+
+/* ── Hero: offices row ── */
+.cca-hero-offices-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cca-hero-sede-col,
+.cca-hero-filiais-col {
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(1.1rem, 1.4vw, 1.5rem);
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+/* ── MOBILE: hero offices + títulos rotativos ── */
+@media (max-width: 767px) {
+
+  /* Sede esq / Filiais dir na mesma linha */
+  .cca-hero-bottom-left {
+    width: 100%;
+  }
+
+  .cca-hero-offices-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0;
+    width: 100%;
+  }
+
+  .cca-hero-sede-col {
+    flex: 0 0 auto;
+  }
+
+  .cca-hero-filiais-col {
+    flex: 0 0 auto;
+    text-align: right;
+  }
+
+  /* Tagline centrada abaixo */
+  .cca-hero-bottom-right {
+    text-align: center !important;
+    width: 100%;
+  }
+
+  .cca-rotator,
+  .cca-rotator-phrase,
+  .cca-phrase-rotator,
+  .cca-phrase-track,
+  .cca-phrase,
+  .cca-work-rotator,
+  .cca-work-track,
+  .cca-work-phrase,
+  .cca-testi-b-title {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-align: center !important;
+    word-break: break-word !important;
+  }
+
+  .cca-rotator-phrase,
+  .cca-work-phrase,
+  .cca-phrase {
+    font-size: clamp(1.9rem, 7vw, 2.8rem) !important;
+    line-height: 1.3 !important;
+    padding: 0 20px !important;
+    display: block !important;
+  }
+
+  .cca-testi-b-title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
+    line-height: 1.3 !important;
+    padding: 0 16px !important;
+    word-break: break-word !important;
+  }
+
+  .bs-services-5-area > .container > div:first-child,
+  .bs-team-5-sec-title,
+  .bs-work-5-sec-title {
+    overflow: visible !important;
+    padding: 0 16px !important;
+  }
+
+  .cca-testi-b-wrap {
+    padding: 0 4px !important;
+  }
+}
 </style>
 </head>
 
@@ -296,26 +412,6 @@
 
     <div class="cca-hero-video-overlay" aria-hidden="true"></div>
 
-    <div class="cca-hero-white-half" id="ccaWhiteHalf">
-      <div class="cca-hero-deco-circle cca-hero-deco-circle--1"></div>
-      <div class="cca-hero-deco-circle cca-hero-deco-circle--2"></div>
-    </div>
-
-    <!-- Filiais — canto inferior esquerdo -->
-    <div class="cca-hero-split-content" id="ccaSplitContent">
-      <div class="cca-hero-bottom-left">
-        <ul class="cca-hero-filiais-list">
-          <li><span class="cca-hero-filiais-label">Sede:</span> Fafe</li>
-          <li><span class="cca-hero-filiais-label">Filiais:</span> Porto, Braga e Mondim de Basto</li>
-        </ul>
-      </div>
-      <div class="cca-hero-bottom-right">
-        <p class="cca-hero-tagline">
-          Transformamos conhecimento jurídico em<br>
-          segurança e confiança duradoura.
-        </p>
-      </div>
-    </div>
 
   </section>
 
@@ -621,6 +717,34 @@
                 color: #fff; font-size: 18px;
             ">&#8594;</div>
 
+        </div>
+
+        <!-- 3 cards estáticos — visíveis apenas em mobile ≤575px -->
+        <div class="cca-areas-mobile-cards">
+            <a href="services-details.html" class="cca-area-slide" style="background-image: url('assets/img/Atuação/familia.jpg');">
+                <div class="cca-area-slide-overlay"></div>
+                <div class="cca-area-slide-content">
+                    <div class="cca-area-slide-line"></div>
+                    <h3>Direito Civil, Família e Sucessões</h3>
+                    <span class="cca-area-slide-btn">Saiba mais</span>
+                </div>
+            </a>
+            <a href="services-details-publico.html" class="cca-area-slide" style="background-image: url('assets/img/contratacao.jpg');">
+                <div class="cca-area-slide-overlay"></div>
+                <div class="cca-area-slide-content">
+                    <div class="cca-area-slide-line"></div>
+                    <h3>Direito Público, Administrativo e Contratação Pública</h3>
+                    <span class="cca-area-slide-btn">Saiba mais</span>
+                </div>
+            </a>
+            <a href="services-details-societario.html" class="cca-area-slide" style="background-image: url('assets/img/Atuação/societario.jpg');">
+                <div class="cca-area-slide-overlay"></div>
+                <div class="cca-area-slide-content">
+                    <div class="cca-area-slide-line"></div>
+                    <h3>Societário, Comercial e Recuperação de Crédito</h3>
+                    <span class="cca-area-slide-btn">Saiba mais</span>
+                </div>
+            </a>
         </div>
 
         <!-- link ver todas as áreas -->
@@ -997,12 +1121,10 @@
         </nav>
 
         <div class="wa-offcanvas-social">
-            <h6 class="wa-offcanvas-social-title bs-h-1">we're on social media:</h6>
+            <h6 class="wa-offcanvas-social-title bs-h-1">Redes Sociais</h6>
             <div class="wa-offcanvas-social-flex d-flex flex-wrap">
-                <a href="#" class="wa-offcanvas-social-link" aria-label="name"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://www.facebook.com/share/1LMsFkZDHP/?mibextid=wwXIfr" class="wa-offcanvas-social-link" aria-label="name" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="wa-offcanvas-social-link" aria-label="name"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/ccmadv?igsh=MTU0c3c5cnY2bWFyNQ==" class="wa-offcanvas-social-link" aria-label="name" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1LMsFkZDHP/?mibextid=wwXIfr" class="wa-offcanvas-social-link" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/ccmadv?igsh=MTU0c3c5cnY2bWFyNQ==" class="wa-offcanvas-social-link" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
 

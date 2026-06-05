@@ -2037,6 +2037,13 @@ input:focus::placeholder, textarea:focus::placeholder {
 /*
     04. mouse-cursor
 */
+
+/* Cursor personalizado oculto em touch/mobile */
+@media (hover: none), (max-width: 767px) {
+  .wa-cursor { display: none !important; }
+  * { cursor: auto !important; }
+}
+
 .wa-cursor {
   position: fixed;
   top: 0;
@@ -15221,6 +15228,15 @@ Primary style
 @media (max-width: 767px) {
   .breadcrumb-title {
     font-size: 40px;
+    text-align: center !important;
+    width: 100%;
+  }
+  .breadcrumb-wrap {
+    align-items: center;
+  }
+  .breadcrumb-list {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -20432,6 +20448,33 @@ left:18%;
     .cca-contact-left {
         flex: 0 0 100%;
         max-width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Reduz espaço superior excessivo */
+    .cca-contact {
+        min-height: auto !important;
+        padding-top: 64px !important;
+        padding-bottom: 64px !important;
+    }
+
+    /* Botão — cabe numa linha */
+    .cca-form-btn {
+        font-size: 0.72rem !important;
+        letter-spacing: 0.04em !important;
+        padding: 14px 20px !important;
+        white-space: nowrap;
+    }
+
+    /* Título da secção menor em mobile */
+    .cca-contact-title {
+        font-size: clamp(26px, 7vw, 34px) !important;
+    }
+
+    /* Formulário: padding interior reduzido */
+    .cca-contact-form-inner {
+        padding: 24px 20px !important;
     }
 }
 
