@@ -1,5 +1,5 @@
-/*
-	Template Name: Barsi - Architecture & Interior HTML Template
+﻿/*
+	Template Name: Clementino - Architecture & Interior HTML Template
 	Author: https://themexriver.com/
 	Version: 1.0
 */

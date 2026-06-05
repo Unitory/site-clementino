@@ -1,16 +1,16 @@
-
+﻿
 
 @font-face {
-    font-family: "flaticon_barsi";
-    src: url("../fonts/flaticon_barsi.woff2?84b98d2768256259aeb7ee1582429b12") format("woff2"),
-url("../fonts/flaticon_barsi.woff?84b98d2768256259aeb7ee1582429b12") format("woff"),
-url("../fonts/flaticon_barsi.eot?84b98d2768256259aeb7ee1582429b12#iefix") format("embedded-opentype"),
-url("../fonts/flaticon_barsi.ttf?84b98d2768256259aeb7ee1582429b12") format("truetype"),
-url("../fonts/flaticon_barsi.svg?84b98d2768256259aeb7ee1582429b12#flaticon_barsi") format("svg")
+    font-family: "flaticon_clementino";
+    src: url("../fonts/flaticon_clementino.woff2?84b98d2768256259aeb7ee1582429b12") format("woff2"),
+url("../fonts/flaticon_clementino.woff?84b98d2768256259aeb7ee1582429b12") format("woff"),
+url("../fonts/flaticon_clementino.eot?84b98d2768256259aeb7ee1582429b12#iefix") format("embedded-opentype"),
+url("../fonts/flaticon_clementino.ttf?84b98d2768256259aeb7ee1582429b12") format("truetype"),
+url("../fonts/flaticon_clementino.svg?84b98d2768256259aeb7ee1582429b12#flaticon_clementino") format("svg")
 }
 
 i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
-    font-family: flaticon_barsi !important;
+    font-family: flaticon_clementino !important;
     font-style: normal;
     font-weight: normal !important;
     font-variant: normal;
