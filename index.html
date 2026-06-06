@@ -285,35 +285,12 @@
   line-height: 1.5;
 }
 
-/* ── MOBILE: hero offices + títulos rotativos ── */
+/* ── MOBILE: ocultar elementos da hero + títulos rotativos ── */
 @media (max-width: 767px) {
 
-  /* Sede esq / Filiais dir na mesma linha */
-  .cca-hero-bottom-left {
-    width: 100%;
-  }
-
-  .cca-hero-offices-row {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 0;
-    width: 100%;
-  }
-
-  .cca-hero-sede-col {
-    flex: 0 0 auto;
-  }
-
-  .cca-hero-filiais-col {
-    flex: 0 0 auto;
-    text-align: right;
-  }
-
-  /* Tagline centrada abaixo */
-  .cca-hero-bottom-right {
-    text-align: center !important;
-    width: 100%;
+  /* Ocultar escritórios e tagline no mobile */
+  .cca-hero-split-content {
+    display: none !important;
   }
 
   .cca-rotator,
@@ -412,6 +389,27 @@
 
     <div class="cca-hero-video-overlay" aria-hidden="true"></div>
 
+    <!-- Rodapé da hero: escritórios + tagline -->
+    <div class="cca-hero-split-content">
+      <!-- Esquerda: Sede + Filiais -->
+      <div class="cca-hero-bottom-left">
+        <div class="cca-hero-offices-row">
+          <div class="cca-hero-sede-col">
+            Sede: Fafe
+          </div>
+          <div class="cca-hero-filiais-col">
+            Filiais: Porto, Braga e Mondim de Basto
+          </div>
+        </div>
+      </div>
+
+      <!-- Direita: Tagline -->
+      <div class="cca-hero-bottom-right">
+        <p class="cca-hero-tagline">
+          Transformamos conhecimento jurídico em soluções práticas e confiança duradoura.
+        </p>
+      </div>
+    </div>
 
   </section>
 
