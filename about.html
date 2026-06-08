@@ -132,6 +132,17 @@
             opacity: 0.35;
             cursor: default;
         }
+
+        /* Oculta o magic cursor em dispositivos touch */
+        .is-touch-device .wa-magic-cursor,
+        .is-touch-device .cursor-outer,
+        .is-touch-device .cursor-inner,
+        .is-touch-device [class*="magic-cursor"],
+        .is-touch-device [class*="cursor-"] {
+            display: none !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
     </style>
     </head>
 
@@ -558,6 +569,10 @@
                     }
                     @media (max-width: 767px) {
                         .cca-valores-texto-area .bs-about-1-item { height: 300px; }
+                        /* Oculta a bolinha vermelha do slider em mobile */
+                        .bs-about-1-slider-drag {
+                            display: none !important;
+                        }
                     }
                     @media (max-width: 480px) {
                         .cca-valores-texto-area .bs-about-1-item { height: 240px; }
@@ -1167,6 +1182,12 @@
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/swiper-bundle.min.js"></script>
         <script src="assets/js/wow.js"></script>
+        <script>
+          // Desativa magic cursor em dispositivos touch/mobile
+          if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+            document.documentElement.classList.add('is-touch-device');
+          }
+        </script>
         <script src="assets/js/magiccursor.js"></script>
         <script src="assets/js/nice-select.min.js"></script>
         <script src="assets/js/marquee.min.js"></script>
