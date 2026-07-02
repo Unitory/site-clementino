@@ -2545,6 +2545,7 @@ const cursor = new Cursor();
 window.addEventListener("scroll", function(){
 
     let header = document.getElementById("header");
+    if(!header) return;
 
     if(window.scrollY > 40){
         header.classList.add("scrolled");
