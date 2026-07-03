@@ -196,7 +196,7 @@
     }
 }
 
-/* "Ver todas as áreas" — botão pill + reveal clip-path */
+/* "Ver todas as áreas" — botão pill simples */
 .cca-ver-todas-wrap {
     text-align: center;
     margin-top: 48px;
@@ -213,13 +213,7 @@
     display: inline-block;
     padding: 14px 40px;
     border-radius: 50px;
-    clip-path: inset(0 100% 0 0 round 50px);
-    transition: clip-path 0.9s cubic-bezier(0.77, 0, 0.18, 1) 0.25s,
-                background 0.25s ease,
-                color 0.25s ease;
-}
-.cca-ver-todas-link.cca-revealed {
-    clip-path: inset(0 0% 0 0 round 50px);
+    transition: background 0.25s ease, color 0.25s ease;
 }
 .cca-ver-todas-link:hover {
     background: #6B1F14;
@@ -1233,68 +1227,9 @@
     cards.forEach(function(card) { observer.observe(card); });
   }
 
-  /* — parallax (título move mais rápido, grid move no sentido oposto) — */
-  var section    = document.querySelector('.bs-services-5-area');
-  var titleBlock = document.querySelector('.bs-services-5-area .cca-rotator');
-  var labelBlock = document.querySelector('.bs-services-5-area .cca-sec-label');
-  var grid       = document.querySelector('.areas-grid');
-  if (section) {
-    window.addEventListener('scroll', function() {
-      var rect    = section.getBoundingClientRect();
-      var windowH = window.innerHeight;
-      if (rect.top < windowH && rect.bottom > 0) {
-        var progress = (windowH - rect.top) / (windowH + rect.height);
-        var base     = progress - 0.5;
-        /* título: desce/sobe 140px — movimento rápido */
-        if (titleBlock) titleBlock.style.transform = 'translateY(' + (base * 140) + 'px)';
-        if (labelBlock) labelBlock.style.transform = 'translateY(' + (base * 80)  + 'px)';
-        /* grid: movimento suave no sentido contrário, cria profundidade */
-        if (grid) grid.style.transform = 'translateY(' + (base * -50) + 'px)';
-      }
-    }, { passive: true });
-  }
-
 })();
 </script>
 
-<script>
-/* ── Área cards: slide-up + "Ver todas": reveal ── */
-(function() {
-    var swiper = document.querySelector('.cca-areas-swiper');
-    if (!swiper) return;
-
-    // Slides reais (excluindo duplicados criados pelo loop do Swiper)
-    var slides = swiper.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate) .cca-area-slide');
-    slides.forEach(function(el) {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(55px)';
-        el.style.transition = 'opacity 0.75s ease, transform 0.75s ease';
-    });
-
-    var cardObs = new IntersectionObserver(function(entries) {
-        if (!entries[0].isIntersecting) return;
-        slides.forEach(function(el, i) {
-            el.style.transitionDelay = (i * 0.1) + 's';
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
-        });
-        cardObs.disconnect();
-    }, { threshold: 0.1 });
-    cardObs.observe(swiper);
-
-    // "Ver todas as áreas" — reveal clip-path
-    var verLink = document.querySelector('.cca-ver-todas-link');
-    var verWrap = document.querySelector('.cca-ver-todas-wrap');
-    if (verLink && verWrap) {
-        var verObs = new IntersectionObserver(function(entries) {
-            if (!entries[0].isIntersecting) return;
-            setTimeout(function() { verLink.classList.add('cca-revealed'); }, 250);
-            verObs.disconnect();
-        }, { threshold: 0 });
-        verObs.observe(verWrap);
-    }
-})();
-</script>
 
 <script>
 (function() {

@@ -665,7 +665,7 @@ gsap.utils.toArray('.wa-scaleXInUp').forEach((item) => {
 	gsap.from(item, {
 	  scaleX: 0,
 	  ease: "ease1",
-	  duration: 0.8,
+	  duration: 0.6,
 	  scrollTrigger: {
 		trigger: item,
 		start: "top 90%",
